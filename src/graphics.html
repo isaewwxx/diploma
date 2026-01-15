@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Графики и визуализации на данни за външни запаметяващи устройства">
+    <title>Управление на външни запаметяващи устройства | Графики</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar" role="navigation" aria-label="Основна навигация">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">💾 Външни устройства</a>
+            </div>
+            <button class="nav-toggle" aria-label="Отваряне на менюто" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Начало</a></li>
+                <li><a href="graphics.html" class="active">Графики</a></li>
+                <li><a href="contact.html">Контакти</a></li>
+                <li><a href="author.html">Автор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <header class="page-header">
+        <div class="container">
+            <h1>📊 Графики и визуализации</h1>
+            <p class="subtitle">Сравнителен анализ на външни запаметяващи устройства</p>
+        </div>
+    </header>
+
+    <!-- Графики секция -->
+    <section class="section">
+        <div class="container">
+            <!-- Скорост на четене/запис -->
+            <div class="chart-container">
+                <h2>Скорост на четене/запис (MB/s)</h2>
+                <canvas id="speedChart"></canvas>
+            </div>
+
+            <!-- Капацитет спрямо цена -->
+            <div class="chart-container">
+                <h2>Капацитет спрямо цена (GB/лв)</h2>
+                <canvas id="priceCapacityChart"></canvas>
+            </div>
+
+            <!-- Пазарен дял -->
+            <div class="chart-container">
+                <h2>Пазарен дял по тип устройство (2025)</h2>
+                <canvas id="marketShareChart"></canvas>
+            </div>
+
+            <!-- Надеждност и издръжливост -->
+            <div class="chart-container">
+                <h2>Средна издръжливост (години)</h2>
+                <canvas id="durabilityChart"></canvas>
+            </div>
+
+            <!-- Енергопотребление -->
+            <div class="chart-container">
+                <h2>Среднo енергопотребление (W)</h2>
+                <canvas id="powerConsumptionChart"></canvas>
+            </div>
+
+            <!-- Честота на използване -->
+            <div class="chart-container">
+                <h2>Честота на използване в корпоративна среда</h2>
+                <canvas id="usageFrequencyChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сравнителна таблица -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2>📋 Сравнителна таблица</h2>
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Устройство</th>
+                            <th>Капацитет</th>
+                            <th>Скорост четене</th>
+                            <th>Скорост запис</th>
+                            <th>Цена (лв/GB)</th>
+                            <th>Издръжливост</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>USB Flash</strong></td>
+                            <td>8GB - 1TB</td>
+                            <td>300 MB/s</td>
+                            <td>200 MB/s</td>
+                            <td>0.15</td>
+                            <td>5-10 години</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SSD</strong></td>
+                            <td>128GB - 4TB</td>
+                            <td>7000 MB/s</td>
+                            <td>5000 MB/s</td>
+                            <td>0.25</td>
+                            <td>10-15 години</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HDD</strong></td>
+                            <td>500GB - 20TB</td>
+                            <td>160 MB/s</td>
+                            <td>140 MB/s</td>
+                            <td>0.03</td>
+                            <td>3-5 години</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SD карта</strong></td>
+                            <td>4GB - 1TB</td>
+                            <td>300 MB/s</td>
+                            <td>280 MB/s</td>
+                            <td>0.20</td>
+                            <td>5-10 години</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DVD</strong></td>
+                            <td>4.7GB - 8.5GB</td>
+                            <td>11 MB/s</td>
+                            <td>11 MB/s</td>
+                            <td>0.10</td>
+                            <td>20-100 години</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cloud Storage</strong></td>
+                            <td>Неограничен</td>
+                            <td>10-100 MB/s</td>
+                            <td>10-100 MB/s</td>
+                            <td>0.01</td>
+                            <td>Безсрочно</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Анализ и изводи -->
+    <section class="section">
+        <div class="container">
+            <h2>📈 Анализ и изводи</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h3>🚀 Най-бързо устройство</h3>
+                    <p><strong>NVMe SSD</strong> с скорост на четене до 7000 MB/s и запис до 5000 MB/s. Идеално за професионални приложения и игри.</p>
+                </div>
+                <div class="analysis-card">
+                    <h3>💰 Най-икономично</h3>
+                    <p><strong>HDD</strong> предлага най-ниска цена на гигабайт (0.03 лв/GB), подходящ за големи обеми данни и архивиране.</p>
+                </div>
+                <div class="analysis-card">
+                    <h3>⚡ Най-ефективно</h3>
+                    <p><strong>USB Flash</strong> комбинира портативност, скорост и достъпна цена. Най-популярен избор за ежедневна употреба.</p>
+                </div>
+                <div class="analysis-card">
+                    <h3>🔒 Най-сигурно</h3>
+                    <p><strong>Cloud Storage</strong> с автоматични резервни копия и криптиране. Защита от физически повреди и загуба.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>За проекта</h4>
+                    <p>Дипломен проект за придобиване на трета степен на професионална квалификация по специалност "Икономическа информатика"</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Начало</a></li>
+                        <li><a href="graphics.html">Графики</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                        <li><a href="author.html">Автор</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <p>Георги Емилов Исаев<br>
+                    Email: your.email@example.com<br>
+                    GitHub: @isaewwxx</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Георги Емилов Исаев. Всички права запазени.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>

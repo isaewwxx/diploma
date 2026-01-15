@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Свържете се с нас за въпроси относно управлението на външни запаметяващи устройства">
+    <title>Управление на външни запаметяващи устройства | Контакти</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar" role="navigation" aria-label="Основна навигация">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">💾 Външни устройства</a>
+            </div>
+            <button class="nav-toggle" aria-label="Отваряне на менюто" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Начало</a></li>
+                <li><a href="graphics.html">Графики</a></li>
+                <li><a href="contact.html" class="active">Контакти</a></li>
+                <li><a href="author.html">Автор</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero секция -->
+    <header class="page-header">
+        <div class="container">
+            <h1>📧 Свържете се с нас</h1>
+            <p class="subtitle">Имате въпроси? Свържете се с нас</p>
+        </div>
+    </header>
+
+    <!-- Контактна форма -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-form-container">
+                    <h2>Изпратете съобщение</h2>
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Име <span class="required">*</span></label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Вашето име"
+                                required
+                                aria-required="true"
+                                aria-describedby="nameError"
+                            >
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="your.email@example.com"
+                                required
+                                aria-required="true"
+                                aria-describedby="emailError"
+                            >
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="+359 XXX XXX XXX"
+                                aria-describedby="phoneError"
+                            >
+                            <span class="error-message" id="phoneError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Тема <span class="required">*</span></label>
+                            <select 
+                                id="subject" 
+                                name="subject"
+                                required
+                                aria-required="true"
+                                aria-describedby="subjectError"
+                            >
+                                <option value="">Изберете тема</option>
+                                <option value="general">Общ въпрос</option>
+                                <option value="technical">Техническа информация</option>
+                                <option value="collaboration">Сътрудничество</option>
+                                <option value="feedback">Обратна връзка</option>
+                                <option value="other">Друго</option>
+                            </select>
+                            <span class="error-message" id="subjectError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Съобщение <span class="required">*</span></label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6"
+                                placeholder="Вашето съобщение..."
+                                required
+                                aria-required="true"
+                                aria-describedby="messageError"
+                            ></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input 
+                                    type="checkbox" 
+                                    id="privacy" 
+                                    name="privacy"
+                                    required
+                                    aria-required="true"
+                                    aria-describedby="privacyError"
+                                >
+                                Съгласен съм с политиката за поверителност <span class="required">*</span>
+                            </label>
+                            <span class="error-message" id="privacyError"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">Изпрати съобщение</button>
+                    </form>
+
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <h3>✅ Успешно изпратено!</h3>
+                        <p>Вашето съобщение беше изпратено успешно. Ще се свържем с вас скоро.</p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h2>Информация за контакт</h2>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">👨‍🎓</div>
+                        <h3>Автор</h3>
+                        <p>Георги Емилов Исаев<br>
+                        XII з клас</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">💻</div>
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/isaewwxx" target="_blank" rel="noopener">@isaewwxx</a></p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🎓</div>
+                        <h3>Ръководител</h3>
+                        <p>Ани Вакъвчиева</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🏫</div>
+                        <h3>Специалност</h3>
+                        <p>Икономическа информатика<br>
+                        Код: 4820101</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">📅</div>
+                        <h3>Краен срок</h3>
+                        <p>22 април 2026 г.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ секция -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2>❓ Често задавани въпроси</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Какво е целта на този проект?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Проектът има за цел да изследва управлението на външни запаметяващи устройства, включително видове, рискове и методи за защита. Това е дипломен проект за придобиване на трета степен на професионална квалификация.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Какви технологии са използвани?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Уебсайтът е разработен с HTML5, CSS3 и JavaScript (ES6+). За визуализация на данни е използвана библиотеката Chart.js. Всички технологии следват съвременни стандарти за уеб разработка.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Кога е крайният срок на проекта?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Крайният срок за предаване на дипломния проект е 22 април 2026 година.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Мога ли да използвам материалите от проекта?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Проектът е разработен за образователни цели. Моля, свържете се с автора за разрешение преди използване на материалите.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>За проекта</h4>
+                    <p>Дипломен проект за придобиване на трета степен на професионална квалификация по специалност "Икономическа информатика"</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Начало</a></li>
+                        <li><a href="graphics.html">Графики</a></li>
+                        <li><a href="contact.html">Контакти</a></li>
+                        <li><a href="author.html">Автор</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <p>Георги Емилов Исаев<br>
+                    Email: your.email@example.com<br>
+                    GitHub: @isaewwxx</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Георги Емилов Исаев. Всички права запазени.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
