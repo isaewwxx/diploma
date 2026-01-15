@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>За Автора | Secure Storage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-hard-drive"></i>
+                <span>Secure</span>Storage
+            </a>
+            <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Начало</a>
+                <a href="security.html" class="nav-link">Сигурност</a>
+                <a href="analysis.html" class="nav-link">Анализ</a>
+                <a href="about.html" class="nav-link active">Автор</a>
+                <a href="contact.html" class="nav-link btn btn-outline" style="padding: 0.5rem 1.5rem;">Контакт</a>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: var(--header-height);">
+        <section class="section">
+            <div class="container" style="max-width: 900px;">
+                <div class="card glass-panel profile-wrapper">
+                    <div class="profile-header">
+                        <!-- Placeholder for Image -->
+                        <div class="profile-img-container">
+                             <div class="profile-img" style="background: linear-gradient(135deg, #eee, #ddd); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #aaa;">
+                                <i class="fa-solid fa-user"></i>
+                             </div>
+                        </div>
+                        
+                        <div class="profile-info text-left">
+                            <h1 class="mb-1" style="color: var(--primary);">Георги Емилов Исаев</h1>
+                            <h3 class="text-accent mb-1">Специалност: Икономическа информатика</h3>
+                            <p class="text-muted">
+                                Ученик от XII з клас със задълбочени интереси в сферата на хардуерните технологии и киберсигурността.
+                                Този проект е кулминацията на моето обучение.
+                            </p>
+                            
+                            <div class="mt-2">
+                                <a href="contact.html" class="btn btn-primary">
+                                    <i class="fa-solid fa-envelope" style="margin-right:0.5rem"></i> Свържи се с мен
+                                </a>
+                                <a href="https://github.com/isaewwxx" target="_blank" class="btn btn-outline" style="margin-left: 1rem;">
+                                    <i class="fa-brands fa-github" style="margin-right:0.5rem"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2" style="border-top: 1px solid var(--border); padding-top: 2rem;">
+                        <h3 class="mb-1">Технически Умения</h3>
+                        
+                        <div class="mb-1">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>HTML5 / CSS3</span>
+                                <span class="text-accent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-1">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>JavaScript (ES6+)</span>
+                                <span class="text-accent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-1">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Hardware Hardware Analysis</span>
+                                <span class="text-accent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2" style="background: var(--bg-dark); padding: 1.5rem; border-radius: 0.5rem;">
+                         <h3 class="mb-1 text-primary">За Проекта</h3>
+                         <ul style="color: var(--text-muted); padding-left: 1.2rem;">
+                             <li class="mb-1"><strong>Тема:</strong> Управление на външни запаметяващи устройства</li>
+                             <li class="mb-1"><strong>Ръководител:</strong> Ани Вакъвчиева</li>
+                             <li class="mb-1"><strong>Код на специалност:</strong> 4820101</li>
+                             <li><strong>Цел:</strong> Изследване и сравнителен анализ на съвременни технологии за съхранение</li>
+                         </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Георги Емилов Исаев.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
