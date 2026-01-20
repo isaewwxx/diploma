@@ -1,175 +1,284 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Външни Устройства | Secure Storage</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Управление на външни запаметяващи устройства</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="main-header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-hard-drive"></i>
-                <span>Secure</span>Storage
-            </a>
-            
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link active">Начало</a>
-                <a href="security.html" class="nav-link">Сигурност & Рискове</a>
-                <a href="analysis.html" class="nav-link">Анализ & Графики</a>
-                <a href="about.html" class="nav-link">Автор</a>
-                <a href="contact.html" class="nav-link btn btn-outline" style="padding: 0.5rem 1.5rem;">Контакт</a>
-            </nav>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html">💾 External Storage</a>
+    <nav class="nav" aria-label="Основна навигация">
+      <a href="#home">Начало</a>
+      <a href="#types">Видове</a>
+      <a href="#characteristics">Характеристики</a>
+      <a href="#security">Защита</a>
+      <a href="charts.html">Графики</a>
+      <a href="contact.html">Контакти</a>
+      <a href="author.html">Автор</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Дипломен проект · 2026</p>
+        <h1>Управление на външни запаметяващи устройства</h1>
+        <p class="lede">Теоретичен анализ и практическо уеб приложение за видовете външна памет, рисковете при работа и методите за защита в корпоративна среда.</p>
+        <div class="hero__actions">
+          <a class="btn primary" href="charts.html">Данни и графики</a>
+          <a class="btn ghost" href="contact.html">Контакт с автора</a>
         </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-content text-center animate-fade-up">
-                    <span class="text-accent" style="color: var(--accent); font-weight: 600; letter-spacing: 2px;">ДИПЛОМЕН ПРОЕКТ 2026</span>
-                    <h1>Управление на Външни<br>Запаметяващи Устройства</h1>
-                    <p class="text-muted mt-1" style="font-size: 1.25rem; max-width: 700px; margin: 1.5rem auto;">
-                        Комплексен анализ на видове памет, рискове за сигурността и методи за защита на данните в модерната дигитална ера.
-                    </p>
-                    <div class="mt-2">
-                        <a href="security.html" class="btn btn-primary">
-                            <i class="fa-solid fa-shield-halved" style="margin-right: 0.5rem;"></i>
-                            Научи за защитата
-                        </a>
-                        <a href="analysis.html" class="btn btn-outline" style="margin-left: 1rem;">
-                            <i class="fa-solid fa-chart-pie" style="margin-right: 0.5rem;"></i>
-                            Виж анализите
-                        </a>
-                    </div>
-                    
-                    <div class="hero-stats animate-fade-up delay-200">
-                        <div class="stat-item glass-panel card">
-                            <h3><i class="fa-solid fa-bolt"></i> 7000+</h3>
-                            <p class="text-muted">MB/s Скорост (NVMe)</p>
-                        </div>
-                        <div class="stat-item glass-panel card">
-                            <h3><i class="fa-solid fa-lock"></i> AES-256</h3>
-                            <p class="text-muted">Стандарт за криптиране</p>
-                        </div>
-                        <div class="stat-item glass-panel card">
-                            <h3><i class="fa-solid fa-cloud"></i> 99.9%</h3>
-                            <p class="text-muted">Cloud Uptime</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Devices Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title animate-fade-up">Технологии за Съхранение</h2>
-                <div class="security-grid">
-                    <!-- SSD -->
-                    <div class="card animate-fade-up delay-100">
-                        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem;">
-                            <i class="fa-solid fa-microchip"></i>
-                        </div>
-                        <h3>SSD & NVMe</h3>
-                        <p class="text-muted mt-1">
-                            Най-бързата технология за съхранение без подвижни части.
-                            Използва флаш памет за мигновен достъп до данни.
-                        </p>
-                        <ul class="mt-1" style="color: var(--text-muted);">
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> До 7000 MB/s скорост</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Устойчивост на удар</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Ниска латентност</li>
-                        </ul>
-                    </div>
-
-                    <!-- HDD -->
-                    <div class="card animate-fade-up delay-200">
-                        <div style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem;">
-                            <i class="fa-solid fa-hard-drive"></i>
-                        </div>
-                        <h3>HDD (Hard Disk)</h3>
-                        <p class="text-muted mt-1">
-                            Традиционна магнитна технология. По-бавен достъп, но огромен капацитет на ниска цена.
-                        </p>
-                        <ul class="mt-1" style="color: var(--text-muted);">
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Ниска цена за GB</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Висок капацитет (20TB+)</li>
-                            <li><i class="fa-solid fa-xmark" style="color: var(--danger);"></i> Механични части</li>
-                        </ul>
-                    </div>
-
-                    <!-- Cloud -->
-                    <div class="card animate-fade-up delay-300">
-                        <div style="font-size: 3rem; color: var(--warning); margin-bottom: 1.5rem;">
-                            <i class="fa-solid fa-cloud"></i>
-                        </div>
-                        <h3>Cloud Storage</h3>
-                        <p class="text-muted mt-1">
-                            Решения за отдалечено съхранение. Достъпност от всяко устройство и автоматичен бекъп.
-                        </p>
-                        <ul class="mt-1" style="color: var(--text-muted);">
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Достъп отвсякъде</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Скалируемост</li>
-                            <li><i class="fa-solid fa-check" style="color: var(--success);"></i> Споделяне на данни</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>SecureStorage</h3>
-                    <p class="text-muted">
-                        Дипломен проект за придобиване на професионална квалификация "Икономист-информатик".
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h3>Навигация</h3>
-                    <ul>
-                        <li><a href="index.html">Начало</a></li>
-                        <li><a href="security.html">Сигурност / Рискове</a></li>
-                        <li><a href="analysis.html">Анализ / Графики</a></li>
-                        <li><a href="about.html">Автор</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Връзка</h3>
-                    <ul>
-                        <li><a href="mailto:email@example.com"><i class="fa-solid fa-envelope"></i> email@example.com</a></li>
-                        <li><a href="https://github.com/isaewwxx"><i class="fa-brands fa-github"></i> @isaewwxx</a></li>
-                        <li class="text-muted"><i class="fa-solid fa-school"></i> XII з клас</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Георги Емилов Исаев. Всички права запазени.</p>
-            </div>
+        <dl class="hero__stats">
+          <div>
+            <dt>Скорост на достъп</dt>
+            <dd>до 3.5 GB/s NVMe</dd>
+          </div>
+          <div>
+            <dt>Надеждност</dt>
+            <dd>RAID + резервни копия</dd>
+          </div>
+          <div>
+            <dt>Сигурност</dt>
+            <dd>Криптиране + MFA достъп</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero__panel">
+        <div class="panel-card">
+          <h3>Фокус</h3>
+          <ul>
+            <li>USB, SSD, HDD, SD, CD/DVD</li>
+            <li>Интерфейси: USB 3.2, SATA III, NVMe</li>
+            <li>Рискове: физически, логически, организационни</li>
+            <li>Защита: криптиране, AV, резервни копия</li>
+          </ul>
         </div>
-    </footer>
+        <div class="panel-grid">
+          <article class="mini-card">
+            <p class="label">Специалност</p>
+            <p class="value">Икономическа информатика</p>
+          </article>
+          <article class="mini-card">
+            <p class="label">Автор</p>
+            <p class="value">Георги Емилов Исаев</p>
+          </article>
+          <article class="mini-card">
+            <p class="label">Ръководител</p>
+            <p class="value">Ани Вакъвчиева</p>
+          </article>
+          <article class="mini-card">
+            <p class="label">Дедлайн</p>
+            <p class="value">22.04.2026</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <script src="js/app.js"></script>
+    <section id="types" class="section">
+      <div class="section__header">
+        <p class="eyebrow">Категории</p>
+        <h2>Видове външна памет</h2>
+        <p class="section__lede">Сравнение на основните носители според капацитет, надеждност и скорост на работа.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>USB Flash Drives</h3>
+          <p>Компактни носители с капацитет до 2 TB. Подходящи за преносими конфигурации и бърз обмен на данни.</p>
+          <ul>
+            <li>USB 3.2 Gen 2 до 20 Gbps</li>
+            <li>Издръжливост: 1k–10k цикъла запис</li>
+            <li>Шифроване с парола/ключ</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>SSD (NVMe/SATA)</h3>
+          <p>Високоскоростни дискове с ниска латентност. Идеални за оперативни среди и бърз достъп до големи файлове.</p>
+          <ul>
+            <li>NVMe PCIe 4.0: до 7 GB/s</li>
+            <li>TBW показатели за износване</li>
+            <li>Поддръжка на TRIM и SMART</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>HDD</h3>
+          <p>Най-добра цена за TB, подходящи за архиви и масивни бекъпи. Податливи на вибрации и механични дефекти.</p>
+          <ul>
+            <li>Скорост: 100–250 MB/s</li>
+            <li>Съхранение: 1–22 TB</li>
+            <li>RAID 1/5/6 за надеждност</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>SD / microSD</h3>
+          <p>Леки карти за мобилни устройства и IoT. Критично е да се следи класът на скорост и живот.</p>
+          <ul>
+            <li>UHS-I/II до 312 MB/s</li>
+            <li>Водоустойчиви и удароустойчиви варианти</li>
+            <li>Поддръжка на хардверно криптиране</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Оптични (CD/DVD)</h3>
+          <p>За дългосрочен архив и офлайн съхранение. Ниска скорост, но висока защита от зловреден софтуер.</p>
+          <ul>
+            <li>Оптимално за write-once архив</li>
+            <li>Изисква правилно съхранение</li>
+            <li>Не поддържа бързи актуализации</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="characteristics" class="section split">
+      <div class="section__header">
+        <p class="eyebrow">Технически профил</p>
+        <h2>Характеристики и интерфейси</h2>
+        <p class="section__lede">Скорости на четене/запис, типове интерфейси и системна интеграция, които влияят на избора на устройство.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Скорости</h3>
+          <p>USB 2.0 до 60 MB/s · USB 3.0 до 625 MB/s · NVMe PCIe 4.0 до 7 GB/s · SATA III до 600 MB/s.</p>
+        </article>
+        <article class="feature">
+          <h3>Интерфейси</h3>
+          <p>USB-C за универсалност, SATA за съвместимост със сървъри, NVMe за критични натоварвания и ниска латентност.</p>
+        </article>
+        <article class="feature">
+          <h3>Драйвери и интеграция</h3>
+          <p>Поддръжка на UASP, SMART мониторинг, автоматични драйвери в Windows/macOS/Linux и централизирано управление.</p>
+        </article>
+        <article class="feature">
+          <h3>Издръжливост</h3>
+          <p>Измерва се чрез TBW и MTBF; нужни са периодични тестове и планирана подмяна според гаранционния цикъл.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="security" class="section split">
+      <div class="section__header">
+        <p class="eyebrow">Рискове и защита</p>
+        <h2>Как да минимизираме загубите</h2>
+        <p class="section__lede">Комбинация от технически и организационни мерки за устойчивост на инциденти.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <h3>Рискове</h3>
+          <ul>
+            <li>Физически повреди и износване</li>
+            <li>Зловреден софтуер и ransomware</li>
+            <li>Загуба или кражба на устройства</li>
+            <li>Човешки грешки и неправилно изваждане</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <h3>Мерки</h3>
+          <ul>
+            <li>Пълнодисково криптиране и пароли</li>
+            <li>Антивирус и EDR наблюдение</li>
+            <li>Редовни резервни копия (3-2-1)</li>
+            <li>Политики за достъп и инвентаризация</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <h3>Практика</h3>
+          <ul>
+            <li>Обучение на служителите за безопасна работа</li>
+            <li>Документация и процедури при инцидент</li>
+            <li>Тестове за възстановяване на данни</li>
+            <li>Мониторинг на SMART и логове</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="section">
+      <div class="section__header">
+        <p class="eyebrow">График</p>
+        <h2>Контролни точки</h2>
+        <p class="section__lede">Прогресът следва четири проверки до крайния срок.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline__item success">
+          <div class="dot"></div>
+          <div>
+            <p class="label">16.12.2025</p>
+            <h3>Възлагане на проекта</h3>
+            <p>Определяне на обхват, критерии и технологии.</p>
+          </div>
+        </div>
+        <div class="timeline__item active">
+          <div class="dot"></div>
+          <div>
+            <p class="label">17.01.2026</p>
+            <h3>Първа контролна проверка</h3>
+            <p>Структура на документацията и базова архитектура на сайта.</p>
+          </div>
+        </div>
+        <div class="timeline__item pending">
+          <div class="dot"></div>
+          <div>
+            <p class="label">17.02.2026</p>
+            <h3>Втора контролна проверка</h3>
+            <p>Графики, валидация на формите и достъпност.</p>
+          </div>
+        </div>
+        <div class="timeline__item pending">
+          <div class="dot"></div>
+          <div>
+            <p class="label">17.03.2026</p>
+            <h3>Трета контролна проверка</h3>
+            <p>Завършен дизайн и тестване на съдържанието.</p>
+          </div>
+        </div>
+        <div class="timeline__item pending">
+          <div class="dot"></div>
+          <div>
+            <p class="label">22.04.2026</p>
+            <h3>Краен срок</h3>
+            <p>Предаване на дипломната работа.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section__header">
+        <p class="eyebrow">Страници</p>
+        <h2>Разгледай останалите секции</h2>
+        <p class="section__lede">Отделни страници за графики, формуляри за контакт и авторска информация.</p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Графики</h3>
+          <p>Визуализация на използването на носители и основните рискове.</p>
+          <a class="btn primary" href="charts.html">Към графиките</a>
+        </article>
+        <article class="card">
+          <h3>Контакти</h3>
+          <p>Форма с валидация за обратна връзка и въпроси по проекта.</p>
+          <a class="btn primary" href="contact.html">Изпрати съобщение</a>
+        </article>
+        <article class="card">
+          <h3>Автор</h3>
+          <p>Портфолио секция с детайли за Георги Емилов Исаев.</p>
+          <a class="btn primary" href="author.html">Запознай се</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Георги Емилов Исаев · Образователен проект</p>
+    <a class="footer__link" href="../README.md">Прочети повече</a>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,80 +1,113 @@
-// Mobile Navigation Logic
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // Icon Toggle
-            const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-
-    // Intersection Observer for Animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.animate-fade-up').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Skill Bar Animation (Profile page)
-    const skillBars = document.querySelectorAll('.skill-progress');
-    if (skillBars.length > 0) {
-        setTimeout(() => {
-            skillBars.forEach(bar => {
-                // width is set inline in HTML, just re-triggering it for CSS transition
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => bar.style.width = width, 100);
-            });
-        }, 500);
-    }
-    
-    // Contact Form Logic
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalContent = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Изпращане...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Изпратено!';
-                btn.classList.add('btn-success');
-                btn.style.background = 'var(--success)';
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.disabled = false;
-                    btn.classList.remove('btn-success');
-                    btn.style.background = ''; // revert to CSS
-                }, 3000);
-            }, 1500);
-        });
-    }
+  initCharts();
+  setupContactForm();
 });
+
+function initCharts() {
+  if (typeof Chart === 'undefined') return;
+  const usageCtx = document.getElementById('usageChart');
+  const riskCtx = document.getElementById('riskChart');
+
+  if (usageCtx) {
+    new Chart(usageCtx, {
+      type: 'bar',
+      data: {
+        labels: ['USB', 'SSD', 'HDD', 'SD', 'CD/DVD'],
+        datasets: [
+          {
+            label: 'Използване (%)',
+            data: [70, 85, 55, 35, 15],
+            backgroundColor: ['#22d3ee', '#fbbf24', '#38bdf8', '#34d399', '#c084fc'],
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#e9f1f5',
+            },
+            grid: {
+              color: 'rgba(255,255,255,0.08)',
+            },
+          },
+          x: {
+            ticks: { color: '#e9f1f5' },
+            grid: { display: false },
+          },
+        },
+        plugins: {
+          legend: {
+            labels: { color: '#e9f1f5' },
+          },
+        },
+      },
+    });
+  }
+
+  if (riskCtx) {
+    new Chart(riskCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Зловреден софтуер', 'Физически повреда', 'Кражба/загуба', 'Човешка грешка'],
+        datasets: [
+          {
+            data: [35, 30, 20, 15],
+            backgroundColor: ['#f97316', '#22d3ee', '#fbbf24', '#a78bfa'],
+            borderColor: '#0b1723',
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: '#e9f1f5' },
+          },
+        },
+      },
+    });
+  }
+}
+
+function setupContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const status = form.querySelector('.form__status');
+  if (!status) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    const errors = [];
+
+    if (!name) errors.push('Моля, попълнете име.');
+    if (!isValidEmail(email)) errors.push('Въведете валиден имейл.');
+    if (message.length < 10) errors.push('Съобщението трябва да е поне 10 символа.');
+
+    status.classList.remove('is-error', 'is-success');
+
+    if (errors.length) {
+      status.textContent = errors.join(' ');
+      status.classList.add('is-error');
+      return;
+    }
+
+    status.textContent = 'Успешно изпратено! (демо режим)';
+    status.classList.add('is-success');
+    form.reset();
+  });
+}
+
+function isValidEmail(value) {
+  return /.+@.+\..+/.test(value);
+}

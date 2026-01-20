@@ -1,111 +1,80 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакт | Secure Storage</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти · Външни запаметяващи устройства</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-hard-drive"></i>
-                <span>Secure</span>Storage
-            </a>
-            <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Начало</a>
-                <a href="security.html" class="nav-link">Сигурност</a>
-                <a href="analysis.html" class="nav-link">Анализ</a>
-                <a href="about.html" class="nav-link">Автор</a>
-                <a href="contact.html" class="nav-link active btn btn-outline" style="padding: 0.5rem 1.5rem;">Контакт</a>
-            </nav>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html">💾 External Storage</a>
+    <nav class="nav" aria-label="Основна навигация">
+      <a href="index.html">Начало</a>
+      <a href="index.html#types">Видове</a>
+      <a href="charts.html">Графики</a>
+      <a href="contact.html">Контакти</a>
+      <a href="author.html">Автор</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Връзка</p>
+        <h1>Свържи се с автора</h1>
+        <p class="lede">Попълни формата за въпроси относно дипломния проект, използваните технологии или предложения за подобрение.</p>
+      </div>
+      <div class="hero__panel">
+        <div class="panel-card">
+          <h3>Насоки</h3>
+          <ul>
+            <li>Минимум 10 символа в съобщението</li>
+            <li>Коректен имейл за обратна връзка</li>
+            <li>Отговор до 2 работни дни (демо)</li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main style="padding-top: var(--header-height);">
-        <section class="section">
-            <div class="container">
-                <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h2 class="mb-1">Свържете се с нас</h2>
-                        <p class="text-muted mb-1">
-                            Имате въпроси относно проекта или искате да обсъдим технологиите за съхранение?
-                        </p>
-                        
-                        <div class="mt-2">
-                            <div class="mb-1" style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <i class="fa-solid fa-location-dot text-primary" style="margin-top: 5px;"></i>
-                                <div>
-                                    <h4>Локация</h4>
-                                    <p class="text-muted">София, България</p>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-1" style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <i class="fa-solid fa-envelope text-primary" style="margin-top: 5px;"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p class="text-muted">your.email@example.com</p>
-                                </div>
-                            </div>
+    <section class="section split">
+      <div class="section__header">
+        <p class="eyebrow">Форма</p>
+        <h2>Обратна връзка</h2>
+        <p class="section__lede">Данните не се изпращат към сървър – валидират се локално за демонстрационни цели.</p>
+      </div>
+      <div class="form-card">
+        <form id="contactForm" novalidate>
+          <div class="form__row">
+            <label for="name">Име</label>
+            <input type="text" id="name" name="name" placeholder="Вашето име" required>
+          </div>
+          <div class="form__row">
+            <label for="email">Имейл</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required>
+          </div>
+          <div class="form__row">
+            <label for="message">Съобщение</label>
+            <textarea id="message" name="message" rows="4" placeholder="Как можем да помогнем?" required></textarea>
+          </div>
+          <div class="form__actions">
+            <button type="submit" class="btn primary">Изпрати</button>
+            <p class="form__status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-                            <div class="mb-1" style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <i class="fa-brands fa-github text-primary" style="margin-top: 5px;"></i>
-                                <div>
-                                    <h4>GitHub</h4>
-                                    <p class="text-muted">@isaewwxx</p>
-                                </div>
-                            </div>
-                        </div>
+  <footer class="footer">
+    <p>© 2026 Георги Емилов Исаев · Образователен проект</p>
+    <a class="footer__link" href="../README.md">Прочети повече</a>
+  </footer>
 
-                        <div class="mt-2" style="background: rgba(59, 130, 246, 0.1); padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--primary-glow);">
-                            <h4 class="text-accent mb-1"><i class="fa-solid fa-circle-info"></i> Важно</h4>
-                            <p class="text-muted" style="font-size: 0.9rem;">
-                                Всички съобщения се обработват съгласно политиката за поверителност.
-                            </p>
-                        </div>
-                    </div>
-
-                    <form class="contact-form" id="contactForm">
-                        <h3 class="mb-1">Изпратете Съобщение</h3>
-                        
-                        <div class="form-group">
-                            <label for="name">Име</label>
-                            <input type="text" id="name" class="form-control" placeholder="Вашето име" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Адрес</label>
-                            <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Съобщение</label>
-                            <textarea id="message" class="form-control" rows="5" placeholder="Как мога да помогна?" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fa-solid fa-paper-plane" style="margin-right: 0.5rem;"></i> Изпрати
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <footer class="main-footer">
-         <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2026 Георги Емилов Исаев.</p>
-            </div>
-        </div>
-    </footer>
-    <script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
