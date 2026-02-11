@@ -1,80 +1,167 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контакти · Външни запаметяващи устройства</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакт — ESD Управление</title>
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
-  <div class="bg-ambient" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="index.html">💾 External Storage</a>
-    <nav class="nav" aria-label="Основна навигация">
-      <a href="index.html">Начало</a>
-      <a href="index.html#types">Видове</a>
-      <a href="charts.html">Графики</a>
-      <a href="contact.html">Контакти</a>
-      <a href="author.html">Автор</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero__text">
-        <p class="eyebrow">Връзка</p>
-        <h1>Свържи се с автора</h1>
-        <p class="lede">Попълни формата за въпроси относно дипломния проект, използваните технологии или предложения за подобрение.</p>
-      </div>
-      <div class="hero__panel">
-        <div class="panel-card">
-          <h3>Насоки</h3>
-          <ul>
-            <li>Минимум 10 символа в съобщението</li>
-            <li>Коректен имейл за обратна връзка</li>
-            <li>Отговор до 2 работни дни (демо)</li>
-          </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i data-lucide="hard-drive"></i>
+            <span>ESD Управление</span>
         </div>
-      </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <i data-lucide="menu"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html"><i data-lucide="home"></i> Начало</a></li>
+            <li><a href="charts.html"><i data-lucide="bar-chart-2"></i> Графики и таблици</a></li>
+            <li><a href="author.html"><i data-lucide="graduation-cap"></i> Автор</a></li>
+            <li><a href="contact.html" class="active"><i data-lucide="mail"></i> Контакт</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1><i data-lucide="mail"></i> Контакт</h1>
+        <p>Свържете се с автора на дипломната работа</p>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3><i data-lucide="info"></i> Информация за контакт</h3>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="user"></i></div>
+                            <div>
+                                <strong>Автор</strong>
+                                <p>Георги Емилов Исаев</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="mail"></i></div>
+                            <div>
+                                <strong>Email</strong>
+                                <p><a href="mailto:georgi@capybarahost.eu">georgi@capybarahost.eu</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="phone"></i></div>
+                            <div>
+                                <strong>Телефон</strong>
+                                <p><a href="tel:+359878720963">+359 878 720 963</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+                            <div>
+                                <strong>Адрес</strong>
+                                <p>ул. проф. Фритьоф Нансен 3, София</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="graduation-cap"></i></div>
+                            <div>
+                                <strong>Учебно заведение</strong>
+                                <p>НФСГ София (12 з клас)</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="github"></i></div>
+                            <div>
+                                <strong>GitHub</strong>
+                                <p><a href="https://github.com/isaewwxx" target="_blank">github.com/isaewwxx</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i data-lucide="globe"></i></div>
+                            <div>
+                                <strong>Портфолио</strong>
+                                <p><a href="https://isaewwxx.dev" target="_blank">isaewwxx.dev</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-topic">
+                        <h4><i data-lucide="file-text"></i> Тема на работата</h4>
+                        <p>Управление на външни запаметяващи устройства - видове, рискове и защита на данните при използване на USB, SSD, HDD, SD карти и оптични носители.</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <h3><i data-lucide="send"></i> Изпратете съобщение</h3>
+                    <form class="contact-form" action="https://formspree.io/f/xnjbjrye" method="POST">
+                        <div class="form-group">
+                            <label for="name"><i data-lucide="user"></i> Име</label>
+                            <input type="text" id="name" name="name" placeholder="Вашето име" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i data-lucide="mail"></i> Имейл</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject"><i data-lucide="tag"></i> Тема</label>
+                            <select id="subject" name="subject">
+                                <option value="general">Общ въпрос</option>
+                                <option value="technical">Технически въпрос</option>
+                                <option value="feedback">Обратна връзка</option>
+                                <option value="collaboration">Сътрудничество</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i data-lucide="message-square"></i> Съобщение</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Вашето съобщение..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-submit">
+                            <i data-lucide="send"></i> Изпрати
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="section split">
-      <div class="section__header">
-        <p class="eyebrow">Форма</p>
-        <h2>Обратна връзка</h2>
-        <p class="section__lede">Данните не се изпращат към сървър – валидират се локално за демонстрационни цели.</p>
-      </div>
-      <div class="form-card">
-        <form id="contactForm" novalidate>
-          <div class="form__row">
-            <label for="name">Име</label>
-            <input type="text" id="name" name="name" placeholder="Вашето име" required>
-          </div>
-          <div class="form__row">
-            <label for="email">Имейл</label>
-            <input type="email" id="email" name="email" placeholder="name@example.com" required>
-          </div>
-          <div class="form__row">
-            <label for="message">Съобщение</label>
-            <textarea id="message" name="message" rows="4" placeholder="Как можем да помогнем?" required></textarea>
-          </div>
-          <div class="form__actions">
-            <button type="submit" class="btn primary">Изпрати</button>
-            <p class="form__status" aria-live="polite"></p>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><i data-lucide="hard-drive"></i> ESD Управление</h4>
+                    <p>Дипломна работа по темата за управление на външните запаметяващи устройства.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Начало</a></li>
+                        <li><a href="charts.html">Графики и таблици</a></li>
+                        <li><a href="author.html">Автор</a></li>
+                        <li><a href="contact.html">Контакт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ключови стандарти</h4>
+                    <ul>
+                        <li>ISO/IEC 27001:2022</li>
+                        <li>NIST SP 800-88</li>
+                        <li>NIST CSF 2.0</li>
+                        <li>GDPR (EU) 2016/679</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Дипломна работа — Управление на външни запаметяващи устройства</p>
+            </div>
+        </div>
+    </footer>
 
-  <footer class="footer">
-    <p>© 2026 Георги Емилов Исаев · Образователен проект</p>
-    <a class="footer__link" href="../README.md">Прочети повече</a>
-  </footer>
-
-  <script src="js/app.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

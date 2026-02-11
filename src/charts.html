@@ -1,66 +1,235 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Графики · Външни запаметяващи устройства</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Графики и таблици — ESD Управление</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
-  <div class="bg-ambient" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="index.html">💾 External Storage</a>
-    <nav class="nav" aria-label="Основна навигация">
-      <a href="index.html">Начало</a>
-      <a href="index.html#types">Видове</a>
-      <a href="charts.html">Графики</a>
-      <a href="contact.html">Контакти</a>
-      <a href="author.html">Автор</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i data-lucide="hard-drive"></i>
+            <span>ESD Управление</span>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <i data-lucide="menu"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html"><i data-lucide="home"></i> Начало</a></li>
+            <li><a href="charts.html" class="active"><i data-lucide="bar-chart-2"></i> Графики и таблици</a></li>
+            <li><a href="author.html"><i data-lucide="graduation-cap"></i> Автор</a></li>
+            <li><a href="contact.html"><i data-lucide="mail"></i> Контакт</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero__text">
-        <p class="eyebrow">Данни</p>
-        <h1>Графики за употреба и рискове</h1>
-        <p class="lede">Визуализирани примерни метрики за популярността на носителите и основните заплахи, които влияят на надеждността.</p>
-      </div>
-      <div class="hero__panel">
-        <div class="panel-card">
-          <h3>Метрики</h3>
-          <ul>
-            <li>Използване по тип носител</li>
-            <li>Рискове: зловреден софтуер, физическа повреда, кражба, човешка грешка</li>
-            <li>Адаптирайте данните към реална среда</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1><i data-lucide="bar-chart-2"></i> Графики и таблици</h1>
+        <p>Интерактивни визуализации на данните от дипломната работа</p>
+    </header>
 
+    <!-- Chart: Read Speeds Comparison -->
     <section class="section">
-      <div class="charts">
-        <div class="chart-card">
-          <h3>Използване по тип носител</h3>
-          <canvas id="usageChart" aria-label="Диаграма за използване по тип" role="img"></canvas>
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="gauge"></i> Сравнение на скоростите на четене</h2>
+            <p class="chart-description">Последователни скорости на четене (MB/s) при типичен интерфейс за всеки тип устройство. SSD устройствата значително превъзхождат останалите категории.</p>
+            <div class="chart-wrapper">
+                <canvas id="readSpeedChart"></canvas>
+            </div>
         </div>
-        <div class="chart-card">
-          <h3>Основни рискове</h3>
-          <canvas id="riskChart" aria-label="Диаграма за рискове" role="img"></canvas>
-        </div>
-      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <p>© 2026 Георги Емилов Исаев · Образователен проект</p>
-    <a class="footer__link" href="../README.md">Прочети повече</a>
-  </footer>
+    <!-- Chart: Interface Bandwidth -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="network"></i> Пропускателна способност на интерфейсите</h2>
+            <p class="chart-description">Теоретична максимална скорост (MB/s) на различните интерфейси за свързване. NVMe PCIe Gen 5 и Thunderbolt 5 водят класацията.</p>
+            <div class="chart-wrapper">
+                <canvas id="interfaceChart"></canvas>
+            </div>
+        </div>
+    </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" integrity="sha256-ezGJUBQYN+ipd4uHcNXryGDOWhAHF1y9tV04zHlqmVg=" crossorigin="anonymous"></script>
-  <script src="js/app.js"></script>
+    <!-- Chart: Price per GB -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="euro"></i> Цена за гигабайт (€/GB)</h2>
+            <p class="chart-description">Средни пазарни цени за Европа към 2024 г. HDD и оптичните носители предлагат най-ниска цена за съхранение.</p>
+            <div class="chart-wrapper chart-wrapper-sm">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart: NAND Endurance -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="activity"></i> Издръжливост на NAND паметта</h2>
+            <p class="chart-description">Цикли на запис/изтриване (P/E Cycles) за различните типове NAND клетки. SLC паметта издържа до 100 пъти повече цикли от QLC.</p>
+            <div class="chart-wrapper">
+                <canvas id="nandChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart: Risk Matrix -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="alert-triangle"></i> Матрица за оценка на риска</h2>
+            <p class="chart-description">Визуализация на осемте основни рискове, класифицирани по вероятност и въздействие (NIST SP 800-30).</p>
+            <div class="chart-wrapper">
+                <canvas id="riskChart"></canvas>
+            </div>
+            <div class="risk-legend" id="riskLegend"></div>
+        </div>
+    </section>
+
+    <!-- Chart: Data Loss Causes -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="pie-chart"></i> Причини за загуба на данни</h2>
+            <p class="chart-description">Разпределение на причините за загуба на данни при външни носители (Kroll Ontrack, 2022).</p>
+            <div class="chart-wrapper chart-wrapper-sm">
+                <canvas id="dataLossChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart: Device Radar Comparison -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="bug"></i> Многокритериално сравнение</h2>
+            <p class="chart-description">Радарна диаграма за сравнение на петте типа устройства по шест ключови критерия (скала 1–10).</p>
+            <div class="chart-wrapper chart-wrapper-sm">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart: USB Attack Vectors -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="skull"></i> USB атакуващи вектори</h2>
+            <p class="chart-description">Статистики за различните видове атаки, свързани с USB устройства в корпоративна среда (ENISA, 2023).</p>
+            <div class="chart-wrapper chart-wrapper-sm">
+                <canvas id="attackChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table: Full Comparison -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="table"></i> Пълна сравнителна таблица</h2>
+            <p class="chart-description">Детайлно сравнение на петте типа външни запаметяващи устройства по основни параметри.</p>
+            <div class="table-responsive" id="comparisonTableContainer">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Table: Encryption Comparison -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="lock"></i> Сравнение на криптиращи решения</h2>
+            <p class="chart-description">Характеристики на трите основни инструмента за криптиране на преносими носители.</p>
+            <div class="table-responsive" id="encryptionTableContainer">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Table: File Systems -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="folder-open"></i> Сравнение на файлови системи</h2>
+            <p class="chart-description">Ключови характеристики на файловите системи, използвани при външни носители.</p>
+            <div class="table-responsive" id="fsTableContainer">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Table: NIST CSF Checklist -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="clipboard-check"></i> Чеклист: NIST CSF функции</h2>
+            <p class="chart-description">Десет добри практики за управление на преносими носители, съпоставени с NIST Cybersecurity Framework.</p>
+            <div class="table-responsive" id="nistTableContainer">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart: Secure Erasure Methods -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i data-lucide="eraser"></i> Методи за сигурно изтриване (NIST SP 800-88)</h2>
+            <p class="chart-description">Три нива на изтриване – от логическо до физическо унищожаване.</p>
+            <div class="erasure-methods">
+                <div class="erasure-card erasure-clear">
+                    <div class="erasure-icon"><i data-lucide="trash-2"></i></div>
+                    <h4>Clear (Логическо)</h4>
+                    <div class="erasure-bar"><div class="erasure-fill" style="width:33%"></div></div>
+                    <p>Презаписване с нули/единици. Защита срещу софтуерно възстановяване.</p>
+                    <code>sudo shred -vzn 3 /dev/sdb</code>
+                </div>
+                <div class="erasure-card erasure-purge">
+                    <div class="erasure-icon"><i data-lucide="key"></i></div>
+                    <h4>Purge (Криптографско)</h4>
+                    <div class="erasure-bar"><div class="erasure-fill" style="width:66%"></div></div>
+                    <p>Унищожаване на криптографския ключ. Идеално за SSD с wear leveling.</p>
+                    <code>sudo nvme format /dev/nvme0n1 --ses=1</code>
+                </div>
+                <div class="erasure-card erasure-destroy">
+                    <div class="erasure-icon"><i data-lucide="hammer"></i></div>
+                    <h4>Destroy (Физическо)</h4>
+                    <div class="erasure-bar"><div class="erasure-fill" style="width:100%"></div></div>
+                    <p>Раздробяване, дегаусиране или изгаряне. Абсолютна невъзстановимост.</p>
+                    <code>Физическо унищожаване</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><i data-lucide="hard-drive"></i> ESD Управление</h4>
+                    <p>Дипломна работа по темата за управление на външните запаметяващи устройства.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Начало</a></li>
+                        <li><a href="charts.html">Графики и таблици</a></li>
+                        <li><a href="author.html">Автор</a></li>
+                        <li><a href="contact.html">Контакт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Източници</h4>
+                    <ul>
+                        <li>ENISA Threat Landscape 2023</li>
+                        <li>Kroll Ontrack 2022</li>
+                        <li>Samsung SSD White Paper</li>
+                        <li>Backblaze HDD Stats 2023</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Дипломна работа — Управление на външни запаметяващи устройства</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
