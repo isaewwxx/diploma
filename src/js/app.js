@@ -10,20 +10,87 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navToggle && navLinks) {
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded',
+                navLinks.classList.contains('active'));
         });
 
         // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
 
-    // ---- Scroll Animations ----
+    // ---- Scroll Progress Bar ----
+    const scrollProgress = document.getElementById('scrollProgress');
+    const navbar = document.querySelector('.navbar');
+    const backToTop = document.getElementById('backToTop');
+
+    function onScroll() {
+        // Progress bar
+        if (scrollProgress) {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            scrollProgress.style.width = pct + '%';
+        }
+
+        // Navbar glass / scrolled effect
+        if (navbar) {
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Back-to-top visibility
+        if (backToTop) {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // initial call
+
+    // Back-to-top click handler
+    if (backToTop) {
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ---- Enhanced Scroll Animations ----
+    const animatedSelectors = [
+        '.device-card', '.risk-card', '.case-card', '.checklist-item',
+        '.timeline-item', '.encrypt-card', '.erasure-card', '.goal-card',
+        '.fs-card', '.stat-card', '.section-card', '.chart-card',
+        '.table-card', '.skill-card', '.project-card', '.ref-item',
+        '.contact-card', '.author-card', '.info-card'
+    ].join(', ');
+
+    // Assign stagger classes to grid children
+    document.querySelectorAll('.card-grid, .stats-grid, .skills-grid, .projects-grid, .goals-grid').forEach(grid => {
+        const children = grid.children;
+        for (let i = 0; i < children.length; i++) {
+            children[i].classList.add(`stagger-${Math.min(i + 1, 10)}`);
+        }
+    });
+
+    // Assign alternating directional reveal to timeline items
+    document.querySelectorAll('.timeline-item').forEach((item, i) => {
+        item.classList.add(i % 2 === 0 ? 'fade-in-left' : 'fade-in-right');
+    });
+
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -60px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -35,8 +102,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.device-card, .risk-card, .case-card, .checklist-item, .timeline-item, .encrypt-card, .erasure-card, .goal-card, .fs-card').forEach(el => {
+    document.querySelectorAll(animatedSelectors).forEach(el => {
         observer.observe(el);
+    });
+
+    // ---- Animate Hero Stat Numbers (count-up) ----
+    document.querySelectorAll('.stat-number').forEach(el => {
+        const target = parseInt(el.textContent, 10);
+        if (isNaN(target)) return;
+        const suffix = el.textContent.replace(/[\d]/g, '');
+        const duration = 1800;
+        const start = performance.now();
+        el.textContent = '0' + suffix;
+
+        function step(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // ease-out cubic
+            const ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * ease) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        // Only animate when visible
+        const statObs = new IntersectionObserver((entries, obs) => {
+            if (entries[0].isIntersecting) {
+                requestAnimationFrame(step);
+                obs.unobserve(el);
+            }
+        }, { threshold: 0.5 });
+        statObs.observe(el);
+    });
+
+    // ---- Active Nav Link Highlight ----
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('active');
+        }
     });
 
     // ---- Initialize Charts (only on charts page) ----
@@ -54,18 +157,18 @@ document.addEventListener('DOMContentLoaded', () => {
    Color Palette for Charts
    =========================== */
 const COLORS = {
-    usb: '#4285f4',
-    ssd: '#34a853',
-    hdd: '#fbbc04',
-    sd: '#ea4335',
-    cdDvd: '#9c27b0',
-    primary: '#1a73e8',
-    primaryLight: 'rgba(26, 115, 232, 0.15)',
-    critical: '#c62828',
-    high: '#e65100',
-    medium: '#f9a825',
-    low: '#2e7d32',
-    grid: 'rgba(0,0,0,0.06)'
+    usb: '#4f6ef7',
+    ssd: '#22c55e',
+    hdd: '#f59e0b',
+    sd: '#ef4444',
+    cdDvd: '#a855f7',
+    primary: '#4f6ef7',
+    primaryLight: 'rgba(79, 110, 247, 0.15)',
+    critical: '#dc2626',
+    high: '#ea580c',
+    medium: '#eab308',
+    low: '#16a34a',
+    grid: 'rgba(0,0,0,0.05)'
 };
 
 const DEVICE_COLORS = [COLORS.usb, COLORS.ssd, COLORS.hdd, COLORS.sd, COLORS.cdDvd];
@@ -84,13 +187,13 @@ function getDefaultOptions(title) {
                 labels: {
                     padding: 16,
                     usePointStyle: true,
-                    font: { size: 12, family: "'Segoe UI', sans-serif" }
+                    font: { size: 12, family: "'Inter', 'Segoe UI', sans-serif" }
                 }
             },
             title: {
                 display: !!title,
                 text: title || '',
-                font: { size: 16, weight: '700', family: "'Segoe UI', sans-serif" },
+                font: { size: 16, weight: '700', family: "'Inter', 'Segoe UI', sans-serif" },
                 padding: { bottom: 20 }
             }
         }
