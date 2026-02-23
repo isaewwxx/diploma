@@ -157,18 +157,18 @@ document.addEventListener('DOMContentLoaded', () => {
    Color Palette for Charts
    =========================== */
 const COLORS = {
-    usb: '#4f6ef7',
-    ssd: '#22c55e',
-    hdd: '#f59e0b',
-    sd: '#ef4444',
-    cdDvd: '#a855f7',
-    primary: '#4f6ef7',
-    primaryLight: 'rgba(79, 110, 247, 0.15)',
-    critical: '#dc2626',
-    high: '#ea580c',
-    medium: '#eab308',
-    low: '#16a34a',
-    grid: 'rgba(0,0,0,0.05)'
+    usb: '#111827',
+    ssd: '#374151',
+    hdd: '#6b7280',
+    sd: '#9ca3af',
+    cdDvd: '#d1d5db',
+    primary: '#111827',
+    primaryLight: 'rgba(17, 24, 39, 0.08)',
+    critical: '#111827',
+    high: '#374151',
+    medium: '#9ca3af',
+    low: '#d1d5db',
+    grid: 'rgba(0,0,0,0.04)'
 };
 
 const DEVICE_COLORS = [COLORS.usb, COLORS.ssd, COLORS.hdd, COLORS.sd, COLORS.cdDvd];
@@ -273,10 +273,10 @@ function createInterfaceChart() {
                 label: 'Макс. скорост (MB/s)',
                 data: [60, 625, 1250, 2500, 600, 7000, 14000, 5000, 10000],
                 backgroundColor: [
-                    '#90caf9', '#64b5f6', '#42a5f5', '#2196f3',
-                    '#ffd54f',
-                    '#66bb6a', '#43a047',
-                    '#ab47bc', '#7b1fa2'
+                    '#e5e7eb', '#d1d5db', '#9ca3af', '#6b7280',
+                    '#374151',
+                    '#4b5563', '#111827',
+                    '#6b7280', '#374151'
                 ],
                 borderRadius: 6,
                 borderSkipped: false,
@@ -365,7 +365,7 @@ function createNandChart() {
             datasets: [{
                 label: 'P/E Цикли (×1000)',
                 data: [100, 10, 4, 1],
-                backgroundColor: ['#2e7d32', '#43a047', '#ffa726', '#e53935'],
+                backgroundColor: ['#111827', '#374151', '#6b7280', '#d1d5db'],
                 borderRadius: 8,
                 borderSkipped: false,
                 borderWidth: 0
@@ -564,7 +564,7 @@ function createDataLossChart() {
             labels: ['Хардуерна повреда (67%)', 'Софтуерни грешки (14%)', 'Случайно изтриване (10%)', 'Други причини (9%)'],
             datasets: [{
                 data: [67, 14, 10, 9],
-                backgroundColor: ['#e53935', '#fb8c00', '#fdd835', '#78909c'],
+                backgroundColor: ['#111827', '#374151', '#9ca3af', '#d1d5db'],
                 borderColor: '#fff',
                 borderWidth: 3,
                 hoverOffset: 8
@@ -675,16 +675,16 @@ function createAttackChart() {
             datasets: [{
                 data: [37, 12, 25, 18, 8, 30],
                 backgroundColor: [
-                    'rgba(198, 40, 40, 0.7)',
-                    'rgba(123, 31, 162, 0.7)',
-                    'rgba(230, 81, 0, 0.7)',
-                    'rgba(249, 168, 37, 0.7)',
-                    'rgba(0, 137, 123, 0.7)',
-                    'rgba(21, 101, 192, 0.7)'
+                    'rgba(17, 24, 39, 0.7)',
+                    'rgba(55, 65, 81, 0.7)',
+                    'rgba(75, 85, 99, 0.7)',
+                    'rgba(107, 114, 128, 0.7)',
+                    'rgba(156, 163, 175, 0.7)',
+                    'rgba(209, 213, 219, 0.7)'
                 ],
                 borderColor: [
-                    '#c62828', '#7b1fa2', '#e65100',
-                    '#f9a825', '#00897b', '#1565c0'
+                    '#111827', '#374151', '#4b5563',
+                    '#6b7280', '#9ca3af', '#d1d5db'
                 ],
                 borderWidth: 2
             }]
