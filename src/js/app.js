@@ -157,18 +157,18 @@ document.addEventListener('DOMContentLoaded', () => {
    Color Palette for Charts
    =========================== */
 const COLORS = {
-    usb: '#111827',
-    ssd: '#374151',
-    hdd: '#6b7280',
-    sd: '#9ca3af',
-    cdDvd: '#d1d5db',
-    primary: '#111827',
-    primaryLight: 'rgba(17, 24, 39, 0.08)',
-    critical: '#111827',
-    high: '#374151',
-    medium: '#9ca3af',
-    low: '#d1d5db',
-    grid: 'rgba(0,0,0,0.04)'
+    usb: '#ff2d2d',
+    ssd: '#3b82f6',
+    hdd: '#f97316',
+    sd: '#22c55e',
+    cdDvd: '#eab308',
+    primary: '#ff2d2d',
+    primaryLight: 'rgba(255, 45, 45, 0.15)',
+    critical: '#ff2d2d',
+    high: '#f97316',
+    medium: '#eab308',
+    low: '#22c55e',
+    grid: 'rgba(255,255,255,0.06)'
 };
 
 const DEVICE_COLORS = [COLORS.usb, COLORS.ssd, COLORS.hdd, COLORS.sd, COLORS.cdDvd];
@@ -187,12 +187,14 @@ function getDefaultOptions(title) {
                 labels: {
                     padding: 16,
                     usePointStyle: true,
+                    color: 'rgba(255,255,255,0.5)',
                     font: { size: 12, family: "'Inter', 'Segoe UI', sans-serif" }
                 }
             },
             title: {
                 display: !!title,
                 text: title || '',
+                color: '#f0f0f0',
                 font: { size: 16, weight: '700', family: "'Inter', 'Segoe UI', sans-serif" },
                 padding: { bottom: 20 }
             }
@@ -228,7 +230,7 @@ function createReadSpeedChart() {
                     backgroundColor: DEVICE_COLORS.map(c => c + '99'),
                     borderColor: DEVICE_COLORS,
                     borderWidth: 2,
-                    borderRadius: 6,
+                    borderRadius: 0,
                     borderSkipped: false
                 },
                 {
@@ -237,7 +239,7 @@ function createReadSpeedChart() {
                     backgroundColor: DEVICE_COLORS,
                     borderColor: DEVICE_COLORS,
                     borderWidth: 2,
-                    borderRadius: 6,
+                    borderRadius: 0,
                     borderSkipped: false
                 }
             ]
@@ -250,11 +252,14 @@ function createReadSpeedChart() {
                     title: {
                         display: true,
                         text: 'Скорост (MB/s)',
+                        color: 'rgba(255,255,255,0.5)',
                         font: { size: 12, weight: '600' }
                     },
+                    ticks: { color: 'rgba(255,255,255,0.4)' },
                     grid: { color: COLORS.grid }
                 },
                 x: {
+                    ticks: { color: 'rgba(255,255,255,0.4)' },
                     grid: { display: false }
                 }
             }
@@ -273,12 +278,12 @@ function createInterfaceChart() {
                 label: 'Макс. скорост (MB/s)',
                 data: [60, 625, 1250, 2500, 600, 7000, 14000, 5000, 10000],
                 backgroundColor: [
-                    '#e5e7eb', '#d1d5db', '#9ca3af', '#6b7280',
-                    '#374151',
-                    '#4b5563', '#111827',
-                    '#6b7280', '#374151'
+                    'rgba(255,45,45,0.3)', 'rgba(255,45,45,0.4)', 'rgba(255,45,45,0.5)', 'rgba(255,45,45,0.6)',
+                    'rgba(59,130,246,0.5)',
+                    'rgba(59,130,246,0.6)', 'rgba(59,130,246,0.8)',
+                    'rgba(249,115,22,0.5)', 'rgba(249,115,22,0.7)'
                 ],
-                borderRadius: 6,
+                borderRadius: 0,
                 borderSkipped: false,
                 borderWidth: 0
             }]
@@ -292,13 +297,15 @@ function createInterfaceChart() {
                     title: {
                         display: true,
                         text: 'MB/s',
+                        color: 'rgba(255,255,255,0.5)',
                         font: { size: 12, weight: '600' }
                     },
+                    ticks: { color: 'rgba(255,255,255,0.4)' },
                     grid: { color: COLORS.grid }
                 },
                 y: {
                     grid: { display: false },
-                    ticks: { font: { size: 11 } }
+                    ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 11 } }
                 }
             },
             plugins: {
@@ -323,7 +330,7 @@ function createPriceChart() {
                     backgroundColor: DEVICE_COLORS.map(c => c + '80'),
                     borderColor: DEVICE_COLORS,
                     borderWidth: 2,
-                    borderRadius: 6,
+                    borderRadius: 0,
                     borderSkipped: false
                 },
                 {
@@ -332,7 +339,7 @@ function createPriceChart() {
                     backgroundColor: DEVICE_COLORS,
                     borderColor: DEVICE_COLORS,
                     borderWidth: 2,
-                    borderRadius: 6,
+                    borderRadius: 0,
                     borderSkipped: false
                 }
             ]
@@ -345,11 +352,13 @@ function createPriceChart() {
                     title: {
                         display: true,
                         text: '€ / GB',
+                        color: 'rgba(255,255,255,0.5)',
                         font: { size: 12, weight: '600' }
                     },
+                    ticks: { color: 'rgba(255,255,255,0.4)' },
                     grid: { color: COLORS.grid }
                 },
-                x: { grid: { display: false } }
+                x: { ticks: { color: 'rgba(255,255,255,0.4)' }, grid: { display: false } }
             }
         }
     });
@@ -365,8 +374,8 @@ function createNandChart() {
             datasets: [{
                 label: 'P/E Цикли (×1000)',
                 data: [100, 10, 4, 1],
-                backgroundColor: ['#111827', '#374151', '#6b7280', '#d1d5db'],
-                borderRadius: 8,
+                backgroundColor: ['rgba(255,45,45,0.7)', 'rgba(59,130,246,0.6)', 'rgba(249,115,22,0.5)', 'rgba(234,179,8,0.4)'],
+                borderRadius: 0,
                 borderSkipped: false,
                 borderWidth: 0
             }]
@@ -379,11 +388,13 @@ function createNandChart() {
                     title: {
                         display: true,
                         text: 'Цикли запис/изтриване (×1000)',
+                        color: 'rgba(255,255,255,0.5)',
                         font: { size: 12, weight: '600' }
                     },
+                    ticks: { color: 'rgba(255,255,255,0.4)' },
                     grid: { color: COLORS.grid }
                 },
-                x: { grid: { display: false } }
+                x: { ticks: { color: 'rgba(255,255,255,0.4)' }, grid: { display: false } }
             },
             plugins: {
                 ...getDefaultOptions().plugins,
@@ -468,16 +479,16 @@ function createRiskChart() {
                         display: true,
                         text: 'Вероятност →',
                         font: { size: 14, weight: '700' },
-                        color: '#1f2937'
+                        color: 'rgba(255,255,255,0.7)'
                     },
                     ticks: {
                         stepSize: 1,
                         callback: (v) => ['', '1-Много\nниска', '2-Ниска', '3-Средна', '4-Висока', '5-Много\nвисока'][v] || '',
                         font: { size: 10 },
-                        color: '#6b7280'
+                        color: 'rgba(255,255,255,0.4)'
                     },
                     grid: { 
-                        color: '#e5e7eb',
+                        color: 'rgba(255,255,255,0.06)',
                         lineWidth: 1
                     }
                 },
@@ -488,16 +499,16 @@ function createRiskChart() {
                         display: true,
                         text: '↑ Въздействие',
                         font: { size: 14, weight: '700' },
-                        color: '#1f2937'
+                        color: 'rgba(255,255,255,0.7)'
                     },
                     ticks: {
                         stepSize: 1,
                         callback: (v) => ['', '1-Много\nниско', '2-Ниско', '3-Средно', '4-Високо', '5-Критично'][v] || '',
                         font: { size: 10 },
-                        color: '#6b7280'
+                        color: 'rgba(255,255,255,0.4)'
                     },
                     grid: { 
-                        color: '#e5e7eb',
+                        color: 'rgba(255,255,255,0.06)',
                         lineWidth: 1
                     }
                 }
@@ -517,7 +528,7 @@ function createRiskChart() {
                     }
                 },
                 tooltip: {
-                    backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                    backgroundColor: 'rgba(12, 12, 14, 0.95)',
                     padding: 12,
                     titleFont: { size: 13, weight: '600' },
                     bodyFont: { size: 12 },
@@ -564,8 +575,8 @@ function createDataLossChart() {
             labels: ['Хардуерна повреда (67%)', 'Софтуерни грешки (14%)', 'Случайно изтриване (10%)', 'Други причини (9%)'],
             datasets: [{
                 data: [67, 14, 10, 9],
-                backgroundColor: ['#111827', '#374151', '#9ca3af', '#d1d5db'],
-                borderColor: '#fff',
+                backgroundColor: ['rgba(255,45,45,0.7)', 'rgba(59,130,246,0.6)', 'rgba(249,115,22,0.5)', 'rgba(234,179,8,0.4)'],
+                borderColor: 'rgba(12,12,14,0.8)',
                 borderWidth: 3,
                 hoverOffset: 8
             }]
@@ -646,10 +657,13 @@ function createRadarChart() {
                     max: 10,
                     ticks: {
                         stepSize: 2,
-                        font: { size: 10 }
+                        font: { size: 10 },
+                        color: 'rgba(255,255,255,0.4)',
+                        backdropColor: 'transparent'
                     },
                     pointLabels: {
-                        font: { size: 12, weight: '600' }
+                        font: { size: 12, weight: '600' },
+                        color: 'rgba(255,255,255,0.6)'
                     },
                     grid: { color: COLORS.grid }
                 }
@@ -675,16 +689,16 @@ function createAttackChart() {
             datasets: [{
                 data: [37, 12, 25, 18, 8, 30],
                 backgroundColor: [
-                    'rgba(17, 24, 39, 0.7)',
-                    'rgba(55, 65, 81, 0.7)',
-                    'rgba(75, 85, 99, 0.7)',
-                    'rgba(107, 114, 128, 0.7)',
-                    'rgba(156, 163, 175, 0.7)',
-                    'rgba(209, 213, 219, 0.7)'
+                    'rgba(255, 45, 45, 0.6)',
+                    'rgba(59, 130, 246, 0.6)',
+                    'rgba(249, 115, 22, 0.6)',
+                    'rgba(234, 179, 8, 0.6)',
+                    'rgba(34, 197, 94, 0.6)',
+                    'rgba(139, 92, 246, 0.6)'
                 ],
                 borderColor: [
-                    '#111827', '#374151', '#4b5563',
-                    '#6b7280', '#9ca3af', '#d1d5db'
+                    '#ff2d2d', '#3b82f6', '#f97316',
+                    '#eab308', '#22c55e', '#8b5cf6'
                 ],
                 borderWidth: 2
             }]
@@ -694,7 +708,11 @@ function createAttackChart() {
             scales: {
                 r: {
                     beginAtZero: true,
-                    ticks: { font: { size: 10 } },
+                    ticks: {
+                        font: { size: 10 },
+                        color: 'rgba(255,255,255,0.4)',
+                        backdropColor: 'transparent'
+                    },
                     grid: { color: COLORS.grid }
                 }
             },
@@ -705,6 +723,7 @@ function createAttackChart() {
                     labels: {
                         padding: 14,
                         usePointStyle: true,
+                        color: 'rgba(255,255,255,0.5)',
                         font: { size: 11 }
                     }
                 },
@@ -869,9 +888,9 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(26, 26, 46, 0.98)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+            navbar.classList.remove('scrolled');
         }
     }
 });
