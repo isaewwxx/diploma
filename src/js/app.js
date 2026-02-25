@@ -151,7 +151,103 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('comparisonTableContainer')) {
         initTables();
     }
+
+    // ---- Contact Form (Formspree AJAX) ----
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        const submitBtn = contactForm.querySelector('[type="submit"]');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Guard against double-submit
+            if (submitBtn.disabled) return;
+
+            // Loading state
+            submitBtn.disabled = true;
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-lucide="loader-2"></i> Изпращане…';
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    showToast('success', 'Съобщението е изпратено успешно! Ще се свържа с вас скоро.');
+                } else {
+                    let errMsg = 'Нещо се обърка. Моля опитайте отново.';
+                    try {
+                        const data = await response.json();
+                        if (data && Array.isArray(data.errors) && data.errors.length) {
+                            errMsg = data.errors.map(er => er.message).join(' ');
+                        }
+                    } catch (_) { /* ignore JSON parse errors */ }
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    showToast('error', errMsg);
+                }
+            } catch (_) {
+                // Network / fetch error
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHTML;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+                showToast('error', 'Мрежова грешка. Проверете интернет връзката и опитайте отново.');
+            }
+        });
+    }
 });
+
+/* ===========================
+   Toast Notification Helper
+   =========================== */
+function showToast(type, message) {
+    // Remove any existing toast
+    const existing = document.getElementById('form-toast');
+    if (existing) {
+        existing.remove();
+    }
+
+    const toast = document.createElement('div');
+    toast.id = 'form-toast';
+    toast.className = `form-toast form-toast--${type}`;
+    const iconName = type === 'success' ? 'check-circle' : 'alert-circle';
+    toast.innerHTML = `
+        <i data-lucide="${iconName}" class="form-toast__icon"></i>
+        <span class="form-toast__msg">${message}</span>
+        <button class="form-toast__close" aria-label="Затвори"><i data-lucide="x"></i></button>
+    `;
+
+    document.body.appendChild(toast);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Trigger CSS transition
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => toast.classList.add('form-toast--visible'));
+    });
+
+    // Auto-dismiss
+    const autoDismiss = setTimeout(() => dismissToast(toast), type === 'success' ? 6000 : 10000);
+
+    toast.querySelector('.form-toast__close').addEventListener('click', () => {
+        clearTimeout(autoDismiss);
+        dismissToast(toast);
+    });
+}
+
+function dismissToast(toast) {
+    if (!toast) return;
+    toast.classList.remove('form-toast--visible');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+}
 
 /* ===========================
    Color Palette for Charts
@@ -745,6 +841,7 @@ function initTables() {
     createEncryptionTable();
     createFSTable();
     createNISTTable();
+    refreshLucide();
 }
 
 /* ---- Comparison Table ---- */
@@ -752,16 +849,18 @@ function createComparisonTable() {
     const container = document.getElementById('comparisonTableContainer');
     if (!container) return;
 
-    const headers = ['Характеристика', 'USB Flash', 'Външен SSD', 'Външен HDD', 'SD карта', 'CD/DVD'];
+    const headers = ['Параметър', 'USB Flash', 'Външен SSD', 'Външен HDD', 'SD карта', 'CD/DVD'];
     const rows = [
-        ['Капацитет', '16 GB – 1 TB', '250 GB – 4 TB', '1 TB – 20 TB', '16 GB – 1 TB', '700 MB – 8.5 GB'],
-        ['Скорост четене', '100–400 MB/s', '500–2000 MB/s', '80–160 MB/s', '90–300 MB/s', '1.2–22 MB/s'],
+        ['Обем на съхранение', '16 GB – 1 TB', '250 GB – 4 TB', '1 TB – 20 TB', '16 GB – 1 TB', '700 MB – 8.5 GB'],
+        ['Четене (послед.)', '100–400 MB/s', '500–2 000 MB/s', '80–160 MB/s', '90–300 MB/s', '1.2–22 MB/s'],
+        ['Запис (послед.)', '30–200 MB/s', '400–1 800 MB/s', '60–140 MB/s', '30–250 MB/s', '1–16 MB/s'],
+        ['Латентност', '~1–10 ms', '~25–50 µs', '5–15 ms', '~1–5 ms', '80–120 ms'],
         ['Цена/GB (€)', '0.05–0.15', '0.07–0.12', '0.02–0.04', '0.08–0.20', '0.01–0.03'],
-        ['Мобилност', '★★★★★', '★★★★☆', '★★★☆☆', '★★★★★', '★★☆☆☆'],
-        ['Надеждност', '★★★☆☆ (5–10 г.)', '★★★★☆ (5–10 г.)', '★★★★☆ (MTBF ~1M ч.)', '★★★☆☆ (5–10 г.)', '★★★★★ (20–100 г.)'],
-        ['Технология', 'NAND Flash', 'NAND + NVMe/SATA', 'Магнитен запис', 'NAND Flash', 'Оптичен лазер'],
-        ['Интерфейс', 'USB 2.0–3.2', 'USB 3.2 / TB', 'USB 3.0 / SATA', 'SD / UHS-II', 'SATA (оптичен)'],
-        ['Типична употреба', 'Пренос, bootable', 'Видео, бърз backup', 'Архив, NAS', 'Камери, IoT', 'Архив, дистрибуция']
+        ['Преносимост', '★★★★★', '★★★★☆', '★★★☆☆', '★★★★★', '★★☆☆☆'],
+        ['Издръжливост', '5–10 г. / ★★★☆☆', '5–10 г. / ★★★★☆', 'MTBF ~1M ч. / ★★★★☆', '5–10 г. / ★★★☆☆', '20–100 г. / ★★★★★'],
+        ['Принцип на работа', 'NAND флаш памет', 'NAND + NVMe/SATA контролер', 'Магнитни пластини', 'NAND флаш памет', 'Лазерен оптичен запис'],
+        ['Свързване', 'USB 2.0 – 3.2 Gen 2', 'USB 3.2 / Thunderbolt', 'USB 3.0 / SATA III', 'SD / UHS-II слот', 'SATA (оптично устр.)'],
+        ['Основни сценарии', 'Бърз трансфер, bootable ОС', 'Видео монтаж, бърз архив', 'Масово архивиране, NAS', 'Камери, дронове, IoT', 'Дългосрочен архив, дистрибуция']
     ];
 
     container.innerHTML = buildTable(headers, rows);
@@ -772,16 +871,17 @@ function createEncryptionTable() {
     const container = document.getElementById('encryptionTableContainer');
     if (!container) return;
 
-    const headers = ['Характеристика', 'BitLocker To Go', 'VeraCrypt', 'LUKS (dm-crypt)'];
+    const headers = ['Параметър', 'BitLocker To Go', 'VeraCrypt', 'LUKS (dm-crypt)'];
     const rows = [
-        ['ОС поддръжка', 'Windows (Pro/Enterprise)', 'Windows, Linux, macOS', 'Linux'],
-        ['Алгоритми', 'AES-128/256 (XTS)', 'AES, Serpent, Twofish, каскадни', 'AES, Serpent, Twofish (XTS)'],
-        ['Скрити томове', '✗', '✓', '✗ (нативно)'],
-        ['Централно управление', '✓ (AD/GPO)', '✗', '✗'],
-        ['TPM интеграция', '✓', '✗', '✗'],
-        ['Лиценз', 'Комерсиален', 'Безплатен (FOSS)', 'Безплатен (FOSS)'],
-        ['Key Derivation', 'PBKDF2', 'PBKDF2 / SHA-512', 'PBKDF2 / Argon2id'],
-        ['Ключови слотове', '1', '2 (стандартен + скрит)', 'До 8']
+        ['Поддържани ОС', 'Windows Pro / Enterprise', 'Windows, Linux, macOS', 'Само Linux'],
+        ['Шифри', 'AES-128 / AES-256 (XTS)', 'AES, Serpent, Twofish + каскади', 'AES, Serpent, Twofish (XTS режим)'],
+        ['Скрит том', '✗', '✓', '✗'],
+        ['Централизирано управл.', '✓ AD / GPO', '✗', '✗'],
+        ['TPM поддръжка', '✓', '✗', '✗'],
+        ['Лицензиране', 'Windows Pro+ лиценз', 'Свободен (FOSS)', 'Свободен (FOSS)'],
+        ['Извличане на ключ (KDF)', 'PBKDF2', 'PBKDF2 / SHA-512', 'PBKDF2 / Argon2id'],
+        ['Слотове за ключове', '1', '2', 'До 8'],
+        ['Преносим режим', '✗', '✓', '✗']
     ];
 
     container.innerHTML = buildTable(headers, rows);
@@ -792,16 +892,17 @@ function createFSTable() {
     const container = document.getElementById('fsTableContainer');
     if (!container) return;
 
-    const headers = ['Характеристика', 'FAT32', 'NTFS', 'exFAT', 'ext4', 'APFS'];
+    const headers = ['Параметър', 'FAT32', 'NTFS', 'exFAT', 'ext4', 'APFS'];
     const rows = [
-        ['Макс. файл', '4 GB', '256 TB', '128 PB', '16 TB', '8 EB'],
-        ['Журналинг', '✗', '✓', '✗', '✓ (3 режима)', '✓'],
-        ['ACL контрол', '✗', '✓ (пълен)', '✗', '✓ (POSIX)', '✓'],
-        ['Криптиране', '✗', '✓ (EFS)', '✗', '✗ (нативно)', '✓ (AES)'],
-        ['Windows поддръжка', '✓', '✓ (нативно)', '✓', '✗', '✗'],
-        ['Linux поддръжка', '✓', '✓ (NTFS-3G)', '✓ (ядро 5.4+)', '✓ (нативно)', '✗'],
-        ['macOS поддръжка', '✓', '✗ (само четене)', '✓', '✗', '✓ (нативно)'],
-        ['Оптимална за', 'Универсалност', 'Windows среда', 'Флаш устройства', 'Linux среда', 'Apple екосистема']
+        ['Макс. размер на файл', '4 GB', '256 TB', '128 PB', '16 TB', '8 EB'],
+        ['Макс. размер на том', '2 TB', '256 TB', '128 PB', '1 EB', '8 EB'],
+        ['Журнал на метаданни', '✗', '✓', '✗', '✓', '✓'],
+        ['Права за достъп (ACL)', '✗', '✓', '✗', '✓ POSIX', '✓'],
+        ['Вградено криптиране', '✗', '✓ EFS', '✗', '✗', '✓ AES'],
+        ['Съвм. с Windows', '✓', '✓', '✓', '✗', '✗'],
+        ['Съвм. с Linux', '✓', '✓ NTFS-3G', '✓', '✓', '✗'],
+        ['Съвм. с macOS', '✓', '✗', '✓', '✗', '✓'],
+        ['Най-подходяща за', 'Универсални преносими носители', 'Windows работни станции', 'Големи флаш / SD карти', 'Linux сървъри и десктоп', 'Apple устройства (Mac, iPhone)']
     ];
 
     container.innerHTML = buildTable(headers, rows);
@@ -812,18 +913,18 @@ function createNISTTable() {
     const container = document.getElementById('nistTableContainer');
     if (!container) return;
 
-    const headers = ['№', 'Добра практика', 'Описание', 'NIST CSF'];
+    const headers = ['№', 'Мярка', 'Подробности', 'CSF функция'];
     const rows = [
-        ['1', 'Инвентарен регистър', 'Всички преносими устройства с уникални идентификатори (VID/PID/SN)', 'Identify (ID)'],
-        ['2', 'Класификация на данните', 'По ниво на чувствителност преди съхранение на носител', 'Identify (ID)'],
-        ['3', 'Криптиране AES-256', 'BitLocker, VeraCrypt или LUKS за всички устройства', 'Protect (PR)'],
-        ['4', 'Device Whitelisting', 'Само одобрени устройства по VID/PID/сериен номер', 'Protect (PR)'],
-        ['5', 'Деактивиране AutoRun', 'За всички сменяеми устройства в организацията', 'Protect (PR)'],
-        ['6', 'Антивирусно сканиране', 'Автоматично при включване на преносим носител', 'Detect (DE)'],
-        ['7', 'SIEM мониторинг', 'USB събития с правила за аномална активност', 'Detect (DE)'],
-        ['8', 'Процедура за реакция', 'Документиран план при инцидент с преносимо устройство', 'Respond (RS)'],
-        ['9', 'Стратегия 3-2-1', 'Резервни копия с включване на поне един външен носител', 'Recover (RC)'],
-        ['10', 'Сигурно изтриване', 'Clear / Purge / Destroy съгласно NIST SP 800-88', 'Recover (RC)']
+        ['1', 'Инвентаризация на устройства', 'Регистър на всички преносими носители — VID, PID, сериен номер, отговорно лице', 'Identify (ID)'],
+        ['2', 'Категоризиране на информацията', 'Определяне ниво на чувствителност (публична / вътрешна / конфиденциална) преди запис', 'Identify (ID)'],
+        ['3', 'Задължително AES-256 криптиране', 'Прилагане на BitLocker To Go, VeraCrypt или LUKS за целия том на носителя', 'Protect (PR)'],
+        ['4', 'Списък с разрешени устройства', 'Само одобрени носители (по VID/PID/SN) могат да се свързват към работни станции', 'Protect (PR)'],
+        ['5', 'Забрана на AutoRun / AutoPlay', 'Деактивиране чрез GPO за всички сменяеми носители в домейна', 'Protect (PR)'],
+        ['6', 'Автоматично антивирусно сканиране', 'Задействане на проверка веднага при свързване на нов преносим носител', 'Detect (DE)'],
+        ['7', 'Наблюдение чрез SIEM', 'Логване на USB свързвания, корелация с правила за аномалии и известяване', 'Detect (DE)'],
+        ['8', 'План за реагиране при инцидент', 'Документирана процедура: изолиране → анализ → възстановяване → рапорт', 'Respond (RS)'],
+        ['9', 'Резервни копия по схема 3-2-1', 'Три копия, два типа носител, едно копие офсайт (вкл. външен носител)', 'Recover (RC)'],
+        ['10', 'Безопасно унищожаване на данни', 'Clear / Purge / Destroy по NIST SP 800-88 Rev. 1, с писмен протокол', 'Recover (RC)']
     ];
 
     container.innerHTML = buildTable(headers, rows);
@@ -842,14 +943,19 @@ function buildTable(headers, rows) {
     rows.forEach(row => {
         html += '<tr>';
         row.forEach((cell, i) => {
-            // Style check/cross marks
+            // Style check/cross marks with Lucide icons
             let cellHtml = cell;
-            if (cell === '✓') cellHtml = '<i class="fas fa-check table-check"></i>';
-            else if (cell === '✗') cellHtml = '<i class="fas fa-times table-cross"></i>';
+            if (cell === '✓') cellHtml = '<i data-lucide="check" class="table-check"></i>';
+            else if (cell === '✗') cellHtml = '<i data-lucide="x" class="table-cross"></i>';
             else {
                 cellHtml = cell
-                    .replace(/✓/g, '<i class="fas fa-check table-check"></i> ')
-                    .replace(/✗/g, '<i class="fas fa-times table-cross"></i> ');
+                    .replace(/✓/g, '<i data-lucide="check" class="table-check"></i> ')
+                    .replace(/✗/g, '<i data-lucide="x" class="table-cross"></i> ');
+            }
+
+            // Replace standalone dashes in empty-looking cells
+            if (cell.trim() === '—' || cell.trim() === '-') {
+                cellHtml = '<span class="table-partial">—</span>';
             }
 
             // Bold first column
@@ -864,6 +970,13 @@ function buildTable(headers, rows) {
 
     html += '</tbody></table>';
     return html;
+}
+
+/* Re-init Lucide after JS tables are built */
+function refreshLucide() {
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 /* ===========================

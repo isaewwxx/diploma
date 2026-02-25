@@ -65,12 +65,28 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle paper texture */
+/* Subtle paper texture + hero gradients applied globally */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+    background:
+        radial-gradient(ellipse 70% 50% at 15% 45%, rgba(44, 74, 110, 0.06), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 55%, rgba(58, 125, 92, 0.04), transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Dot grid pattern applied globally */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.03) 1px, transparent 0);
+    background-size: 32px 32px;
+    opacity: 0.6;
     pointer-events: none;
     z-index: 0;
 }
@@ -182,7 +198,7 @@ i[data-lucide] svg {
 }
 
 .section-alt {
-    background: var(--bg-warm);
+    background: rgba(243, 240, 235, 0.82);
 }
 
 .section-title {
@@ -245,14 +261,7 @@ i[data-lucide] svg {
 .navbar.scrolled {
     background: rgba(250, 248, 245, 0.92);
     border-color: rgba(0, 0, 0, 0.08);
-    top: 0;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .nav-brand {
@@ -270,7 +279,8 @@ i[data-lucide] svg {
     color: var(--accent);
 }
 
-.nav-brand i svg {
+.nav-brand i svg,
+.nav-brand svg {
     width: 20px;
     height: 20px;
 }
@@ -310,7 +320,8 @@ i[data-lucide] svg {
     border: none;
 }
 
-.nav-links a i svg {
+.nav-links a i svg,
+.nav-links a svg {
     width: 14px;
     height: 14px;
 }
@@ -323,6 +334,25 @@ i[data-lucide] svg {
 .nav-links a.active {
     color: var(--white);
     background: var(--accent);
+}
+
+/* Active link icon contrast (Lucide SVG is a direct child after createIcons) */
+.nav-links a.active svg {
+    stroke: white;
+}
+
+/* Hover icon contrast */
+.nav-links a:hover svg {
+    stroke: var(--accent);
+}
+
+/* Focus accessibility */
+.nav-links a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 8px;
 }
 
 /* ============================================================
@@ -339,21 +369,11 @@ i[data-lucide] svg {
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 70% 50% at 15% 45%, rgba(44, 74, 110, 0.06), transparent 60%),
-        radial-gradient(ellipse 50% 40% at 85% 55%, rgba(58, 125, 92, 0.04), transparent 60%);
+    display: none;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.03) 1px, transparent 0);
-    background-size: 32px 32px;
-    opacity: 0.6;
+    display: none;
 }
 
 .hero-orb {
@@ -516,11 +536,21 @@ i[data-lucide] svg {
     border-bottom: none;
 }
 
+.hero-btn:hover svg,
+.hero-btn:focus-visible svg {
+    stroke: white;
+}
+
+.hero-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
 /* ============================================================
    PAGE HEADER
    ============================================================ */
 .page-header {
-    background: var(--bg-warm);
+    background: rgba(243, 240, 235, 0.82);
     padding: 140px 32px 72px;
     text-align: left;
     position: relative;
@@ -788,12 +818,24 @@ i[data-lucide] svg {
     border-color: var(--accent);
 }
 
-.device-card:hover .device-icon i {
+/* Keep <i> rule for pre-Lucide state; also target SVG directly (Lucide replaces <i> with <svg>) */
+.device-card:hover .device-icon i,
+.device-card:hover .device-icon svg {
     color: var(--white);
+    stroke: white;
 }
 
 .device-icon i {
     color: var(--accent);
+    transition: var(--transition);
+}
+
+/* Lucide renders SVG directly – match the icon color and size */
+.device-icon svg {
+    color: var(--accent);
+    stroke: currentColor;
+    width: 24px;
+    height: 24px;
     transition: var(--transition);
 }
 
@@ -943,7 +985,9 @@ i[data-lucide] svg {
 }
 
 .table-check { color: var(--green) !important; }
+.table-check svg { width: 18px; height: 18px; vertical-align: -0.15em; }
 .table-cross { color: var(--red) !important; }
+.table-cross svg { width: 18px; height: 18px; vertical-align: -0.15em; }
 .table-partial { color: var(--yellow) !important; }
 
 /* ============================================================
@@ -1509,7 +1553,7 @@ i[data-lucide] svg {
    CTA SECTION
    ============================================================ */
 .cta-section {
-    background: var(--bg-warm);
+    background: rgba(243, 240, 235, 0.82);
     text-align: center;
     padding: 88px 0;
     position: relative;
@@ -1583,6 +1627,16 @@ i[data-lucide] svg {
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(44, 74, 110, 0.25);
     border-bottom: none;
+}
+
+.btn-primary:hover svg,
+.btn-primary:focus-visible svg {
+    stroke: white;
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
 }
 
 /* ============================================================
@@ -1895,7 +1949,7 @@ i[data-lucide] svg {
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: var(--shadow);
-    border-bottom: 1px solid var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 .contact-link i svg {
@@ -2359,17 +2413,32 @@ i[data-lucide] svg {
     transition: var(--transition);
 }
 
-.contact-item:hover .contact-icon {
+.contact-item:hover .contact-icon,
+.contact-item:focus-within .contact-icon {
     background: var(--accent);
     border-color: var(--accent);
 }
 
-.contact-item:hover .contact-icon i {
+/* Keep <i> rule for pre-Lucide state; also target SVG directly (Lucide replaces <i> with <svg>) */
+.contact-item:hover .contact-icon i,
+.contact-item:hover .contact-icon svg,
+.contact-item:focus-within .contact-icon i,
+.contact-item:focus-within .contact-icon svg {
     color: var(--white);
+    stroke: white;
 }
 
 .contact-icon i {
     color: var(--accent);
+    transition: var(--transition);
+}
+
+/* Lucide renders SVG directly – match the icon color and size */
+.contact-icon svg {
+    color: var(--accent);
+    stroke: currentColor;
+    width: 18px;
+    height: 18px;
     transition: var(--transition);
 }
 
@@ -2449,7 +2518,8 @@ i[data-lucide] svg {
     margin-right: 6px;
 }
 
-.form-group label i svg {
+.form-group label i svg,
+.form-group label svg {
     width: 13px;
     height: 13px;
     vertical-align: -0.125em;
@@ -2509,10 +2579,105 @@ i[data-lucide] svg {
 }
 
 /* ============================================================
+   FORM TOAST NOTIFICATION
+   ============================================================ */
+.form-toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 9999;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: var(--glass-strong);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    max-width: 380px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.form-toast.form-toast--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.form-toast--success {
+    border-left: 4px solid var(--green);
+}
+
+.form-toast--error {
+    border-left: 4px solid var(--red);
+}
+
+.form-toast__icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.form-toast--success .form-toast__icon svg {
+    stroke: var(--green);
+    width: 18px;
+    height: 18px;
+}
+
+.form-toast--error .form-toast__icon svg {
+    stroke: var(--red);
+    width: 18px;
+    height: 18px;
+}
+
+.form-toast__msg {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.form-toast__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+    margin-top: 1px;
+}
+
+.form-toast__close:hover {
+    color: var(--text);
+}
+
+.form-toast__close svg {
+    width: 15px;
+    height: 15px;
+}
+
+@media (max-width: 520px) {
+    .form-toast {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        max-width: none;
+    }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer {
-    background: var(--bg-warm);
+    background: rgba(243, 240, 235, 0.82);
     color: var(--text-3);
     padding: 72px 0 0;
     position: relative;
