@@ -30,11 +30,17 @@
 
 Четвърто, човешкият фактор остава най-непредвидимата и трудно контролируема променлива. Проучванията показват, че 45–98 % от хората свързват намерени USB устройства (Tischer et al., 2016), а 50 % от служителите използват некриптирани USB устройства за пренос на служебна информация (Ponemon Institute, 2016). Техническите контроли минимизират повърхността на атака, но устойчивата сигурност зависи от информираността и дисциплината на потребителите, което подчертава значението на регулярното обучение и повишаването на осведомеността.
 
-Перспективите за бъдещо развитие в тази област включват: навлизането на USB4 и Thunderbolt 5 с пропускателна способност до 120 Gbit/s, което ще увеличи както възможностите за продуктивност, така и потенциалните рискове от бързо ексфилтриране на данни; масовото въвеждане на хардуерно криптиране в самите устройства (Self-Encrypting Drives – SED), което ще опрости управлението на ключовете; развитието на технологии за изкуствен интелект в областта на поведенческия анализ (UEBA – User and Entity Behavior Analytics) за по-ефективно детектиране на аномална активност, свързана с преносими устройства; и усъвършенстването на архитектурите с нулево доверие (Zero Trust Architecture), които третират всяко устройство – включително преносимите носители – като потенциално компрометирано до доказване на противното.
+Перспективите за бъдещо развитие в тази област включват няколко ключови направления. Навлизането на USB4 и Thunderbolt 5 с пропускателна способност до 120 Gbit/s ще увеличи както възможностите за продуктивност, така и потенциалните рискове от бързо ексфилтриране на данни. Масовото въвеждане на хардуерно криптиране в самите устройства (Self-Encrypting Drives – SED) ще опрости управлението на ключовете. Развитието на технологии за изкуствен интелект в областта на поведенческия анализ (UEBA – User and Entity Behavior Analytics) ще подобри детектирането на аномална активност, свързана с преносими устройства.
+
+Особено перспективна е интеграцията с платформи за управление на мобилни устройства (MDM) като Microsoft Intune, която позволява централизирано прилагане на политики за преносими носители не само в рамките на локален домейн, но и в хибридни и изцяло облачни среди. Автоматизираният одит на USB събития чрез SIEM платформи от ново поколение – по-конкретно Microsoft Sentinel – ще осигури корелация на журналните записи от крайните точки в реално време и ще съкрати времето за реакция при инцидент. Прилагането на DLP (Data Loss Prevention) политики чрез решения като Microsoft Purview ще позволи автоматично класифициране и блокиране на чувствително съдържание при опит за копиране върху външни носители, предотвратявайки изтичането на данни още преди то да се случи.
+
+Усъвършенстването на архитектурите с нулево доверие (Zero Trust Architecture) – основани на принципа „никога не вярвай, винаги верифицирай" – ще наложи третирането на всяко устройство, включително преносимите носители, като потенциално компрометирано до доказване на противното. В съчетание с непрекъсната автентикация и адаптивен контрол на достъпа Zero Trust подходът ще промени фундаментално начина, по който организациите управляват взаимодействието с външните запаметяващи устройства.
 
 Реализирането на поставената цел – разработване на комплексен модел за управление на външните запаметяващи устройства, гарантиращ баланс между оперативна съвместимост и информационна сигурност – е постигнато чрез систематичния анализ на технологичната база, рисковете, мерките за защита и организационните практики. Предложеният модел е приложим както в корпоративна среда, така и в публичния сектор и критичната инфраструктура, като неговата ефективност зависи от последователното прилагане на всички компоненти – технически, организационни и нормативни.
 
 Използвана литература (консолидирана)
+
+Appel, J. (n.d.). Manage Device Control with Microsoft Defender for Endpoint and Endpoint Manager Part 1. jeffreyappel.nl. https://jeffreyappel.nl/manage-device-control-with-microsoft-defender-for-endpoint-and-endpoint-manager-part-1/
 
 Apple. (2023a). I/O Kit Fundamentals. Apple Developer Documentation. https://developer.apple.com/documentation/iokit
 
@@ -80,6 +86,8 @@ Kroll Ontrack. (2022). Data Loss Index: Annual Report 2022. Kroll Ontrack.
 
 Langner, R. (2011). Stuxnet: Dissecting a Cyberwarfare Weapon. IEEE Security & Privacy, 9(3), 49–51.
 
+ManageEngine. (n.d.). How to audit failed access attempts to a shared folder. ManageEngine Active Directory Audit Plus. https://www.manageengine.com/products/active-directory-audit/how-to/audit-failed-access-attempts-to-shared-folder.html
+
 Micheloni, R., Crippa, L., & Marelli, A. (2010). Inside NAND Flash Memories. Springer.
 
 Microsoft. (2024a). Windows Hardware Quality Labs (WHQL). Microsoft Learn. https://learn.microsoft.com/en-us/windows-hardware/drivers/install/whql-release-signature
@@ -91,6 +99,8 @@ Microsoft. (2024c). Comparison of FAT32, NTFS, and exFAT. Microsoft Learn. https
 Microsoft. (2024d). BitLocker Overview. Microsoft Learn. https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/
 
 Microsoft. (2024e). Microsoft Defender for Endpoint Device Control. Microsoft Learn. https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/device-control-overview
+
+Microsoft. (2024f). Before you can save files on this drive, you need to turn on BitLocker [Community Q&A thread]. Microsoft Learn: Q&A. https://learn.microsoft.com/en-us/answers/questions/3866150/before-you-can-save-files-on-this-drive-you-need-t
 
 Mueller, S. (2015). Upgrading and Repairing PCs (22nd ed.). Que Publishing.
 
@@ -147,5 +157,7 @@ USBGuard Project. (2023). USBGuard Documentation. https://usbguard.github.io/
 Verizon. (2023). 2023 Data Breach Investigations Report. Retrieved from https://www.verizon.com/business/resources/reports/dbir/
 
 Whitman, M. E., & Mattord, H. J. (2018). Principles of Information Security (6th ed.). Cengage Learning.
+
+WindowsReport. (n.d.). Fix: Location is not available. WindowsReport. https://windowsreport.com/fix-location-is-not-available/
 
 Zetter, K. (2014). Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon. Crown Publishers.
