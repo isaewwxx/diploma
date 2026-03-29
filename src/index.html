@@ -1,677 +1,781 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Управление на външни запаметяващи устройства</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESD — Управление на външни запаметяващи устройства</title>
+  <meta name="description" content="Дипломна работа — Видове, рискове и защита на данните при използване на USB, SSD, HDD, SD карти и оптични носители.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <i data-lucide="hard-drive"></i>
-            <span>ESD Управление</span>
-        </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            <i data-lucide="menu"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active"><i data-lucide="home"></i> Начало</a></li>
-            <li><a href="charts.html"><i data-lucide="bar-chart-2"></i> Графики и таблици</a></li>
-            <li><a href="author.html"><i data-lucide="graduation-cap"></i> Автор</a></li>
-            <li><a href="contact.html"><i data-lucide="mail"></i> Контакт</a></li>
-        </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        <div class="hero-content">
-            <h1><i data-lucide="shield"></i> Управление на външни запаметяващи устройства</h1>
-            <p class="hero-subtitle"> Видове, рискове и защита на данните</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">Вида устройства</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">8</span>
-                    <span class="stat-label">Идентифицирани рискове</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">10</span>
-                    <span class="stat-label">Добри практики</span>
-                </div>
-            </div>
-            <a href="#introduction" class="hero-btn"><i data-lucide="arrow-down"></i> Разгледай</a>
-        </div>
-    </header>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Introduction Section -->
-    <section id="introduction" class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="book-open"></i> Увод</h2>
-            <div class="intro-grid">
-                <div class="intro-text">
-                    <p>В съвременната информационна ера данните се утвърждават като най-ценният актив за всяка организация. Динамиката на съвременната работа налага висока мобилност и необходимост от трансфер на големи обеми информация, което превръща <strong>външните запаметяващи устройства (ESD)</strong> – USB флаш памети, външни SSD/HDD, карти с памет – в неизменна част от технологичната инфраструктура.</p>
-                    <p>Важността на настоящия проект произтича от фундаменталния парадокс на преносимите памети: те са едновременно <em>критичен инструмент за продуктивност</em> и <em>един от най-сериозните вектори за пробив в сигурността</em>.</p>
-                    <p>Ефективното управление на тези устройства изисква комплексен подход, включващ силно криптиране, стриктни политики за контрол на портовете и обучение на персонала.</p>
-                </div>
-                <div class="intro-highlights">
-                    <div class="highlight-card">
-                        <i data-lucide="alert-triangle"></i>
-                        <h4>BYOD Рискове</h4>
-                        <p>Значителен процент от инцидентите с изтичане на данни се дължат на загубени или безконтролно използвани лични устройства.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <i data-lucide="bug"></i>
-                        <h4>Malware вектор</h4>
-                        <p>USB устройствата служат като „мост" за прехвърляне на зловреден софтуер, заобикаляйки мрежовите защити.</p>
-                    </div>
-                    <div class="highlight-card">
-                        <i data-lucide="lock"></i>
-                        <h4>Air-Gapped системи</h4>
-                        <p>Преносимите устройства са основен инструмент при атаки срещу физически изолирани от интернет компютри.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section id="history" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="history"></i> Историческо развитие</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1951</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="cassette-tape"></i> Магнитни ленти</h4>
-                        <p>UNISERVO I и IBM 726 – първите устройства с магнитен запис. Последователен достъп, физическа сигурност чрез охранявани зали.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">1971</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="save"></i> Флопи диск</h4>
-                        <p>IBM представя 8-инчовата дискета – първата стъпка към портативността на данните.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">1986</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="bug"></i> Вирусът „Brain"</h4>
-                        <p>Първият boot-секторен вирус, разпространяван чрез дискети. Начало на зловредния софтуер, пренасян физически.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">1996</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="plug"></i> USB 1.0 стандарт</h4>
-                        <p>Универсален сериен интерфейс, обединяващ захранване и данни. Основа за Hot-swappable устройства.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2000</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="usb"></i> USB Flash памет</h4>
-                        <p>Първите търговски USB флаш памети (8 MB). Plug-and-Play превръща работното място в потенциална точка за пробив.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2010</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="radiation"></i> Stuxnet</h4>
-                        <p>Кибер оръжие, разпространено чрез USB, атакувало иранската ядрена програма – 1 000 увредени центрофуги.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2014</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="cpu"></i> BadUSB</h4>
-                        <p>Уязвимост във фърмуера на USB контролера – устройството може да емулира клавиатура и да изпълни команди.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">2015+</div>
-                    <div class="timeline-content">
-                        <h4><i data-lucide="zap"></i> NVMe & USB-C</h4>
-                        <p>Външни SSD с NVMe и USB Type-C – скорости над 1 000 MB/s. Възможност за стартиране на цели ОС от външен носител.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Device Types Section -->
-    <section id="devices" class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="hard-drive"></i> Видове външни запаметяващи устройства</h2>
-            <div class="devices-grid">
-                <div class="device-card">
-                    <div class="device-icon"><i data-lucide="usb"></i></div>
-                    <h3>USB Flash Drive</h3>
-                    <div class="device-specs">
-                        <div class="spec"><span class="spec-label">Капацитет:</span> <span>16 GB – 1 TB</span></div>
-                        <div class="spec"><span class="spec-label">Скорост:</span> <span>100–400 MB/s</span></div>
-                        <div class="spec"><span class="spec-label">Технология:</span> <span>NAND Flash (TLC/QLC)</span></div>
-                        <div class="spec"><span class="spec-label">Интерфейс:</span> <span>USB 2.0 – 3.2</span></div>
-                    </div>
-                    <p class="device-desc">Компактни преносими устройства с NAND флаш памет. Без движещи се части, висока портативност. Вграден контролер с ECC и wear leveling. Идеални за бърз обмен на файлове.</p>
-                    <div class="device-tags">
-                        <span class="tag tag-green">Висока мобилност</span>
-                        <span class="tag tag-yellow">Средна надеждност</span>
-                    </div>
-                </div>
-
-                <div class="device-card">
-                    <div class="device-icon"><i data-lucide="database"></i></div>
-                    <h3>Външен SSD</h3>
-                    <div class="device-specs">
-                        <div class="spec"><span class="spec-label">Капацитет:</span> <span>250 GB – 4 TB</span></div>
-                        <div class="spec"><span class="spec-label">Скорост:</span> <span>500–2 000 MB/s</span></div>
-                        <div class="spec"><span class="spec-label">Технология:</span> <span>NAND + NVMe/SATA</span></div>
-                        <div class="spec"><span class="spec-label">Интерфейс:</span> <span>USB 3.2 / Thunderbolt</span></div>
-                    </div>
-                    <p class="device-desc">Усъвършенствани NAND устройства с контролер, DRAM кеш и TRIM функция. NVMe протоколът осигурява скорости до 7 000 MB/s (вътрешни). Издържат на падане от 2 м.</p>
-                    <div class="device-tags">
-                        <span class="tag tag-green">Висока скорост</span>
-                        <span class="tag tag-green">Висока надеждност</span>
-                    </div>
-                </div>
-
-                <div class="device-card">
-                    <div class="device-icon"><i data-lucide="hard-drive"></i></div>
-                    <h3>Външен HDD</h3>
-                    <div class="device-specs">
-                        <div class="spec"><span class="spec-label">Капацитет:</span> <span>1 TB – 20 TB</span></div>
-                        <div class="spec"><span class="spec-label">Скорост:</span> <span>80–160 MB/s</span></div>
-                        <div class="spec"><span class="spec-label">Технология:</span> <span>Магнитен запис</span></div>
-                        <div class="spec"><span class="spec-label">Интерфейс:</span> <span>USB 3.0 / SATA III</span></div>
-                    </div>
-                    <p class="device-desc">Магнитен запис върху въртящи се пластини (5 400 – 7 200 RPM). Най-ниска цена/GB. Уязвими към удари (head crash). Идеални за масово архивиране и NAS.</p>
-                    <div class="device-tags">
-                        <span class="tag tag-green">Висок капацитет</span>
-                        <span class="tag tag-red">Механична уязвимост</span>
-                    </div>
-                </div>
-
-                <div class="device-card">
-                    <div class="device-icon"><i data-lucide="credit-card"></i></div>
-                    <h3>SD карта</h3>
-                    <div class="device-specs">
-                        <div class="spec"><span class="spec-label">Капацитет:</span> <span>16 GB – 1 TB</span></div>
-                        <div class="spec"><span class="spec-label">Скорост:</span> <span>90–300 MB/s</span></div>
-                        <div class="spec"><span class="spec-label">Стандарт:</span> <span>SDHC / SDXC / UHS-II</span></div>
-                        <div class="spec"><span class="spec-label">Форм фактор:</span> <span>SD / microSD</span></div>
-                    </div>
-                    <p class="device-desc">Миниатюрни NAND устройства (microSD: 15×11×1 mm). V30/V60/V90 класове за 4K/8K видеозапис. Ниска консумация – идеални за камери, смартфони и IoT.</p>
-                    <div class="device-tags">
-                        <span class="tag tag-green">Ултра компактност</span>
-                        <span class="tag tag-yellow">Средна издръжливост</span>
-                    </div>
-                </div>
-
-                <div class="device-card">
-                    <div class="device-icon"><i data-lucide="disc"></i></div>
-                    <h3>CD/DVD</h3>
-                    <div class="device-specs">
-                        <div class="spec"><span class="spec-label">Капацитет:</span> <span>700 MB – 8.5 GB</span></div>
-                        <div class="spec"><span class="spec-label">Скорост:</span> <span>1.2–22 MB/s</span></div>
-                        <div class="spec"><span class="spec-label">Технология:</span> <span>Лазерен оптичен запис</span></div>
-                        <div class="spec"><span class="spec-label">Живот:</span> <span>20–100 години</span></div>
-                    </div>
-                    <p class="device-desc">Оптични носители с лазерен запис (pits & lands). CD: 780 nm, DVD: 650 nm. Write-once (R) варианти – защита от промяна. ISO/IEC стандартизация за глобална съвместимост.</p>
-                    <div class="device-tags">
-                        <span class="tag tag-green">Дългосрочен архив</span>
-                        <span class="tag tag-red">Нисък капацитет</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Specs Section -->
-    <section id="specs" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="settings"></i> Интерфейси за свързване</h2>
-            <div class="interfaces-table-wrapper">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Интерфейс</th>
-                            <th>Макс. скорост</th>
-                            <th>Латентност</th>
-                            <th>Типична употреба</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><i data-lucide="plug"></i> USB 2.0 (Hi-Speed)</td>
-                            <td>480 Mbit/s (~60 MB/s)</td>
-                            <td>~1–10 ms</td>
-                            <td>USB флаш, периферни устройства</td>
-                        </tr>
-                        <tr>
-                            <td><i data-lucide="zap"></i> USB 3.0 (SuperSpeed)</td>
-                            <td>5 Gbit/s (~625 MB/s)</td>
-                            <td>~200–500 µs</td>
-                            <td>Външни HDD, USB флаш</td>
-                        </tr>
-                        <tr>
-                            <td><i data-lucide="zap"></i> USB 3.1 Gen 2</td>
-                            <td>10 Gbit/s (~1 250 MB/s)</td>
-                            <td>~100–200 µs</td>
-                            <td>Външни SSD, док станции</td>
-                        </tr>
-                        <tr>
-                            <td><i data-lucide="server"></i> SATA III</td>
-                            <td>6 Gbit/s (~600 MB/s)</td>
-                            <td>~100 µs</td>
-                            <td>Вътрешни/външни SSD, HDD</td>
-                        </tr>
-                        <tr>
-                            <td><i data-lucide="rocket"></i> NVMe (PCIe Gen 4/5)</td>
-                            <td>До 14 000 MB/s</td>
-                            <td>10–20 µs</td>
-                            <td>Високопроизводителни SSD</td>
-                        </tr>
-                        <tr>
-                            <td><i data-lucide="flame"></i> Thunderbolt 3/4</td>
-                            <td>40 Gbit/s (~5 000 MB/s)</td>
-                            <td>~3–5 µs</td>
-                            <td>Проф. масиви, видео продукция</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- File Systems Section -->
-    <section id="filesystems" class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="folder-open"></i> Файлови системи</h2>
-            <div class="fs-grid">
-                <div class="fs-card">
-                    <h4>FAT32</h4>
-                    <div class="fs-bar"><div class="fs-bar-fill" style="width:30%">Сигурност</div></div>
-                    <ul>
-                        <li>Макс. файл: <strong>4 GB</strong></li>
-                        <li>Без журналинг</li>
-                        <li>Без ACL контрол</li>
-                        <li>Универсална съвместимост</li>
-                    </ul>
-                    <span class="fs-verdict verdict-warning">⚠ Уязвима</span>
-                </div>
-                <div class="fs-card">
-                    <h4>NTFS</h4>
-                    <div class="fs-bar"><div class="fs-bar-fill" style="width:85%">Сигурност</div></div>
-                    <ul>
-                        <li>Журналинг на метаданни</li>
-                        <li>ACL + EFS криптиране</li>
-                        <li>Компресия и квоти</li>
-                        <li>Linux: NTFS-3G / NTFS3</li>
-                    </ul>
-                    <span class="fs-verdict verdict-good">✓ Надеждна</span>
-                </div>
-                <div class="fs-card">
-                    <h4>exFAT</h4>
-                    <div class="fs-bar"><div class="fs-bar-fill" style="width:45%">Сигурност</div></div>
-                    <ul>
-                        <li>Макс. файл: <strong>128 PB</strong></li>
-                        <li>Без журналинг</li>
-                        <li>Крос-платформена</li>
-                        <li>Оптимизирана за флаш</li>
-                    </ul>
-                    <span class="fs-verdict verdict-warning">⚠ Компромис</span>
-                </div>
-                <div class="fs-card">
-                    <h4>ext4</h4>
-                    <div class="fs-bar"><div class="fs-bar-fill" style="width:80%">Сигурност</div></div>
-                    <ul>
-                        <li>Журналинг (3 режима)</li>
-                        <li>POSIX ACL + xattr</li>
-                        <li>Макс. файл: <strong>16 TB</strong></li>
-                        <li>Само Linux нативно</li>
-                    </ul>
-                    <span class="fs-verdict verdict-good">✓ Надеждна</span>
-                </div>
-                <div class="fs-card">
-                    <h4>APFS</h4>
-                    <div class="fs-bar"><div class="fs-bar-fill" style="width:90%">Сигурност</div></div>
-                    <ul>
-                        <li>Вградено AES криптиране</li>
-                        <li>Snapshots & cloning</li>
-                        <li>Copy-on-Write</li>
-                        <li>Само macOS нативно</li>
-                    </ul>
-                    <span class="fs-verdict verdict-good">✓ Отлична</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Risks Section -->
-    <section id="risks" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="alert-circle"></i> Анализ на рисковете</h2>
-            <div class="risks-grid">
-                <div class="risk-card risk-critical">
-                    <div class="risk-level">КРИТИЧЕН</div>
-                    <h4><i data-lucide="bug"></i> Зловреден софтуер чрез USB</h4>
-                    <p>AutoRun/AutoPlay експлоатация, BadUSB атаки, маскирани изпълними файлове. <strong>37%</strong> от целевите атаки срещу индустриални системи използват USB.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Висока</strong></span>
-                        <span>Въздействие: <strong>Критично</strong></span>
-                    </div>
-                </div>
-                <div class="risk-card risk-critical">
-                    <div class="risk-level">КРИТИЧЕН</div>
-                    <h4><i data-lucide="unlock"></i> Кражба/загуба на некриптиран носител</h4>
-                    <p><strong>50%</strong> от служителите използват некриптирани USB за служебна информация. Средна цена на инцидент: <strong>$3.86M</strong>.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Висока</strong></span>
-                        <span>Въздействие: <strong>Критично</strong></span>
-                    </div>
-                </div>
-                <div class="risk-card risk-high">
-                    <div class="risk-level">ВИСОК</div>
-                    <h4><i data-lucide="lock"></i> Рансъмуер атака</h4>
-                    <p>Криптиране на файлове с искане на откуп. Особено опасно при SCADA/ICS инфраструктури.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Средна</strong></span>
-                        <span>Въздействие: <strong>Критично</strong></span>
-                    </div>
-                </div>
-                <div class="risk-card risk-high">
-                    <div class="risk-level">ВИСОК</div>
-                    <h4><i data-lucide="hard-hat"></i> Head crash при HDD</h4>
-                    <p>Контакт между четяща глава и пластина при транспорт. Безвъзвратна загуба на данни.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Средна</strong></span>
-                        <span>Въздействие: <strong>Високо</strong></span>
-                    </div>
-                </div>
-                <div class="risk-card risk-high">
-                    <div class="risk-level">ВИСОК</div>
-                    <h4><i data-lucide="eject"></i> Корупция на ФС</h4>
-                    <p>Неправилно изваждане без safe eject, особено при FAT32/exFAT. <strong>67%</strong> от загубите на данни – хардуерна повреда.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Висока</strong></span>
-                        <span>Въздействие: <strong>Средно</strong></span>
-                    </div>
-                </div>
-                <div class="risk-card risk-medium">
-                    <div class="risk-level">СРЕДЕН</div>
-                    <h4><i data-lucide="user-x"></i> Човешки фактор</h4>
-                    <p><strong>45–98%</strong> от хората свързват намерени USB устройства. USB drop атаки експлоатират любопитството.</p>
-                    <div class="risk-meta">
-                        <span>Вероятност: <strong>Висока</strong></span>
-                        <span>Въздействие: <strong>Варира</strong></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Protection Measures Section -->
-    <section id="protection" class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="shield"></i> Мерки за защита</h2>
-
-            <!-- Encryption -->
-            <div class="protection-block">
-                <h3><i data-lucide="key"></i> Криптиране на данните</h3>
-                <div class="encryption-grid">
-                    <div class="encrypt-card">
-                        <div class="encrypt-logo"><i data-lucide="square"></i></div>
-                        <h4>BitLocker To Go</h4>
-                        <ul>
-                            <li>AES-128/256 (XTS режим)</li>
-                            <li>TPM интеграция</li>
-                            <li>Централно управление (AD/GPO)</li>
-                            <li>Windows Pro/Enterprise</li>
-                        </ul>
-                    </div>
-                    <div class="encrypt-card">
-                        <div class="encrypt-logo"><i data-lucide="lock"></i></div>
-                        <h4>VeraCrypt</h4>
-                        <ul>
-                            <li>AES, Serpent, Twofish + каскадни</li>
-                            <li>Скрити томове (plausible deniability)</li>
-                            <li>Преносим режим (traveler mode)</li>
-                            <li>Windows / Linux / macOS</li>
-                        </ul>
-                    </div>
-                    <div class="encrypt-card">
-                        <div class="encrypt-logo"><i data-lucide="terminal"></i></div>
-                        <h4>LUKS (dm-crypt)</h4>
-                        <ul>
-                            <li>AES-256 (XTS) + Argon2id</li>
-                            <li>До 8 ключови слота</li>
-                            <li>Стандарт за Linux дистрибуции</li>
-                            <li>cryptsetup инструмент</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backup Strategy -->
-            <div class="protection-block">
-                <h3><i data-lucide="copy"></i> Стратегия за резервни копия: 3-2-1</h3>
-                <div class="backup-visual">
-                    <div class="backup-rule">
-                        <div class="backup-number">3</div>
-                        <p>Копия на данните</p>
-                    </div>
-                    <div class="backup-rule">
-                        <div class="backup-number">2</div>
-                        <p>Различни типа носители</p>
-                    </div>
-                    <div class="backup-rule">
-                        <div class="backup-number">1</div>
-                        <p>Копие извън сайта</p>
-                    </div>
-                </div>
-                <div class="backup-types">
-                    <div class="backup-type">
-                        <h5><i data-lucide="copy"></i> Пълно (Full)</h5>
-                        <p>Копира всички данни. Най-бързо възстановяване, най-голям обем.</p>
-                    </div>
-                    <div class="backup-type">
-                        <h5><i data-lucide="layers"></i> Инкрементално</h5>
-                        <p>Само промените от последното копие. Минимален обем, по-бавно възстановяване.</p>
-                    </div>
-                    <div class="backup-type">
-                        <h5><i data-lucide="repeat"></i> Диференциално</h5>
-                        <p>Промените от последното пълно копие. Баланс между обем и скорост.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Best Practices Checklist -->
-            <div class="protection-block">
-                <h3><i data-lucide="clipboard-check"></i> 10 добри практики (NIST CSF)</h3>
-                <div class="checklist">
-                    <div class="checklist-item" data-category="identify">
-                        <span class="check-icon"><i data-lucide="fingerprint"></i></span>
-                        <div class="check-content">
-                            <strong>1. Инвентарен регистър</strong> – Всички преносими устройства с уникални идентификатори
-                        </div>
-                        <span class="nist-badge badge-identify">ID</span>
-                    </div>
-                    <div class="checklist-item" data-category="identify">
-                        <span class="check-icon"><i data-lucide="tags"></i></span>
-                        <div class="check-content">
-                            <strong>2. Класификация на данните</strong> – По ниво на чувствителност преди съхранение
-                        </div>
-                        <span class="nist-badge badge-identify">ID</span>
-                    </div>
-                    <div class="checklist-item" data-category="protect">
-                        <span class="check-icon"><i data-lucide="key"></i></span>
-                        <div class="check-content">
-                            <strong>3. Криптиране AES-256</strong> – BitLocker, VeraCrypt или LUKS за всички устройства
-                        </div>
-                        <span class="nist-badge badge-protect">PR</span>
-                    </div>
-                    <div class="checklist-item" data-category="protect">
-                        <span class="check-icon"><i data-lucide="list"></i></span>
-                        <div class="check-content">
-                            <strong>4. Device Whitelisting</strong> – Само одобрени устройства (VID/PID/сериен №)
-                        </div>
-                        <span class="nist-badge badge-protect">PR</span>
-                    </div>
-                    <div class="checklist-item" data-category="protect">
-                        <span class="check-icon"><i data-lucide="ban"></i></span>
-                        <div class="check-content">
-                            <strong>5. Деактивиране на AutoRun</strong> – За всички сменяеми устройства в организацията
-                        </div>
-                        <span class="nist-badge badge-protect">PR</span>
-                    </div>
-                    <div class="checklist-item" data-category="detect">
-                        <span class="check-icon"><i data-lucide="search"></i></span>
-                        <div class="check-content">
-                            <strong>6. Антивирусно сканиране</strong> – Автоматично при включване на носител
-                        </div>
-                        <span class="nist-badge badge-detect">DE</span>
-                    </div>
-                    <div class="checklist-item" data-category="detect">
-                        <span class="check-icon"><i data-lucide="monitor"></i></span>
-                        <div class="check-content">
-                            <strong>7. SIEM мониторинг</strong> – USB събития с правила за аномална активност
-                        </div>
-                        <span class="nist-badge badge-detect">DE</span>
-                    </div>
-                    <div class="checklist-item" data-category="respond">
-                        <span class="check-icon"><i data-lucide="file-text"></i></span>
-                        <div class="check-content">
-                            <strong>8. Процедура за реакция</strong> – Документиран план при инцидент с носител
-                        </div>
-                        <span class="nist-badge badge-respond">RS</span>
-                    </div>
-                    <div class="checklist-item" data-category="recover">
-                        <span class="check-icon"><i data-lucide="undo"></i></span>
-                        <div class="check-content">
-                            <strong>9. Стратегия 3-2-1</strong> – Резервни копия с включване на външен носител
-                        </div>
-                        <span class="nist-badge badge-recover">RC</span>
-                    </div>
-                    <div class="checklist-item" data-category="recover">
-                        <span class="check-icon"><i data-lucide="eraser"></i></span>
-                        <div class="check-content">
-                            <strong>10. Сигурно изтриване</strong> – Clear / Purge / Destroy (NIST SP 800-88)
-                        </div>
-                        <span class="nist-badge badge-recover">RC</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section id="cases" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="gavel"></i> Практически казуси</h2>
-            <div class="cases-grid">
-                <div class="case-card">
-                    <div class="case-header case-danger">
-                        <span class="case-year">2010</span>
-                        <h4>Stuxnet – кибер оръжие чрез USB</h4>
-                    </div>
-                    <div class="case-body">
-                        <p>Червей, проникнал в иранската ядрена програма чрез USB флаш памет. Експлоатирал 4 zero-day уязвимости. Модифицирал PLC контролерите на Siemens, увреждайки ~1 000 центрофуги.</p>
-                        <div class="case-lesson">
-                            <strong>Урок:</strong> Дори air-gapped системи са уязвими чрез USB. Необходим е строг контрол на портовете и сегментиране на мрежата.
-                        </div>
-                    </div>
-                </div>
-                <div class="case-card">
-                    <div class="case-header case-warning">
-                        <span class="case-year">2017</span>
-                        <h4>Heathrow Airport – изтичане на данни</h4>
-                    </div>
-                    <div class="case-body">
-                        <p>Намерен некриптиран USB на улица в Лондон с 76 папки – маршрути на кралицата, карти на тунели, CCTV позиции. Глоба: <strong>£120 000</strong> от ICO.</p>
-                        <div class="case-lesson">
-                            <strong>Урок:</strong> Задължителното криптиране и device whitelisting биха предотвратили инцидента. Обучението на персонала е критично.
-                        </div>
-                    </div>
-                </div>
-                <div class="case-card">
-                    <div class="case-header case-success">
-                        <span class="case-year">2018</span>
-                        <h4>IBM – успешна забрана на USB</h4>
-                    </div>
-                    <div class="case-body">
-                        <p>Глобална забрана на сменяеми носители за ~350 000 служители. GPO + MDM + DLP + SIEM. Алтернатива: вътрешна облачна платформа.</p>
-                        <div class="case-lesson">
-                            <strong>Резултат:</strong> <strong>50%</strong> намаление на инцидентите с изтичане на данни за първата година.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA to Charts -->
-    <section class="section cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2><i data-lucide="pie-chart"></i> Интерактивни визуализации</h2>
-                <p>Разгледайте детайлни графики и таблици за сравнителен анализ на устройствата, оценка на рисковете и статистики.</p>
-                <a href="charts.html" class="btn-primary"><i data-lucide="arrow-right"></i> Към графиките</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4><i data-lucide="hard-drive"></i> ESD Управление</h4>
-                    <p>Дипломна работа по темата за управление на външните запаметяващи устройства – технологии, рискове и защита на данните.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Навигация</h4>
-                    <ul>
-                        <li><a href="index.html">Начало</a></li>
-                        <li><a href="charts.html">Графики и таблици</a></li>
-                        <li><a href="author.html">Автор</a></li>
-                        <li><a href="contact.html">Контакт</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ключови стандарти</h4>
-                    <ul>
-                        <li>ISO/IEC 27001:2022</li>
-                        <li>NIST SP 800-88</li>
-                        <li>NIST CSF 2.0</li>
-                        <li>GDPR (EU) 2016/679</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Дипломна работа — Управление на външни запаметяващи устройства</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ESD Logo">
+        <path d="M16 2L4 8v16l12 6 12-6V8L16 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M16 2v28M4 8l12 6 12-6" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        <rect x="11" y="12" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 12V10a2 2 0 0 1 4 0v2" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span>ESD Управление</span>
+    </a>
+    <button class="nav-toggle" aria-label="Отвори навигация" id="navToggle">
+      <i data-lucide="menu"></i>
     </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active"><i data-lucide="home"></i> Начало</a></li>
+      <li><a href="charts.html"><i data-lucide="bar-chart-2"></i> Графики</a></li>
+      <li><a href="author.html"><i data-lucide="graduation-cap"></i> Автор</a></li>
+      <li><a href="contact.html"><i data-lucide="mail"></i> Контакт</a></li>
+    </ul>
+  </nav>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="js/app.js"></script>
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Управление на външни запаметяващи устройства</h1>
+      <p class="hero-subtitle">Видове, рискове и защита на данните</p>
+      <div class="hero-stats">
+        <div class="stat-pill"><strong>5</strong> Вида устройства</div>
+        <div class="stat-pill"><strong>8</strong> Идентифицирани рискове</div>
+        <div class="stat-pill"><strong>10</strong> Добри практики</div>
+      </div>
+      <a href="#intro" class="btn btn-primary"><i data-lucide="arrow-down"></i> Разгледай</a>
+    </div>
+  </section>
+
+  <!-- ============================== INTRODUCTION ============================== -->
+  <section class="section" id="intro">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Увод</h2>
+        <p>Защо управлението на външните запаметяващи устройства е критично за информационната сигурност</p>
+      </div>
+      <div class="intro-grid fade-in">
+        <div class="intro-text">
+          <p>В съвременния свят данните са сред най-ценните ресурси на всяка организация. Външните запаметяващи устройства — USB флаш памети, външни твърди дискове, SSD устройства и SD карти — предоставят удобен начин за съхранение и пренос на информация. Въпреки това, тяхната преносимост създава значителни рискове за сигурността.</p>
+          <p>Политиките за BYOD (Bring Your Own Device) продължават да набират популярност, но заедно с тях нарастват и заплахите от неоторизиран достъп, загуба на данни и зловреден софтуер. Според проучвания, над 70% от служителите използват лични USB устройства на работното си място, без да прилагат каквото и да е криптиране.</p>
+          <p>USB устройствата са един от най-често използваните вектори за разпространение на зловреден софтуер. Атаки като BadUSB, USB Drop и Juice Jacking демонстрират колко лесно може да бъде компрометирана дори и добре защитена мрежа чрез едно единствено заразено устройство.</p>
+        </div>
+        <div class="highlight-cards">
+          <div class="highlight-card">
+            <div class="icon"><i data-lucide="smartphone"></i></div>
+            <div>
+              <h4>BYOD Рискове</h4>
+              <p>Лични устройства без контрол увеличават повърхността за атака в корпоративни мрежи</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="icon"><i data-lucide="bug"></i></div>
+            <div>
+              <h4>Malware вектори</h4>
+              <p>USB устройствата са основен канал за разпространение на зловреден софтуер</p>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="icon"><i data-lucide="shield-off"></i></div>
+            <div>
+              <h4>Air-Gapped системи</h4>
+              <p>Дори изолирани мрежи са уязвими при физически достъп чрез USB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== TIMELINE ============================== -->
+  <section class="section" id="history" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Историческо развитие</h2>
+        <p>Ключови моменти в еволюцията на външните запаметяващи устройства и свързаните заплахи</p>
+      </div>
+      <div class="timeline fade-in">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1951</div>
+            <h4>Магнитни ленти</h4>
+            <p>UNIVAC I използва магнитни ленти за съхранение — първият масов външен носител</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1971</div>
+            <h4>Флопи диск</h4>
+            <p>IBM представя 8-инчовия флопи диск с капацитет 80 KB — революция в преносимостта</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1986</div>
+            <h4>Вирусът Brain</h4>
+            <p>Първият PC вирус, разпространяван чрез флопи дискове — зората на USB заплахите</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1996</div>
+            <h4>USB 1.0</h4>
+            <p>Стандартът Universal Serial Bus е публикуван — унифициран интерфейс за периферни устройства</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2000</div>
+            <h4>USB Flash Drive</h4>
+            <p>Trek Technology и IBM представят първите USB флаш памети — краят на флопи дисковете</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2010</div>
+            <h4>Stuxnet</h4>
+            <p>Най-сложната кибер-атака в историята, разпространена чрез USB — поразява Иранската ядрена програма</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2014</div>
+            <h4>BadUSB</h4>
+            <p>Изследователи демонстрират как USB firmware може да бъде модифициран за атаки на ниво хардуер</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2015+</div>
+            <h4>NVMe & USB-C</h4>
+            <p>Нови протоколи постигат скорости от 14 GB/s — външните SSD заменят традиционните HDD</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DEVICE TYPES ============================== -->
+  <section class="section" id="devices">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Видове устройства</h2>
+        <p>Основните типове външни запаметяващи устройства и техните характеристики</p>
+      </div>
+      <div class="grid-3 stagger fade-in">
+
+        <!-- USB Flash -->
+        <div class="device-card">
+          <div class="device-icon" aria-hidden="true">
+            <svg class="device-illustration" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="13" y="7" width="22" height="28" rx="6" stroke="currentColor" stroke-width="2"/>
+              <path d="M19 13h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 15v15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 30l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 30l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 35h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 41h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>USB Flash Drive</h3>
+          <div class="device-specs">
+            <div class="spec-row"><span class="spec-label">Капацитет</span><span class="spec-value">4 GB – 2 TB</span></div>
+            <div class="spec-row"><span class="spec-label">Скорост четене</span><span class="spec-value">100–400 MB/s</span></div>
+            <div class="spec-row"><span class="spec-label">Интерфейс</span><span class="spec-value">USB 2.0 / 3.x</span></div>
+            <div class="spec-row"><span class="spec-label">Тегло</span><span class="spec-value">~10 g</span></div>
+          </div>
+          <p>Най-разпространеното преносимо устройство за бърз обмен на данни. Компактно, леко и без движещи се части.</p>
+          <div class="tag-pills">
+            <span class="tag-pill">Преносимо</span>
+            <span class="tag-pill green">NAND Flash</span>
+            <span class="tag-pill blue">Plug & Play</span>
+          </div>
+        </div>
+
+        <!-- External SSD -->
+        <div class="device-card">
+          <div class="device-icon" aria-hidden="true">
+            <svg class="device-illustration" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="11" width="30" height="24" rx="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 25h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="30" cy="25" r="2" fill="currentColor"/>
+              <path d="M18 35v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M30 35v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Външен SSD</h3>
+          <div class="device-specs">
+            <div class="spec-row"><span class="spec-label">Капацитет</span><span class="spec-value">120 GB – 8 TB</span></div>
+            <div class="spec-row"><span class="spec-label">Скорост четене</span><span class="spec-value">500–2000 MB/s</span></div>
+            <div class="spec-row"><span class="spec-label">Интерфейс</span><span class="spec-value">USB 3.x / TB</span></div>
+            <div class="spec-row"><span class="spec-label">Тегло</span><span class="spec-value">~50 g</span></div>
+          </div>
+          <p>Високопроизводително решение с NVMe контролер. Идеално за видео-обработка и професионална работа.</p>
+          <div class="tag-pills">
+            <span class="tag-pill">Бърз</span>
+            <span class="tag-pill purple">NVMe</span>
+            <span class="tag-pill green">Устойчив</span>
+          </div>
+        </div>
+
+        <!-- External HDD -->
+        <div class="device-card">
+          <div class="device-icon" aria-hidden="true">
+            <svg class="device-illustration" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="2" fill="currentColor"/>
+              <path d="M24 16v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 29v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 24h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M29 24h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18.5 18.5l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M27.5 27.5l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Външен HDD</h3>
+          <div class="device-specs">
+            <div class="spec-row"><span class="spec-label">Капацитет</span><span class="spec-value">500 GB – 20 TB</span></div>
+            <div class="spec-row"><span class="spec-label">Скорост четене</span><span class="spec-value">80–160 MB/s</span></div>
+            <div class="spec-row"><span class="spec-label">Интерфейс</span><span class="spec-value">USB 3.0 / SATA</span></div>
+            <div class="spec-row"><span class="spec-label">Тегло</span><span class="spec-value">~150 g</span></div>
+          </div>
+          <p>Икономично решение за масово съхранение. Висок капацитет на ниска цена, но чувствително към удари.</p>
+          <div class="tag-pills">
+            <span class="tag-pill orange">Механичен</span>
+            <span class="tag-pill blue">Голям капацитет</span>
+            <span class="tag-pill">Евтин</span>
+          </div>
+        </div>
+
+        <!-- SD Card -->
+        <div class="device-card">
+          <div class="device-icon" aria-hidden="true">
+            <svg class="device-illustration" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="8" width="24" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M18 14h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 20h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 25h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 30h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 40v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M26 40v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>SD карта</h3>
+          <div class="device-specs">
+            <div class="spec-row"><span class="spec-label">Капацитет</span><span class="spec-value">2 GB – 1 TB</span></div>
+            <div class="spec-row"><span class="spec-label">Скорост четене</span><span class="spec-value">90–300 MB/s</span></div>
+            <div class="spec-row"><span class="spec-label">Интерфейс</span><span class="spec-value">SD / microSD</span></div>
+            <div class="spec-row"><span class="spec-label">Тегло</span><span class="spec-value">~2 g</span></div>
+          </div>
+          <p>Миниатюрен формат за камери, телефони и IoT устройства. Предлага добро съотношение цена/капацитет.</p>
+          <div class="tag-pills">
+            <span class="tag-pill">Миниатюрен</span>
+            <span class="tag-pill yellow">UHS-I/II</span>
+            <span class="tag-pill green">Мобилен</span>
+          </div>
+        </div>
+
+        <!-- CD/DVD -->
+        <div class="device-card">
+          <div class="device-icon" aria-hidden="true">
+            <svg class="device-illustration" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 10a14 14 0 0 1 12.12 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+              <path d="M14 33.5 19.5 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>CD/DVD</h3>
+          <div class="device-specs">
+            <div class="spec-row"><span class="spec-label">Капацитет</span><span class="spec-value">700 MB – 8.5 GB</span></div>
+            <div class="spec-row"><span class="spec-label">Скорост четене</span><span class="spec-value">1.2–22 MB/s</span></div>
+            <div class="spec-row"><span class="spec-label">Интерфейс</span><span class="spec-value">SATA / USB</span></div>
+            <div class="spec-row"><span class="spec-label">Тегло</span><span class="spec-value">~16 g</span></div>
+          </div>
+          <p>Оптични носители с дълготрайно съхранение. WORM дискове предлагат защита от презаписване.</p>
+          <div class="tag-pills">
+            <span class="tag-pill red">Остарял</span>
+            <span class="tag-pill">WORM</span>
+            <span class="tag-pill blue">Архивен</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== INTERFACES TABLE ============================== -->
+  <section class="section" id="interfaces" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Интерфейси за свързване</h2>
+        <p>Сравнение на основните интерфейси за външно съхранение</p>
+      </div>
+      <div class="data-table-wrapper fade-in">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Интерфейс</th>
+              <th>Макс. скорост</th>
+              <th>Латентност</th>
+              <th>Типична употреба</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>USB 2.0</strong></td>
+              <td class="mono">480 Mbps (60 MB/s)</td>
+              <td class="mono">~1 ms</td>
+              <td>Периферни устройства, мишки, клавиатури</td>
+            </tr>
+            <tr>
+              <td><strong>USB 3.0</strong></td>
+              <td class="mono">5 Gbps (625 MB/s)</td>
+              <td class="mono">~0.5 ms</td>
+              <td>USB флаш, външни HDD</td>
+            </tr>
+            <tr>
+              <td><strong>USB 3.1 Gen 2</strong></td>
+              <td class="mono">10 Gbps (1250 MB/s)</td>
+              <td class="mono">~0.3 ms</td>
+              <td>Външни SSD, бързи флаш памети</td>
+            </tr>
+            <tr>
+              <td><strong>SATA III</strong></td>
+              <td class="mono">6 Gbps (600 MB/s)</td>
+              <td class="mono">~0.1 ms</td>
+              <td>Вътрешни HDD/SSD, док станции</td>
+            </tr>
+            <tr>
+              <td><strong>NVMe PCIe Gen 4</strong></td>
+              <td class="mono">56 Gbps (7000 MB/s)</td>
+              <td class="mono">~0.02 ms</td>
+              <td>Високопроизводителни SSD, работни станции</td>
+            </tr>
+            <tr>
+              <td><strong>NVMe PCIe Gen 5</strong></td>
+              <td class="mono">128 Gbps (14000 MB/s)</td>
+              <td class="mono">~0.01 ms</td>
+              <td>Сървъри, AI/ML натоварвания</td>
+            </tr>
+            <tr>
+              <td><strong>Thunderbolt 3/4</strong></td>
+              <td class="mono">40 Gbps (5000 MB/s)</td>
+              <td class="mono">~0.05 ms</td>
+              <td>Видео-обработка, eGPU, докинг</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FILE SYSTEMS ============================== -->
+  <section class="section" id="filesystems">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Файлови системи</h2>
+        <p>Сравнение на файловите системи по ниво на сигурност и функционалност</p>
+      </div>
+      <div class="grid-3 stagger fade-in">
+
+        <div class="fs-card">
+          <h3>FAT32</h3>
+          <div class="security-bar"><div class="security-fill" style="width:30%; background: var(--red);"></div></div>
+          <ul>
+            <li>Универсална съвместимост</li>
+            <li>Лимит 4 GB на файл</li>
+            <li>Без права за достъп</li>
+            <li>Без криптиране</li>
+          </ul>
+          <span class="verdict-badge poor">Ниска сигурност</span>
+        </div>
+
+        <div class="fs-card">
+          <h3>NTFS</h3>
+          <div class="security-bar"><div class="security-fill" style="width:85%; background: var(--green);"></div></div>
+          <ul>
+            <li>ACL права за достъп</li>
+            <li>EFS криптиране</li>
+            <li>Журнална система</li>
+            <li>BitLocker поддръжка</li>
+          </ul>
+          <span class="verdict-badge good">Висока сигурност</span>
+        </div>
+
+        <div class="fs-card">
+          <h3>exFAT</h3>
+          <div class="security-bar"><div class="security-fill" style="width:45%; background: var(--orange);"></div></div>
+          <ul>
+            <li>Без лимит на файла</li>
+            <li>Крос-платформена</li>
+            <li>Без ACL</li>
+            <li>Без журнал</li>
+          </ul>
+          <span class="verdict-badge limited">Средна сигурност</span>
+        </div>
+
+        <div class="fs-card">
+          <h3>ext4</h3>
+          <div class="security-bar"><div class="security-fill" style="width:80%; background: var(--green);"></div></div>
+          <ul>
+            <li>POSIX права</li>
+            <li>LUKS криптиране</li>
+            <li>Журнална система</li>
+            <li>Linux-only нативно</li>
+          </ul>
+          <span class="verdict-badge good">Висока сигурност</span>
+        </div>
+
+        <div class="fs-card">
+          <h3>APFS</h3>
+          <div class="security-bar"><div class="security-fill" style="width:90%; background: var(--green);"></div></div>
+          <ul>
+            <li>Вградено криптиране</li>
+            <li>Snapshot поддръжка</li>
+            <li>Copy-on-Write</li>
+            <li>Apple-only</li>
+          </ul>
+          <span class="verdict-badge good">Много висока сигурност</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== RISK ANALYSIS ============================== -->
+  <section class="section" id="risks" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Анализ на рисковете</h2>
+        <p>Основните заплахи при използване на външни запаметяващи устройства</p>
+      </div>
+      <div class="grid-2 stagger fade-in">
+
+        <div class="risk-card critical">
+          <span class="severity-badge critical">Критичен</span>
+          <h3><i data-lucide="bug"></i> Зловреден софтуер чрез USB</h3>
+          <p>Автоматично изпълнение на зловреден код при свързване на заразено устройство. Включва вируси, троянски коне и rootkits.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 4.2/5</span>
+            <span>Въздействие: 4.8/5</span>
+          </div>
+        </div>
+
+        <div class="risk-card critical">
+          <span class="severity-badge critical">Критичен</span>
+          <h3><i data-lucide="shield-off"></i> Кражба или загуба</h3>
+          <p>Физическа загуба на некриптирано устройство води до изтичане на чувствителни данни, включително лични и корпоративни.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 3.8/5</span>
+            <span>Въздействие: 5.0/5</span>
+          </div>
+        </div>
+
+        <div class="risk-card high">
+          <span class="severity-badge high">Висок</span>
+          <h3><i data-lucide="lock"></i> Рансъмуер</h3>
+          <p>Криптовирус, разпространяван чрез USB, може да заключи файлове и да поиска откуп за дешифриране.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 3.2/5</span>
+            <span>Въздействие: 4.5/5</span>
+          </div>
+        </div>
+
+        <div class="risk-card high">
+          <span class="severity-badge high">Висок</span>
+          <h3><i data-lucide="hard-drive"></i> Head crash (HDD)</h3>
+          <p>Механична повреда на магнитните глави при удар или вибрация. Може да доведе до пълна загуба на данни.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 2.8/5</span>
+            <span>Въздействие: 4.0/5</span>
+          </div>
+        </div>
+
+        <div class="risk-card high">
+          <span class="severity-badge high">Висок</span>
+          <h3><i data-lucide="file-warning"></i> Корупция на файлова система</h3>
+          <p>Неочаквано прекъсване на захранването или неправилно изваждане води до повреда на файловата структура.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 3.5/5</span>
+            <span>Въздействие: 3.2/5</span>
+          </div>
+        </div>
+
+        <div class="risk-card medium">
+          <span class="severity-badge medium">Среден</span>
+          <h3><i data-lucide="user-x"></i> Човешки фактор</h3>
+          <p>Случайно изтриване, форматиране или неправилна конфигурация от потребители без техническа подготовка.</p>
+          <div class="risk-meta">
+            <span>Вероятност: 4.0/5</span>
+            <span>Въздействие: 2.5/5</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROTECTION MEASURES ============================== -->
+  <section class="section" id="protection">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Мерки за защита</h2>
+        <p>Криптиране, резервни копия и най-добри практики за информационна сигурност</p>
+      </div>
+
+      <!-- Encryption Cards -->
+      <h3 class="mb-3 fade-in" style="text-align:center; color: var(--text-primary);">Криптиращи решения</h3>
+      <div class="grid-3 stagger fade-in mb-4">
+
+        <div class="encrypt-card">
+          <h3>BitLocker To Go</h3>
+          <p class="subtitle">Microsoft Windows</p>
+          <ul>
+            <li><i data-lucide="check"></i> AES-128 / AES-256</li>
+            <li><i data-lucide="check"></i> TPM интеграция</li>
+            <li><i data-lucide="check"></i> Group Policy управление</li>
+            <li><i data-lucide="check"></i> Recovery key backup</li>
+            <li><i data-lucide="check"></i> Автоматично заключване</li>
+          </ul>
+        </div>
+
+        <div class="encrypt-card">
+          <h3>VeraCrypt</h3>
+          <p class="subtitle">Крос-платформен</p>
+          <ul>
+            <li><i data-lucide="check"></i> AES / Serpent / Twofish</li>
+            <li><i data-lucide="check"></i> Скрити томове (deniable)</li>
+            <li><i data-lucide="check"></i> Каскадно криптиране</li>
+            <li><i data-lucide="check"></i> Open-source</li>
+            <li><i data-lucide="check"></i> Портативен режим</li>
+          </ul>
+        </div>
+
+        <div class="encrypt-card">
+          <h3>LUKS</h3>
+          <p class="subtitle">Linux (dm-crypt)</p>
+          <ul>
+            <li><i data-lucide="check"></i> AES-XTS-plain64</li>
+            <li><i data-lucide="check"></i> Множество ключови слотове</li>
+            <li><i data-lucide="check"></i> Header backup</li>
+            <li><i data-lucide="check"></i> Системна интеграция</li>
+            <li><i data-lucide="check"></i> Автоматично монтиране</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 3-2-1 Backup -->
+      <h3 class="mb-3 fade-in" style="text-align:center; color: var(--text-primary);">Правило 3-2-1 за резервни копия</h3>
+      <div class="backup-visual fade-in mb-4">
+        <div class="backup-block">
+          <div class="backup-number">3</div>
+          <h4>Копия</h4>
+          <p>Поддържайте минимум три копия на всеки важен файл</p>
+        </div>
+        <div class="backup-block">
+          <div class="backup-number">2</div>
+          <h4>Носителя</h4>
+          <p>Съхранявайте на поне два различни типа устройства</p>
+        </div>
+        <div class="backup-block">
+          <div class="backup-number">1</div>
+          <h4>Отдалечено</h4>
+          <p>Едно копие трябва да е на отдалечено местоположение</p>
+        </div>
+      </div>
+
+      <!-- NIST CSF Checklist -->
+      <h3 class="mb-3 fade-in" style="text-align:center; color: var(--text-primary);">NIST CSF Чеклист</h3>
+      <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+        <div class="nist-item"><span class="nist-badge id">ID</span><p>Инвентаризация на всички одобрени USB устройства</p></div>
+        <div class="nist-item"><span class="nist-badge id">ID</span><p>Класификация на данните по ниво на чувствителност</p></div>
+        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Задължително AES-256 криптиране на преносими носители</p></div>
+        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Прилагане на принципа за минимални привилегии</p></div>
+        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Обучение на персонала за USB-базирани заплахи</p></div>
+        <div class="nist-item"><span class="nist-badge de">DE</span><p>Мониторинг на свързваните устройства чрез Event 4663</p></div>
+        <div class="nist-item"><span class="nist-badge de">DE</span><p>Автоматично сканиране за зловреден софтуер при свързване</p></div>
+        <div class="nist-item"><span class="nist-badge rs">RS</span><p>Процедура за инцидентна реакция при изгубено устройство</p></div>
+        <div class="nist-item"><span class="nist-badge rs">RS</span><p>Отдалечено изтриване (remote wipe) на криптирани носители</p></div>
+        <div class="nist-item"><span class="nist-badge rc">RC</span><p>Възстановяване от резервни копия (3-2-1 правило)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CASE STUDIES ============================== -->
+  <section class="section" id="cases" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Практически казуси</h2>
+        <p>Реални инциденти, свързани с външните запаметяващи устройства</p>
+      </div>
+      <div class="grid-3 stagger fade-in">
+
+        <div class="case-card danger">
+          <span class="case-year">2010</span>
+          <h3>Stuxnet</h3>
+          <p>Кибер-оръжие, разпространявано чрез заразени USB устройства, което поразява SCADA системите на иранската ядрена централа в Натанц. Повреждат се над 1000 центрофуги.</p>
+          <div class="case-lesson">
+            <strong>Урок:</strong> Дори air-gapped системи са уязвими при физически достъп чрез USB устройства.
+          </div>
+        </div>
+
+        <div class="case-card warning">
+          <span class="case-year">2017</span>
+          <h3>Heathrow USB</h3>
+          <p>Мъж открива на улицата USB флашка, съдържаща 76 папки с некриптирани данни за сигурността на летище Хийтроу — маршрути на кралицата, камери и пътеки за евакуация.</p>
+          <div class="case-lesson">
+            <strong>Урок:</strong> Липсата на криптиране на преносими устройства може да компрометира националната сигурност.
+          </div>
+        </div>
+
+        <div class="case-card success">
+          <span class="case-year">2018</span>
+          <h3>IBM USB забрана</h3>
+          <p>IBM забранява използването на всички преносими USB устройства за повече от 350 000 служители. Компанията мигрира към облачни решения и VPN за обмен на данни.</p>
+          <div class="case-lesson">
+            <strong>Урок:</strong> Проактивна политика за USB контрол може ефективно да елиминира цял клас заплахи.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SCREENSHOTS ============================== -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Практическа демонстрация</h2>
+        <p>Скрийншотове от конфигурацията на защитни мерки в реална среда</p>
+      </div>
+      <div class="screenshots-grid fade-in" id="screenshotsGallery">
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="0" aria-label="Open screenshot 1">
+          <img src="assets/img/f1_gpo-zabrana.png" alt="GPO забрана за запис" loading="lazy">
+          <figcaption>GPO забрана за запис</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="1" aria-label="Open screenshot 2">
+          <img src="assets/img/f2_drive-encrypt.png" alt="Задължително криптиране" loading="lazy">
+          <figcaption>Задължително криптиране</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="2" aria-label="Open screenshot 3">
+          <img src="assets/img/f4_MEM-endpoint-security.png" alt="Microsoft Endpoint Manager" loading="lazy">
+          <figcaption>Microsoft Endpoint Manager</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="3" aria-label="Open screenshot 4">
+          <img src="assets/img/f6_bitlocker-rdd.png" alt="BitLocker Recovery" loading="lazy">
+          <figcaption>BitLocker Recovery</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="4" aria-label="Open screenshot 5">
+          <img src="assets/img/f3_location-is-not-available2.png" alt="Location is not available" loading="lazy">
+          <figcaption>Location is not available</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="5" aria-label="Open screenshot 6">
+          <img src="assets/img/f5_nastroiki.png" alt="Administrative settings for external drive write access" loading="lazy">
+          <figcaption>Administrative settings</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="6" aria-label="Open screenshot 7">
+          <img src="assets/img/f7_device-manager.png" alt="Device Manager" loading="lazy">
+          <figcaption>Device Manager</figcaption>
+        </figure>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="7" aria-label="Open screenshot 8">
+          <img src="assets/img/f8_event4663.png" alt="Event 4663" loading="lazy">
+          <figcaption>Event 4663</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="gallery-modal" id="galleryModal" hidden>
+    <div class="gallery-backdrop" data-gallery-close></div>
+    <div class="gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="galleryCaption">
+      <button type="button" class="gallery-close" id="galleryClose" aria-label="Close gallery">
+        <i data-lucide="x"></i>
+      </button>
+      <button type="button" class="gallery-nav prev" id="galleryPrev" aria-label="Previous image">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <figure class="gallery-figure">
+        <img id="galleryImage" src="" alt="">
+        <figcaption class="gallery-caption">
+          <span class="gallery-count" id="galleryCount"></span>
+          <span id="galleryCaption"></span>
+        </figcaption>
+      </figure>
+      <button type="button" class="gallery-nav next" id="galleryNext" aria-label="Next image">
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================== CTA TO CHARTS ============================== -->
+  <section class="cta-section" style="background: var(--bg-surface);">
+    <div class="container fade-in">
+      <h2>Интерактивни визуализации</h2>
+      <p>Разгледайте графики, таблици и статистически данни за външните запаметяващи устройства</p>
+      <a href="charts.html" class="btn btn-primary"><i data-lucide="bar-chart-2"></i> Към графиките</a>
+    </div>
+  </section>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16 2L4 8v16l12 6 12-6V8L16 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="11" y="12" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            ESD Управление
+          </h4>
+          <p>Дипломна работа по темата за управление на външните запаметяващи устройства — видове, рискове и защита на данните.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="charts.html">Графики и таблици</a></li>
+            <li><a href="author.html">Автор</a></li>
+            <li><a href="contact.html">Контакт</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ключови стандарти</h4>
+          <ul>
+            <li>ISO/IEC 27001:2022</li>
+            <li>NIST SP 800-88</li>
+            <li>NIST CSF 2.0</li>
+            <li>GDPR (EU) 2016/679</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Дипломна работа — Управление на външни запаметяващи устройства</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Нагоре">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>

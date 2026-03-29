@@ -1,377 +1,193 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Автор — ESD Управление</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автор — ESD Управление</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-brand">
-            <i data-lucide="hard-drive"></i>
-            <span>ESD Управление</span>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-brand">
+      <svg class="logo-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ESD Logo">
+        <path d="M16 2L4 8v16l12 6 12-6V8L16 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M16 2v28M4 8l12 6 12-6" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        <rect x="11" y="12" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M14 12V10a2 2 0 0 1 4 0v2" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span>ESD Управление</span>
+    </a>
+    <button class="nav-toggle" aria-label="Отвори навигация" id="navToggle">
+      <i data-lucide="menu"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"><i data-lucide="home"></i> Начало</a></li>
+      <li><a href="charts.html"><i data-lucide="bar-chart-2"></i> Графики</a></li>
+      <li><a href="author.html" class="active"><i data-lucide="graduation-cap"></i> Автор</a></li>
+      <li><a href="contact.html"><i data-lucide="mail"></i> Контакт</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <h1><i data-lucide="graduation-cap"></i> Автор</h1>
+    <p>Информация за автора на дипломната работа</p>
+  </header>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+
+      <!-- Author Profile Card -->
+      <div class="author-profile fade-in">
+        <div class="author-avatar">ГИ</div>
+        <div class="author-info">
+          <h1>Георги Емилов Исаев</h1>
+          <p class="author-subtitle">Full Stack Developer | Ученик 12 з клас, НФСГ София</p>
+          <p class="author-bio">18-годишен разработчик, специализиращ Икономическа информатика в Националната финансово-стопанска гимназия в София. От 2021 година създавам решения — започнах с Discord ботове и се развих към full-stack уеб разработка. В момента съм нает като Front-End разработчик, сървърен администратор и онлайн поддръжка в <a href="https://capybarahost.eu" target="_blank">CapybaraHost</a>. Фокусирам се върху писането на чист, ефективен код без тежки зависимости от фреймуъркове.</p>
+          <div class="author-links">
+            <a href="https://isaewwxx.dev" target="_blank"><i data-lucide="globe"></i> Портфолио</a>
+            <a href="https://github.com/isaewwxx" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> GitHub</a>
+            <a href="mailto:georgi@capybarahost.eu"><i data-lucide="mail"></i> Email</a>
+          </div>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            <i data-lucide="menu"></i>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html"><i data-lucide="home"></i> Начало</a></li>
-            <li><a href="charts.html"><i data-lucide="bar-chart-2"></i> Графики и таблици</a></li>
-            <li><a href="author.html" class="active"><i data-lucide="graduation-cap"></i> Автор</a></li>
-            <li><a href="contact.html"><i data-lucide="mail"></i> Контакт</a></li>
-        </ul>
-    </nav>
+      </div>
 
-
-    <header class="page-header">
-        <h1><i data-lucide="graduation-cap"></i> За автора</h1>
-        <p>Информация за дипломната работа и нейния автор</p>
-    </header>
-
-
-    <section class="section">
-        <div class="container">
-            <div class="author-profile">
-                <div class="author-avatar">
-                    <div class="avatar-placeholder">
-                        <span class="avatar-initials">ГИ</span>
-                    </div>
-                </div>
-                <div class="author-info">
-                    <h2>Георги Емилов Исаев</h2>
-                    <p class="author-subtitle">Full Stack Developer | Ученик 12 з клас, НФСГ София</p>
-                    <p class="author-bio">18-годишен разработчик, специализиращ Икономическа информатика в Националната финансово-стопанска гимназия в София. От 2021 година създавам решения — започнах с Discord ботове и се развих към full-stack уеб разработка. В момента съм нает като Front-End разработчик, сървърен администратор и онлайн поддръжка в <a href="https://capybarahost.eu" target="_blank">CapybaraHost</a>. Фокусирам се върху писането на чист, ефективен код без тежки зависимости от фреймуъркове.</p>
-                    
-                    <div class="author-contact-links">
-                        <a href="https://isaewwxx.dev" target="_blank" class="contact-link">
-                            <i data-lucide="globe"></i> Портфолио
-                        </a>
-                        <a href="https://github.com/isaewwxx" target="_blank" class="contact-link">
-                            <i data-lucide="github"></i> GitHub
-                        </a>
-                        <a href="mailto:georgi@capybarahost.eu" class="contact-link">
-                            <i data-lucide="mail"></i> Email
-                        </a>
-                    </div>
-
-                    <div class="author-details">
-                        <div class="author-detail">
-                            <i data-lucide="graduation-cap"></i>
-                            <div>
-                                <strong>Учебно заведение</strong>
-                                <p>Национална финансово-стопанска гимназия, София</p>
-                            </div>
-                        </div>
-                        <div class="author-detail">
-                            <i data-lucide="book-open"></i>
-                            <div>
-                                <strong>Специалност</strong>
-                                <p>Икономическа информатика (12 з клас)</p>
-                            </div>
-                        </div>
-                        <div class="author-detail">
-                            <i data-lucide="briefcase"></i>
-                            <div>
-                                <strong>Текуща заетост</strong>
-                                <p>Front-End Developer, Server Admin & Online Support @ <a href="https://capybarahost.eu" target="_blank">CapybaraHost</a></p>
-                            </div>
-                        </div>
-                        <div class="author-detail">
-                            <i data-lucide="book"></i>
-                            <div>
-                                <strong>Тема на дипломната работа</strong>
-                                <p>Управление на външни запаметяващи устройства</p>
-                            </div>
-                        </div>
-                        <div class="author-detail">
-                            <i data-lucide="calendar"></i>
-                            <div>
-                                <strong>Учебна година</strong>
-                                <p>2024/2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Author Details -->
+      <div class="author-details fade-in">
+        <div class="detail-item">
+          <div class="detail-label">Учебно заведение</div>
+          <div class="detail-value">Национална финансово-стопанска гимназия, София</div>
         </div>
-    </section>
-
-
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="code"></i> Технически умения</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <div class="skill-icon"><i data-lucide="laptop"></i></div>
-                    <h4>Frontend Development</h4>
-                    <ul>
-                        <li>HTML5, CSS3</li>
-                        <li>Modern JavaScript (ES6+)</li>
-                        <li>Responsive Design</li>
-                        <li>Performance Optimization</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><i data-lucide="server"></i></div>
-                    <h4>Backend & Automation</h4>
-                    <ul>
-                        <li>Node.js</li>
-                        <li>Discord.js (Bot Development)</li>
-                        <li>REST APIs</li>
-                        <li>MongoDB / SQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><i data-lucide="wrench"></i></div>
-                    <h4>Tools & Technologies</h4>
-                    <ul>
-                        <li>Git / GitHub</li>
-                        <li>VS Code</li>
-                        <li>Figma</li>
-                        <li>Linux Systems</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-icon"><i data-lucide="database"></i></div>
-                    <h4>Академични области</h4>
-                    <ul>
-                        <li>ООП (Обектно-ориентирано програмиране)</li>
-                        <li>Бази данни</li>
-                        <li>Счетоводство</li>
-                        <li>Макроикономика</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="detail-item">
+          <div class="detail-label">Специалност</div>
+          <div class="detail-value">Икономическа информатика</div>
         </div>
-    </section>
-
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="rocket"></i> Реализирани проекти</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                        <i data-lucide="server"></i>
-                    </div>
-                    <h4>CapybaraHost</h4>
-                    <p>Комерсиална платформа за хостинг на игрови сървъри с високопроизводителен frontend, оптимизиран за конверсии.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                    <a href="https://capybarahost.eu" target="_blank" class="project-link">
-                        <i data-lucide="external-link"></i> Посети сайта
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                        <i data-lucide="trending-up"></i>
-                    </div>
-                    <h4>Infininode</h4>
-                    <p>Учебно-тренировъчна фирма (УТФ) — финансова екосистема с визуализация на данни в реално време. Класов проект за 11 клас.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">REST API</span>
-                    </div>
-                    <a href="https://infininode.isaewwxx.dev" target="_blank" class="project-link">
-                        <i data-lucide="external-link"></i> Посети сайта
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                        <i data-lucide="euro"></i>
-                    </div>
-                    <h4>Euro Presentation</h4>
-                    <p>Интерактивна презентация за въвеждане на еврото в България с визуализации и анализи.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                    <a href="https://euro.isaewwxx.dev" target="_blank" class="project-link">
-                        <i data-lucide="external-link"></i> Посети сайта
-                    </a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                        <i data-lucide="shield"></i>
-                    </div>
-                    <h4>Media Savvy Day</h4>
-                    <p>Презентация за Деня на безопасен интернет — осведоменост за киберсигурност и онлайн безопасност.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                    <a href="https://ms.isaewwxx.dev" target="_blank" class="project-link">
-                        <i data-lucide="external-link"></i> Посети сайта
-                    </a>
-                </div>
-            </div>
+        <div class="detail-item">
+          <div class="detail-label">Текуща заетост</div>
+          <div class="detail-value">Front-End Developer, Server Admin & Online Support @ <a href="https://capybarahost.eu" target="_blank">CapybaraHost</a></div>
         </div>
-    </section>
-
-
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="sitemap"></i> Структура на работата</h2>
-            <div class="thesis-structure">
-                <div class="structure-item">
-                    <div class="structure-num">1</div>
-                    <div class="structure-content">
-                        <h4>Увод</h4>
-                        <p>Важност на проекта, исторически преглед, цел и задачи на изследването.</p>
-                    </div>
-                </div>
-                <div class="structure-item">
-                    <div class="structure-num">2.1</div>
-                    <div class="structure-content">
-                        <h4>Теоретична част</h4>
-                        <ul>
-                            <li><strong>2.1.1</strong> — Видове външни запаметяващи устройства (USB, SSD, HDD, SD, CD/DVD)</li>
-                            <li><strong>2.1.2</strong> — Технически характеристики (скорости, интерфейси, капацитет, надеждност)</li>
-                            <li><strong>2.1.3</strong> — Драйвери и системна интеграция (Windows, Linux, macOS, файлови системи)</li>
-                            <li><strong>2.1.4</strong> — Сравнителен анализ (предимства, недостатъци, сценарии на употреба)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="structure-item">
-                    <div class="structure-num">2.2</div>
-                    <div class="structure-content">
-                        <h4>Практическа част</h4>
-                        <ul>
-                            <li><strong>2.2.1</strong> — Анализ на рисковете (физически, malware, загуба, неоторизиран достъп)</li>
-                            <li><strong>2.2.2</strong> — Мерки за защита (криптиране, антивирус, backups, контрол на достъпа)</li>
-                            <li><strong>2.2.3</strong> — Организационна практика (Device Control, одит, GDPR)</li>
-                            <li><strong>2.2.4</strong> — Практически примери (Stuxnet, Heathrow, IBM)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="structure-item">
-                    <div class="structure-num">3</div>
-                    <div class="structure-content">
-                        <h4>Заключение</h4>
-                        <p>Обобщение на резултатите, основни изводи и перспективи за бъдещо развитие.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="detail-item">
+          <div class="detail-label">Тема на дипломната работа</div>
+          <div class="detail-value">Управление на външни запаметяващи устройства</div>
         </div>
-    </section>
-
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="target"></i> Цел и задачи</h2>
-            <div class="goals-grid">
-                <div class="goal-card">
-                    <div class="goal-icon"><i data-lucide="search"></i></div>
-                    <h4>Класификация и анализ</h4>
-                    <p>Разглеждане на видовете интерфейси (USB 3.x, USB4, Thunderbolt), файлови системи (FAT32, NTFS, exFAT, APFS) и техните архитектури като потенциални рискове.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon"><i data-lucide="alert-triangle"></i></div>
-                    <h4>Идентификация на рисковете</h4>
-                    <p>Систематизиране на заплахите: физическа загуба, социално инженерство (Baiting), хардуерни атаки (Rubber Ducky, BadUSB), Juice Jacking.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon"><i data-lucide="shield"></i></div>
-                    <h4>Методи за защита</h4>
-                    <p>Сравнителен анализ на BitLocker, VeraCrypt, DLP системи, Device Whitelisting и GPO контроли.</p>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-icon"><i data-lucide="server"></i></div>
-                    <h4>Практическа реализация</h4>
-                    <p>Демонстрация на защитен профил в Windows Server/AD – забрана за запис и принудително криптиране.</p>
-                </div>
-            </div>
+        <div class="detail-item">
+          <div class="detail-label">Учебна година</div>
+          <div class="detail-value">2025/2026</div>
         </div>
-    </section>
+      </div>
 
+      <!-- Projects -->
+      <div class="section-header fade-in">
+        <h2>Проекти</h2>
+        <p>Избрани проекти от портфолиото на автора</p>
+      </div>
+      <div class="grid-2 stagger fade-in">
 
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title"><i data-lucide="book"></i> Основна литература</h2>
-            <div class="references-list">
-                <div class="reference-item">
-                    <span class="ref-num">1</span>
-                    <p>ISO/IEC 27001:2022 — Information security management systems.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">2</span>
-                    <p>NIST SP 800-88 Rev. 1 — Guidelines for Media Sanitization.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">3</span>
-                    <p>Tanenbaum, A. S. & Bos, H. (2015). <em>Modern Operating Systems</em> (4th ed.). Pearson.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">4</span>
-                    <p>Vacca, J. R. (2013). <em>Computer and Information Security Handbook</em> (2nd ed.). Morgan Kaufmann.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">5</span>
-                    <p>Whitman, M. E. & Mattord, H. J. (2018). <em>Principles of Information Security</em> (6th ed.). Cengage Learning.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">6</span>
-                    <p>Verizon. (2023). <em>2023 Data Breach Investigations Report</em>.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">7</span>
-                    <p>ENISA. (2023). <em>ENISA Threat Landscape 2023</em>.</p>
-                </div>
-                <div class="reference-item">
-                    <span class="ref-num">8</span>
-                    <p>Micheloni, R. et al. (2010). <em>Inside NAND Flash Memories</em>. Springer.</p>
-                </div>
-            </div>
+        <div class="project-card">
+          <div class="project-icon" style="background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05));">🦫</div>
+          <h3>CapybaraHost</h3>
+          <p>Хостинг платформа за уеб приложения с автоматизирано разгръщане, SSL, мониторинг и DNS управление. Собствена инфраструктура.</p>
+          <div class="project-tags">
+            <span class="tag-pill green">Node.js</span>
+            <span class="tag-pill blue">Docker</span>
+            <span class="tag-pill purple">Nginx</span>
+            <span class="tag-pill">Linux</span>
+          </div>
+          <a href="https://capybarahost.eu" target="_blank" class="project-link"><i data-lucide="external-link"></i> capybarahost.eu</a>
         </div>
-    </section>
 
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4><i data-lucide="hard-drive"></i> ESD Управление</h4>
-                    <p>Дипломна работа по темата за управление на външните запаметяващи устройства.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Навигация</h4>
-                    <ul>
-                        <li><a href="index.html">Начало</a></li>
-                        <li><a href="charts.html">Графики и таблици</a></li>
-                        <li><a href="author.html">Автор</a></li>
-                        <li><a href="contact.html">Контакт</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Ключови стандарти</h4>
-                    <ul>
-                        <li>ISO/IEC 27001:2022</li>
-                        <li>NIST SP 800-88</li>
-                        <li>NIST CSF 2.0</li>
-                        <li>GDPR (EU) 2016/679</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Дипломна работа — Управление на външни запаметяващи устройства</p>
-            </div>
+        <div class="project-card">
+          <div class="project-icon" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(99,102,241,0.05));">∞</div>
+          <h3>Infininode</h3>
+          <p>Node.js базирана библиотека за автоматизация на DevOps задачи — мониторинг, скалиране и деплойменти.</p>
+          <div class="project-tags">
+            <span class="tag-pill">TypeScript</span>
+            <span class="tag-pill blue">Node.js</span>
+            <span class="tag-pill orange">Redis</span>
+          </div>
+          <a href="https://github.com/isaewwxx" target="_blank" class="project-link"><i data-lucide="external-link"></i> GitHub</a>
         </div>
-    </footer>
 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="js/app.js"></script>
+        <div class="project-card">
+          <div class="project-icon" style="background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05));">🇪🇺</div>
+          <h3>Euro Presentation</h3>
+          <p>Интерактивна уеб презентация за Европейския съюз с анимации, timeline и data visualization компоненти.</p>
+          <div class="project-tags">
+            <span class="tag-pill blue">HTML/CSS</span>
+            <span class="tag-pill yellow">JavaScript</span>
+            <span class="tag-pill">Chart.js</span>
+          </div>
+          <a href="#" class="project-link"><i data-lucide="external-link"></i> Виж проекта</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-icon" style="background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.05));">📰</div>
+          <h3>Media Savvy Day</h3>
+          <p>Образователна платформа за медийна грамотност — интерактивни уроци, тестове и ресурси за разпознаване на дезинформация.</p>
+          <div class="project-tags">
+            <span class="tag-pill purple">React</span>
+            <span class="tag-pill green">Next.js</span>
+            <span class="tag-pill">Tailwind</span>
+          </div>
+          <a href="#" class="project-link"><i data-lucide="external-link"></i> Виж проекта</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>
+            <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16 2L4 8v16l12 6 12-6V8L16 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <rect x="11" y="12" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            ESD Управление
+          </h4>
+          <p>Дипломна работа по темата за управление на външните запаметяващи устройства.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="charts.html">Графики и таблици</a></li>
+            <li><a href="author.html">Автор</a></li>
+            <li><a href="contact.html">Контакт</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ключови стандарти</h4>
+          <ul>
+            <li>ISO/IEC 27001:2022</li>
+            <li>NIST SP 800-88</li>
+            <li>NIST CSF 2.0</li>
+            <li>GDPR (EU) 2016/679</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Дипломна работа — Управление на външни запаметяващи устройства</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Нагоре">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/site.js"></script>
 </body>
 </html>
