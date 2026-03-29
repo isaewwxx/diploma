@@ -661,43 +661,43 @@
         <p>Скрийншотове от конфигурацията на защитни мерки в реална среда</p>
       </div>
       <div class="screenshots-grid fade-in" id="screenshotsGallery">
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="0" aria-label="Open screenshot 1">
-          <img src="assets/img/f1_gpo-zabrana.png" alt="GPO забрана за запис" loading="lazy">
-          <figcaption>GPO забрана за запис</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="0" data-source="Авторска снимка" aria-label="Open screenshot 1">
+          <img src="assets/img/f1_gpo-zabrana.png" alt="GPO – Deny write access" loading="lazy">
+          <figcaption>GPO – Deny write access (USB-Blocked)</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="1" aria-label="Open screenshot 2">
-          <img src="assets/img/f2_drive-encrypt.png" alt="Задължително криптиране" loading="lazy">
-          <figcaption>Задължително криптиране</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="1" data-source="Microsoft Learn (2024)" aria-label="Open screenshot 2">
+          <img src="assets/img/f2_drive-encrypt.png" alt="BitLocker To Go – задължително криптиране" loading="lazy">
+          <figcaption>BitLocker To Go – задължително криптиране</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="2" aria-label="Open screenshot 3">
-          <img src="assets/img/f4_MEM-endpoint-security.png" alt="Microsoft Endpoint Manager" loading="lazy">
-          <figcaption>Microsoft Endpoint Manager</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="2" data-source="Appel (n.d.)" aria-label="Open screenshot 3">
+          <img src="assets/img/f4_MEM-endpoint-security.png" alt="Microsoft Endpoint Manager – Device Control Policy" loading="lazy">
+          <figcaption>MEM – Device Control Policy</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="3" aria-label="Open screenshot 4">
-          <img src="assets/img/f6_bitlocker-rdd.png" alt="BitLocker Recovery" loading="lazy">
-          <figcaption>BitLocker Recovery</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="3" data-source="Авторска снимка" aria-label="Open screenshot 4">
+          <img src="assets/img/f6_bitlocker-rdd.png" alt="GPO – BitLocker Removable Data Drives" loading="lazy">
+          <figcaption>GPO – BitLocker Removable Data Drives</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="4" aria-label="Open screenshot 5">
-          <img src="assets/img/f3_location-is-not-available2.png" alt="Location is not available" loading="lazy">
-          <figcaption>Location is not available</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="4" data-source="WindowsReport (n.d.)" aria-label="Open screenshot 5">
+          <img src="assets/img/f3_location-is-not-available2.png" alt="Windows Explorer – Access Denied при запис" loading="lazy">
+          <figcaption>Windows Explorer – Access Denied при запис</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="5" aria-label="Open screenshot 6">
-          <img src="assets/img/f5_nastroiki.png" alt="Administrative settings for external drive write access" loading="lazy">
-          <figcaption>Administrative settings</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="5" data-source="Авторска снимка" aria-label="Open screenshot 6">
+          <img src="assets/img/f5_nastroiki.png" alt="GPO – Removable Storage Access настройки" loading="lazy">
+          <figcaption>GPO – Removable Storage Access</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="6" aria-label="Open screenshot 7">
-          <img src="assets/img/f7_device-manager.png" alt="Device Manager" loading="lazy">
-          <figcaption>Device Manager</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="6" data-source="Авторска снимка" aria-label="Open screenshot 7">
+          <img src="assets/img/f7_device-manager.png" alt="Device Manager – Hardware IDs на USB устройство" loading="lazy">
+          <figcaption>Device Manager – Hardware IDs</figcaption>
         </figure>
-        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="7" aria-label="Open screenshot 8">
-          <img src="assets/img/f8_event4663.png" alt="Event 4663" loading="lazy">
-          <figcaption>Event 4663</figcaption>
+        <figure class="screenshot-card" tabindex="0" role="button" data-gallery-index="7" data-source="ManageEngine (n.d.)" aria-label="Open screenshot 8">
+          <img src="assets/img/f8_event4663.png" alt="Event Viewer – Event ID 4663 при достъп до носител" loading="lazy">
+          <figcaption>Event Viewer – Event ID 4663</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <div class="gallery-modal" id="galleryModal" hidden>
+  <div class="gallery-modal" id="galleryModal">
     <div class="gallery-backdrop" data-gallery-close></div>
     <div class="gallery-dialog" role="dialog" aria-modal="true" aria-labelledby="galleryCaption">
       <button type="button" class="gallery-close" id="galleryClose" aria-label="Close gallery">
@@ -711,6 +711,7 @@
         <figcaption class="gallery-caption">
           <span class="gallery-count" id="galleryCount"></span>
           <span id="galleryCaption"></span>
+          <span class="gallery-source" id="gallerySource"></span>
         </figcaption>
       </figure>
       <button type="button" class="gallery-nav next" id="galleryNext" aria-label="Next image">

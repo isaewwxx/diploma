@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const galleryPrev = document.getElementById('galleryPrev');
   const galleryNext = document.getElementById('galleryNext');
   const galleryClose = document.getElementById('galleryClose');
+  const gallerySource = document.getElementById('gallerySource');
   let activeGalleryIndex = 0;
 
   if (
@@ -100,7 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     galleryCount &&
     galleryPrev &&
     galleryNext &&
-    galleryClose
+    galleryClose &&
+    gallerySource
   ) {
     const galleryItems = galleryCards.map(card => {
       const image = card.querySelector('img');
@@ -108,28 +110,45 @@ document.addEventListener('DOMContentLoaded', () => {
       return {
         src: image?.getAttribute('src') || '',
         alt: image?.getAttribute('alt') || '',
-        caption: caption?.textContent?.trim() || image?.getAttribute('alt') || ''
+        caption: caption?.textContent?.trim() || image?.getAttribute('alt') || '',
+        source: card.getAttribute('data-source') || ''
       };
     });
 
-    const renderGalleryItem = (index) => {
+    const setContent = (item, countText) => {
+      galleryCaption.textContent = item.caption;
+      gallerySource.textContent = item.source ? `Източник: ${item.source}` : '';
+      galleryCount.textContent = countText;
+    };
+
+    const renderGalleryItem = (index, animate = true) => {
       const normalizedIndex = (index + galleryItems.length) % galleryItems.length;
       const item = galleryItems[normalizedIndex];
       activeGalleryIndex = normalizedIndex;
-      galleryImage.src = item.src;
-      galleryImage.alt = item.alt;
-      galleryCaption.textContent = item.caption;
-      galleryCount.textContent = `${normalizedIndex + 1} / ${galleryItems.length}`;
+      const countText = `${normalizedIndex + 1} / ${galleryItems.length}`;
+
+      if (animate && galleryModal.classList.contains('is-open')) {
+        galleryImage.classList.remove('is-entering');
+        void galleryImage.offsetWidth;
+        galleryImage.src = item.src;
+        galleryImage.alt = item.alt;
+        galleryImage.classList.add('is-entering');
+        setContent(item, countText);
+      } else {
+        galleryImage.src = item.src;
+        galleryImage.alt = item.alt;
+        setContent(item, countText);
+      }
     };
 
     const openGallery = (index) => {
-      renderGalleryItem(index);
-      galleryModal.hidden = false;
+      renderGalleryItem(index, false);
+      galleryModal.classList.add('is-open');
       document.body.classList.add('gallery-open');
     };
 
     const closeGallery = () => {
-      galleryModal.hidden = true;
+      galleryModal.classList.remove('is-open');
       document.body.classList.remove('gallery-open');
       galleryImage.src = '';
     };
@@ -153,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (event) => {
-      if (galleryModal.hidden) return;
+      if (!galleryModal.classList.contains('is-open')) return;
 
       if (event.key === 'Escape') {
         closeGallery();

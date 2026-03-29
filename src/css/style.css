@@ -1183,6 +1183,32 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   inset: 0;
   z-index: 1200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.gallery-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.gallery-modal.is-open .gallery-figure {
+  animation: galleryFigureIn 0.35s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+.gallery-modal.is-open .gallery-nav.prev {
+  animation: galleryNavSlideLeft 0.3s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.gallery-modal.is-open .gallery-nav.next {
+  animation: galleryNavSlideRight 0.3s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.gallery-modal.is-open .gallery-close {
+  animation: galleryNavSlideRight 0.3s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
 }
 
 .gallery-backdrop {
@@ -1223,6 +1249,7 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-caption {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 1rem;
   padding: 1rem 1.25rem;
   color: var(--text-secondary);
@@ -1233,6 +1260,19 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent);
   font-family: var(--font-mono);
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gallery-source {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-style: italic;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gallery-figure img.is-entering {
+  animation: galleryImgEnter 0.22s ease both;
 }
 
 .gallery-close,
@@ -1966,6 +2006,26 @@ body.gallery-open {
 @keyframes navSlideDown {
   from { opacity: 0; transform: translateY(-12px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes galleryFigureIn {
+  from { opacity: 0; transform: scale(0.93) translateY(16px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0); }
+}
+
+@keyframes galleryNavSlideLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes galleryNavSlideRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes galleryImgEnter {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 /* ============================================

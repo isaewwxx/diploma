@@ -1,4 +1,4 @@
-Приложения
+6. ПРИЛОЖЕНИЯ
 
 Приложение А. Примерна конфигурация на Device Control Policy (Microsoft Defender for Endpoint)
 
