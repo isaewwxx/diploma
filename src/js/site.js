@@ -47,16 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
-  // --- Scroll Progress Bar ---
-  const scrollProgress = document.getElementById('scrollProgress');
-  if (scrollProgress) {
-    window.addEventListener('scroll', () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
-      scrollProgress.style.width = scrolled + '%';
-    }, { passive: true });
-  }
-
   // --- Back to Top Button ---
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {

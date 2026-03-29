@@ -106,18 +106,6 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-/* --- Scroll Progress Bar --- */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-  z-index: 1001;
-  transition: width 0.1s linear;
-  border-radius: 0 2px 2px 0;
-}
-
 /* ============================================
    NAVBAR
    ============================================ */
@@ -137,6 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--transition), background var(--transition);
+  animation: navSlideDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .navbar.scrolled {
@@ -302,6 +291,7 @@ h1, h2, h3, h4, h5, h6 {
   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  animation: glowPulse 7s ease-in-out infinite;
 }
 
 .hero-content {
@@ -319,12 +309,14 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.13s both;
 }
 
 .hero-stats {
@@ -333,6 +325,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.5rem;
   margin-bottom: 2.5rem;
   flex-wrap: wrap;
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
 }
 
 .stat-pill {
@@ -364,11 +357,29 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   border: none;
   transition: all var(--transition);
+  animation: heroFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.39s both;
 }
 
 .btn-primary {
   background: var(--accent);
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.14) 50%, transparent 65%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+  animation: shimmer 0.65s ease;
 }
 
 .btn-primary:hover {
@@ -561,6 +572,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
   border: 3px solid var(--bg-primary);
   z-index: 2;
+  animation: dotPulse 2.8s ease-in-out infinite;
 }
 
 .timeline-card {
@@ -625,6 +637,10 @@ h1, h2, h3, h4, h5, h6 {
 .device-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-2px);
+}
+
+.device-card:hover .device-icon {
+  animation: iconFloat 2.2s ease-in-out infinite;
 }
 
 .device-card .device-icon {
@@ -1917,6 +1933,39 @@ body.gallery-open {
 
 @media (max-width: 768px) {
   .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   ANIMATIONS — Keyframes
+   ============================================ */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scale(1); }
+  50%       { opacity: 0.9;  transform: translateX(-50%) scale(1.18); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.45); }
+  50%       { box-shadow: 0 0 0 7px rgba(99,102,241,0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
