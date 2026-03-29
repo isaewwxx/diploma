@@ -55,6 +55,10 @@ npx http-server
 
 Или отворете `src/index.html` с [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) във VS Code.
 
+За директен достъп до онлайн версията (Cloudflare Pages):
+
+https://diploma-a4l.pages.dev/
+
 ## Автор
 
 **Георги Емилов Исаев** — XII з клас, НФСГ, София
