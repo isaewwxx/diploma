@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root {
   --bg-primary: #0c0c0f;
   --bg-surface: #141419;
@@ -24,8 +24,8 @@
   --blue: #3b82f6;
   --purple: #a855f7;
 
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-display: 'Archivo', 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --radius: 12px;
@@ -1372,6 +1372,25 @@ body.gallery-open {
   max-height: calc(100vh - var(--nav-height) - 4rem);
   overflow-y: auto;
   padding-right: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-hover) transparent;
+}
+
+.charts-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.charts-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.charts-sidebar::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 3px;
+}
+
+.charts-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
 
 .charts-sidebar h3 {

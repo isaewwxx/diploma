@@ -1,7 +1,7 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   Chart.defaults.color = '#a1a1aa';
   Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
-  Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+  Chart.defaults.font.family = "'Space Grotesk', system-ui, sans-serif";
   Chart.defaults.font.size = 12;
   Chart.defaults.responsive = true;
   Chart.defaults.maintainAspectRatio = true;
@@ -325,38 +325,38 @@
     };
 
     new Chart(radarCtx, {
-      type: 'radar',
+      type: 'bar',
       data: {
         labels: criteria,
         datasets: Object.entries(radarData).map(([name, data], i) => ({
           label: name,
           data: data,
+          backgroundColor: deviceColorsBg[i],
           borderColor: deviceColors[i],
-          backgroundColor: deviceColors[i].replace(')', ',0.08)').replace('rgb', 'rgba'),
-          borderWidth: 2,
-          pointRadius: 3,
-          pointBackgroundColor: deviceColors[i]
+          borderWidth: 1,
+          borderRadius: 3
         }))
       },
       options: {
+        indexAxis: 'y',
         scales: {
-          r: {
+          x: {
             beginAtZero: true,
             max: 10,
-            ticks: {
-              stepSize: 2,
-              backdropColor: 'transparent'
-            },
-            grid: { color: 'rgba(255,255,255,0.06)' },
-            angleLines: { color: 'rgba(255,255,255,0.06)' },
-            pointLabels: {
-              color: '#a1a1aa',
-              font: { size: 12, weight: '500' }
-            }
+            title: { display: true, text: 'Оценка (1–10)' },
+            grid: { color: 'rgba(255,255,255,0.04)' }
+          },
+          y: {
+            grid: { display: false }
           }
         },
         plugins: {
-          legend: { position: 'bottom' }
+          legend: { position: 'bottom' },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x}/10`
+            }
+          }
         }
       }
     });
