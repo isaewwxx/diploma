@@ -1,13 +1,5 @@
-/* ============================================
-   site.js — ESD Diploma Website
-   Nav, scroll effects, animations, utilities
-   ============================================ */
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Init Lucide icons
+﻿document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) lucide.createIcons();
-
-  // --- Mobile Nav Toggle ---
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
@@ -17,23 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = navLinks.classList.contains('open');
       navToggle.setAttribute('aria-expanded', isOpen);
     });
-
-    // Close nav on link click (mobile)
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
       });
     });
-
-    // Close nav on outside click
     document.addEventListener('click', (e) => {
       if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
         navLinks.classList.remove('open');
       }
     });
   }
-
-  // --- Navbar Glass Effect on Scroll ---
   const navbar = document.getElementById('navbar');
   if (navbar) {
     const onScroll = () => {
@@ -46,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
-
-  // --- Back to Top Button ---
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     window.addEventListener('scroll', () => {
@@ -62,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  // --- IntersectionObserver: Fade-In Animations ---
   const fadeEls = document.querySelectorAll('.fade-in');
   if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
     const fadeObserver = new IntersectionObserver((entries) => {
@@ -80,8 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeEls.forEach(el => fadeObserver.observe(el));
   }
-
-  // --- Screenshot Gallery Modal ---
   const galleryCards = Array.from(document.querySelectorAll('[data-gallery-index]'));
   const galleryModal = document.getElementById('galleryModal');
   const galleryImage = document.getElementById('galleryImage');
@@ -183,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // --- Charts Page: Sidebar Active State ---
   const sidebarNav = document.getElementById('sidebarNav');
   if (sidebarNav) {
     const sidebarLinks = sidebarNav.querySelectorAll('a');
@@ -219,8 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateActive();
     }
   }
-
-  // --- Smooth scroll for all anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');

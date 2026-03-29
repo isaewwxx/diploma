@@ -1,12 +1,4 @@
-/* ========================================================
-   ESD Управление — Diploma Website Stylesheet
-   Design: "Quiet Command Center" (Linear.app inspired)
-   ======================================================== */
-
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-/* --- Custom Properties --- */
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@500;600;700&display=swap');
 :root {
   --bg-primary: #0c0c0f;
   --bg-surface: #141419;
@@ -45,8 +37,6 @@
   --transition: 0.2s ease;
   --transition-slow: 0.4s ease;
 }
-
-/* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -76,16 +66,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.25;
 }
-
-/* --- Container --- */
 .container {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-
-/* --- Section --- */
 .section {
   padding: 5rem 0;
 }
@@ -105,10 +91,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 600px;
   margin: 0 auto;
 }
-
-/* ============================================
-   NAVBAR
-   ============================================ */
 .navbar {
   position: fixed;
   top: 0;
@@ -201,8 +183,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 24px;
   height: 24px;
 }
-
-/* Mobile Nav */
 @media (max-width: 768px) {
   .nav-toggle { display: block; }
 
@@ -234,10 +214,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
   }
 }
-
-/* ============================================
-   PAGE HEADER
-   ============================================ */
 .page-header {
   padding-top: calc(var(--nav-height) + 3rem);
   padding-bottom: 2.5rem;
@@ -264,10 +240,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
   font-size: 1.0625rem;
 }
-
-/* ============================================
-   HERO
-   ============================================ */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -399,10 +371,6 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--accent);
   color: var(--accent);
 }
-
-/* ============================================
-   CARDS
-   ============================================ */
 .card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -425,10 +393,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   line-height: 1.65;
 }
-
-/* ============================================
-   GRIDS
-   ============================================ */
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -455,10 +419,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 640px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
 }
-
-/* ============================================
-   INTRODUCTION / Two-Column
-   ============================================ */
 .intro-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -523,10 +483,6 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .intro-grid { grid-template-columns: 1fr; }
 }
-
-/* ============================================
-   TIMELINE
-   ============================================ */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -622,10 +578,6 @@ h1, h2, h3, h4, h5, h6 {
     left: 1rem;
   }
 }
-
-/* ============================================
-   DEVICE CARDS
-   ============================================ */
 .device-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -723,10 +675,6 @@ h1, h2, h3, h4, h5, h6 {
 .tag-pill.purple { background: rgba(168,85,247,0.12); color: var(--purple); }
 .tag-pill.red { background: rgba(239,68,68,0.12); color: var(--red); }
 .tag-pill.yellow { background: rgba(234,179,8,0.12); color: var(--yellow); }
-
-/* ============================================
-   TABLES
-   ============================================ */
 .data-table-wrapper {
   overflow-x: auto;
   border-radius: var(--radius);
@@ -770,10 +718,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
 }
-
-/* ============================================
-   FILE SYSTEM CARDS
-   ============================================ */
 .fs-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -835,10 +779,6 @@ h1, h2, h3, h4, h5, h6 {
 .verdict-badge.ok { background: rgba(234,179,8,0.12); color: var(--yellow); }
 .verdict-badge.limited { background: rgba(249,115,22,0.12); color: var(--orange); }
 .verdict-badge.poor { background: rgba(239,68,68,0.12); color: var(--red); }
-
-/* ============================================
-   RISK CARDS
-   ============================================ */
 .risk-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -907,10 +847,6 @@ h1, h2, h3, h4, h5, h6 {
 .risk-meta span {
   font-family: var(--font-mono);
 }
-
-/* ============================================
-   PROTECTION / ENCRYPTION CARDS
-   ============================================ */
 .encrypt-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -948,8 +884,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--green);
   flex-shrink: 0;
 }
-
-/* 3-2-1 Backup */
 .backup-visual {
   display: flex;
   justify-content: center;
@@ -983,8 +917,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 180px;
   margin: 0 auto;
 }
-
-/* NIST Checklist */
 .nist-item {
   display: flex;
   align-items: center;
@@ -1023,10 +955,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.875rem;
   color: var(--text-secondary);
 }
-
-/* ============================================
-   CASE STUDIES
-   ============================================ */
 .case-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -1080,10 +1008,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
   border-left: 3px solid var(--accent);
 }
-
-/* ============================================
-   SCREENSHOTS GRID
-   ============================================ */
 .screenshots-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1351,10 +1275,6 @@ body.gallery-open {
     align-items: flex-start;
   }
 }
-
-/* ============================================
-   CTA SECTION
-   ============================================ */
 .cta-section {
   text-align: center;
   padding: 5rem 0;
@@ -1372,10 +1292,6 @@ body.gallery-open {
   margin-left: auto;
   margin-right: auto;
 }
-
-/* ============================================
-   FOOTER
-   ============================================ */
 .footer {
   border-top: 1px solid var(--border);
   padding: 3.5rem 0 2rem;
@@ -1441,10 +1357,6 @@ body.gallery-open {
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
-
-/* ============================================
-   CHARTS PAGE — SIDEBAR LAYOUT
-   ============================================ */
 .charts-layout {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -1574,10 +1486,6 @@ body.gallery-open {
     margin: 0 0.25rem;
   }
 }
-
-/* ============================================
-   AUTHOR PAGE
-   ============================================ */
 .author-profile {
   display: flex;
   align-items: center;
@@ -1683,8 +1591,6 @@ body.gallery-open {
   .author-links { justify-content: center; }
   .author-details { grid-template-columns: 1fr; }
 }
-
-/* Project cards */
 .project-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -1740,10 +1646,6 @@ body.gallery-open {
   width: 14px;
   height: 14px;
 }
-
-/* ============================================
-   CONTACT PAGE
-   ============================================ */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1849,8 +1751,6 @@ body.gallery-open {
   color: var(--text-muted);
   line-height: 1.6;
 }
-
-/* Contact Form */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1974,10 +1874,6 @@ body.gallery-open {
 @media (max-width: 768px) {
   .contact-grid { grid-template-columns: 1fr; }
 }
-
-/* ============================================
-   ANIMATIONS — Keyframes
-   ============================================ */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -2027,10 +1923,6 @@ body.gallery-open {
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
 }
-
-/* ============================================
-   ANIMATIONS — Fade In
-   ============================================ */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -2041,8 +1933,6 @@ body.gallery-open {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Staggered children */
 .stagger > * {
   opacity: 0;
   transform: translateY(16px);
@@ -2064,10 +1954,6 @@ body.gallery-open {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* ============================================
-   BACK TO TOP
-   ============================================ */
 .back-to-top {
   position: fixed;
   bottom: 2rem;
@@ -2104,10 +1990,6 @@ body.gallery-open {
   width: 20px;
   height: 20px;
 }
-
-/* ============================================
-   UTILITY
-   ============================================ */
 .text-center { text-align: center; }
 .mb-1 { margin-bottom: 0.5rem; }
 .mb-2 { margin-bottom: 1rem; }
@@ -2124,10 +2006,6 @@ body.gallery-open {
   .fade-in { opacity: 1; transform: none; }
   .stagger > * { opacity: 1; transform: none; }
 }
-
-/* ============================================
-   HERO RESPONSIVE
-   ============================================ */
 @media (max-width: 768px) {
   .hero h1 { font-size: 2rem; }
   .hero-subtitle { font-size: 1rem; }

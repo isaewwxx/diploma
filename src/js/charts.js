@@ -1,11 +1,4 @@
-/* ============================================
-   charts.js — Chart.js Charts + JS-Generated Tables
-   ESD Diploma Website
-   ============================================ */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  // --- Global Chart.js Config ---
+﻿document.addEventListener('DOMContentLoaded', () => {
   Chart.defaults.color = '#a1a1aa';
   Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
   Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
@@ -40,10 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     'rgba(34,197,94,0.7)',
     'rgba(239,68,68,0.7)'
   ];
-
-  // ============================
-  // CHART 1: Read Speeds (grouped bar)
-  // ============================
   const speedCtx = document.getElementById('speedChart');
   if (speedCtx) {
     new Chart(speedCtx, {
@@ -90,10 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 2: Interface Bandwidth (horizontal bar)
-  // ============================
   const bwCtx = document.getElementById('bandwidthChart');
   if (bwCtx) {
     new Chart(bwCtx, {
@@ -141,10 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 3: Price per GB (grouped bar)
-  // ============================
   const priceCtx = document.getElementById('priceChart');
   if (priceCtx) {
     new Chart(priceCtx, {
@@ -189,10 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 4: NAND P/E Cycles (bar)
-  // ============================
   const nandCtx = document.getElementById('nandChart');
   if (nandCtx) {
     new Chart(nandCtx, {
@@ -235,10 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 5: Risk Matrix (bubble)
-  // ============================
   const riskCtx = document.getElementById('riskChart');
   if (riskCtx) {
     const riskData = [
@@ -306,10 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 6: Data Loss Causes (doughnut)
-  // ============================
   const dlCtx = document.getElementById('datalossChart');
   if (dlCtx) {
     new Chart(dlCtx, {
@@ -344,10 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 7: Radar — Multi-Criteria
-  // ============================
   const radarCtx = document.getElementById('radarChart');
   if (radarCtx) {
     const criteria = ['Скорост', 'Капацитет', 'Преносимост', 'Надеждност', 'Цена/GB', 'Криптиране'];
@@ -396,10 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ============================
-  // CHART 8: Polar Area — Attack Vectors
-  // ============================
   const attackCtx = document.getElementById('attackChart');
   if (attackCtx) {
     new Chart(attackCtx, {
@@ -438,11 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-
-  // ============================
-  // TABLE GENERATION HELPERS
-  // ============================
   function createTable(headers, rows, wrapId) {
     const wrap = document.getElementById(wrapId);
     if (!wrap) return;
@@ -463,10 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
     html += '</tbody></table>';
     wrap.innerHTML = html;
   }
-
-  // ============================
-  // TABLE 1: Full Comparison
-  // ============================
   createTable(
     ['Параметър', 'USB Flash', 'Външен SSD', 'Външен HDD', 'SD карта', 'CD/DVD'],
     [
@@ -483,10 +435,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'comparisonTableWrap'
   );
-
-  // ============================
-  // TABLE 2: Encryption Solutions
-  // ============================
   createTable(
     ['Параметър', 'BitLocker To Go', 'VeraCrypt', 'LUKS'],
     [
@@ -503,10 +451,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'encryptionTableWrap'
   );
-
-  // ============================
-  // TABLE 3: Protection Solutions
-  // ============================
   createTable(
     ['Решение', 'Тип', 'Обхват', 'Цена', 'Ефективност'],
     [
@@ -521,10 +465,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'protectionTableWrap'
   );
-
-  // ============================
-  // TABLE 4: File Systems
-  // ============================
   createTable(
     ['Файлова система', 'Макс. файл', 'Журнал', 'ACL', 'Криптиране', 'Платформа'],
     [
@@ -536,10 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'filesystemsTableWrap'
   );
-
-  // ============================
-  // TABLE 5: NIST CSF Checklist
-  // ============================
   createTable(
     ['#', 'Функция', 'Практика', 'Приоритет'],
     [
@@ -556,10 +492,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'nistTableWrap'
   );
-
-  // ============================
-  // TABLE: Historical Cost vs Speed (1980–2024)
-  // ============================
   createTable(
     ['Година', 'Тип устройство', 'Цена за GB ($)', 'Скорост (MB/s)'],
     [
@@ -578,10 +510,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'historyTableWrap'
   );
-
-  // ============================
-  // TABLE: Risk Assessment
-  // ============================
   createTable(
     ['№', 'Риск', 'Вероятност', 'Въздействие', 'Ниво на риска'],
     [
@@ -596,10 +524,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'riskTableWrap'
   );
-
-  // ============================
-  // TABLE: USB Group Permissions
-  // ============================
   createTable(
     ['Операция', 'USB-Allowed (GRP_USB_Allowed)', 'USB-Blocked (GRP_USB_Blocked)'],
     [
@@ -610,10 +534,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'usbGroupsTableWrap'
   );
-
-  // ============================
-  // TABLE: GPO Removable Storage
-  // ============================
   createTable(
     ['Настройка', 'Стойност'],
     [
@@ -625,10 +545,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'gpoRemovableTableWrap'
   );
-
-  // ============================
-  // TABLE: GPO Device Installation
-  // ============================
   createTable(
     ['Настройка', 'Стойност'],
     [
@@ -638,10 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'gpoInstallTableWrap'
   );
-
-  // ============================
-  // TABLE: GPO BitLocker
-  // ============================
   createTable(
     ['Настройка', 'Стойност'],
     [
@@ -655,10 +567,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'gpoBitlockerTableWrap'
   );
-
-  // ============================
-  // TABLE: Audit Settings
-  // ============================
   createTable(
     ['Настройка', 'Стойност'],
     [
@@ -667,10 +575,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'auditTableWrap'
   );
-
-  // ============================
-  // TABLE: Device Inventory Register
-  // ============================
   createTable(
     ['№', 'VID', 'PID', 'Сериен номер', 'Производител', 'Модел', 'Потребител', 'Отдел', 'Дата на регистрация', 'Статус'],
     [
@@ -680,10 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'inventoryTableWrap'
   );
-
-  // ============================
-  // TABLE: Secure Erasure — Clear
-  // ============================
   createTable(
     ['№', 'Стъпка', 'Инструменти'],
     [
@@ -695,10 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'clearTableWrap'
   );
-
-  // ============================
-  // TABLE: Secure Erasure — Purge
-  // ============================
   createTable(
     ['№', 'Стъпка', 'Инструменти'],
     [
@@ -710,10 +606,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'purgeTableWrap'
   );
-
-  // ============================
-  // TABLE: Physical Destruction
-  // ============================
   createTable(
     ['№', 'Стъпка', 'Методи'],
     [
@@ -726,10 +618,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'destroyTableWrap'
   );
-
-  // ============================
-  // TABLE: Clear vs Purge vs Destroy
-  // ============================
   createTable(
     ['Критерий', 'Clear', 'Purge', 'Destroy'],
     [

@@ -1,12 +1,6 @@
-/* ============================================
-   contact.js — Formspree AJAX Submit + Toast
-   ============================================ */
-
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('.contact-form');
   if (!form) return;
-
-  // Create toast element
   const toast = document.createElement('div');
   toast.className = 'form-toast';
   document.body.appendChild(toast);
