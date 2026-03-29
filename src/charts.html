@@ -55,11 +55,23 @@
           <li><a href="#chart-radar">Многокритериално сравнение</a></li>
           <li><a href="#chart-attack">USB атаки</a></li>
           <li><div class="nav-divider"></div></li>
+          <li><a href="#table-history">Цена vs. скорост (1980–2024)</a></li>
           <li><a href="#table-comparison">Сравнителна таблица</a></li>
           <li><a href="#table-encryption">Криптиращи решения</a></li>
           <li><a href="#table-protection">Защитни решения</a></li>
           <li><a href="#table-filesystems">Файлови системи</a></li>
           <li><a href="#table-nist">NIST CSF чеклист</a></li>
+          <li><a href="#table-risk">Оценка на риска</a></li>
+          <li><a href="#table-usb-groups">USB групови права</a></li>
+          <li><a href="#table-gpo-removable">GPO сменяеми устройства</a></li>
+          <li><a href="#table-gpo-install">GPO инсталация</a></li>
+          <li><a href="#table-gpo-bitlocker">GPO BitLocker</a></li>
+          <li><a href="#table-audit">Одит настройки</a></li>
+          <li><a href="#table-inventory">Инвентарен регистър</a></li>
+          <li><a href="#table-clear">Чеклист — Clear</a></li>
+          <li><a href="#table-purge">Чеклист — Purge</a></li>
+          <li><a href="#table-destroy">Чеклист — Destroy</a></li>
+          <li><a href="#table-sanitize-compare">Clear vs Purge vs Destroy</a></li>
         </ul>
       </aside>
 
@@ -130,6 +142,13 @@
 
         <!-- ====== TABLES ====== -->
 
+        <!-- Table: Historical Cost vs Speed -->
+        <div class="chart-card" id="table-history">
+          <h3>Цена vs. скорост (1980–2024)</h3>
+          <p class="chart-desc">Историческо развитие на цената за GB и скоростта на трансфер за преносими устройства</p>
+          <div class="data-table-wrapper" id="historyTableWrap"></div>
+        </div>
+
         <!-- Table 1: Full Comparison -->
         <div class="chart-card" id="table-comparison">
           <h3>Пълна сравнителна таблица</h3>
@@ -163,6 +182,83 @@
           <h3>NIST CSF Чеклист</h3>
           <p class="chart-desc">10 практики за управление на безопасността на външни устройства</p>
           <div class="data-table-wrapper" id="nistTableWrap"></div>
+        </div>
+
+        <!-- Table: Risk Assessment -->
+        <div class="chart-card" id="table-risk">
+          <h3>Оценка на риска</h3>
+          <p class="chart-desc">Вероятност, въздействие и ниво на риска за основните заплахи при преносими устройства</p>
+          <div class="data-table-wrapper" id="riskTableWrap"></div>
+        </div>
+
+        <!-- Table: USB Group Permissions -->
+        <div class="chart-card" id="table-usb-groups">
+          <h3>USB групови права</h3>
+          <p class="chart-desc">Сравнение на операциите между USB-Allowed и USB-Blocked групите</p>
+          <div class="data-table-wrapper" id="usbGroupsTableWrap"></div>
+        </div>
+
+        <!-- Table: GPO Removable Storage -->
+        <div class="chart-card" id="table-gpo-removable">
+          <h3>GPO — Сменяеми устройства</h3>
+          <p class="chart-desc">Настройки на Group Policy за контрол на достъпа до сменяеми устройства</p>
+          <div class="data-table-wrapper" id="gpoRemovableTableWrap"></div>
+        </div>
+
+        <!-- Table: GPO Device Installation -->
+        <div class="chart-card" id="table-gpo-install">
+          <h3>GPO — Инсталация на устройства</h3>
+          <p class="chart-desc">Настройки за ограничаване инсталацията на USB устройства чрез Group Policy</p>
+          <div class="data-table-wrapper" id="gpoInstallTableWrap"></div>
+        </div>
+
+        <!-- Table: GPO BitLocker -->
+        <div class="chart-card" id="table-gpo-bitlocker">
+          <h3>GPO — BitLocker за сменяеми устройства</h3>
+          <p class="chart-desc">BitLocker To Go настройки чрез Group Policy</p>
+          <div class="data-table-wrapper" id="gpoBitlockerTableWrap"></div>
+        </div>
+
+        <!-- Table: Audit Settings -->
+        <div class="chart-card" id="table-audit">
+          <h3>Одит настройки</h3>
+          <p class="chart-desc">Настройки за одит на сменяеми устройства и PnP активност</p>
+          <div class="data-table-wrapper" id="auditTableWrap"></div>
+        </div>
+
+        <!-- Table: Device Inventory -->
+        <div class="chart-card" id="table-inventory">
+          <h3>Инвентарен регистър</h3>
+          <p class="chart-desc">Примерен регистър на одобрени преносими устройства с VID/PID и сериен номер</p>
+          <div class="data-table-wrapper" id="inventoryTableWrap"></div>
+        </div>
+
+        <!-- Table: Secure Erasure — Clear -->
+        <div class="chart-card" id="table-clear">
+          <h3>Чеклист — Clear (USB/флаш)</h3>
+          <p class="chart-desc">Стъпки за сигурно изтриване на данни от USB флаш памети (NIST SP 800-88 Clear)</p>
+          <div class="data-table-wrapper" id="clearTableWrap"></div>
+        </div>
+
+        <!-- Table: Secure Erasure — Purge -->
+        <div class="chart-card" id="table-purge">
+          <h3>Чеклист — Purge (SSD/HDD/NVMe)</h3>
+          <p class="chart-desc">Стъпки за сигурно изтриване чрез Secure Erase / Cryptographic Erase (NIST SP 800-88 Purge)</p>
+          <div class="data-table-wrapper" id="purgeTableWrap"></div>
+        </div>
+
+        <!-- Table: Physical Destruction -->
+        <div class="chart-card" id="table-destroy">
+          <h3>Чеклист — физическо унищожаване</h3>
+          <p class="chart-desc">Стъпки за физическо унищожаване на носители (NIST SP 800-88 Destroy)</p>
+          <div class="data-table-wrapper" id="destroyTableWrap"></div>
+        </div>
+
+        <!-- Table: Clear vs Purge vs Destroy -->
+        <div class="chart-card" id="table-sanitize-compare">
+          <h3>Clear vs Purge vs Destroy</h3>
+          <p class="chart-desc">Сравнение на трите метода за сигурно изтриване по NIST SP 800-88</p>
+          <div class="data-table-wrapper" id="sanitizeCompareTableWrap"></div>
         </div>
 
       </main>

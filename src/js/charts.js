@@ -557,4 +557,190 @@ document.addEventListener('DOMContentLoaded', () => {
     'nistTableWrap'
   );
 
+  // ============================
+  // TABLE: Historical Cost vs Speed (1980–2024)
+  // ============================
+  createTable(
+    ['Година', 'Тип устройство', 'Цена за GB ($)', 'Скорост (MB/s)'],
+    [
+      ['1980', 'Hard Disk Drive (5.25")', '1 000 000', '0.5'],
+      ['1987', 'Hard Disk Drive (3.5")', '50 000', '2'],
+      ['1995', 'Zip Drive', '2 000', '1.4'],
+      ['1998', 'Compact Flash', '400', '4'],
+      ['2000', 'USB 1.1 Flash Drive', '100', '1'],
+      ['2004', 'USB 2.0 Flash Drive', '20', '30'],
+      ['2007', '1TB External HDD', '0.10', '60'],
+      ['2010', 'SATA III SSD', '2', '500'],
+      ['2013', 'USB 3.0 Flash Drive', '0.80', '100'],
+      ['2016', 'NVMe External SSD', '0.35', '1 000'],
+      ['2020', 'Thunderbolt 3 SSD', '0.20', '2 800'],
+      ['2024', 'USB4 / Thunderbolt 4', '0.08', '3 500']
+    ],
+    'historyTableWrap'
+  );
+
+  // ============================
+  // TABLE: Risk Assessment
+  // ============================
+  createTable(
+    ['№', 'Риск', 'Вероятност', 'Въздействие', 'Ниво на риска'],
+    [
+      ['1', 'Заразяване със зловреден софтуер чрез USB', 'Висока', 'Критично', 'Много високо'],
+      ['2', 'Кражба/загуба на некриптиран носител', 'Висока', 'Критично', 'Много високо'],
+      ['3', 'Рансъмуер атака чрез външен носител', 'Средна', 'Критично', 'Висок'],
+      ['4', 'Head crash при външен HDD (при транспорт)', 'Средна', 'Високо', 'Висок'],
+      ['5', 'Корупция на ФС при неправилно изваждане', 'Висока', 'Средно', 'Висок'],
+      ['6', 'BadUSB атака (модифициран фърмуер)', 'Ниска', 'Критично', 'Среден'],
+      ['7', 'Износване на NAND клетки (SSD/USB)', 'Ниска', 'Средно', 'Нисък'],
+      ['8', 'Деградация на оптичен носител (CD/DVD)', 'Средна', 'Ниско', 'Нисък']
+    ],
+    'riskTableWrap'
+  );
+
+  // ============================
+  // TABLE: USB Group Permissions
+  // ============================
+  createTable(
+    ['Операция', 'USB-Allowed (GRP_USB_Allowed)', 'USB-Blocked (GRP_USB_Blocked)'],
+    [
+      ['Четене от USB устройство', 'Разрешено', 'Разрешено'],
+      ['Запис върху USB устройство', 'Разрешено (само при активиран BitLocker)', 'Забранено (Deny write access)'],
+      ['Криптиране с BitLocker To Go', 'Задължително за запис', 'Не е приложимо'],
+      ['Одит (Event Log)', 'Да – Event ID 4663 (успешен достъп)', 'Да – Event ID 4663 (отказан достъп)']
+    ],
+    'usbGroupsTableWrap'
+  );
+
+  // ============================
+  // TABLE: GPO Removable Storage
+  // ============================
+  createTable(
+    ['Настройка', 'Стойност'],
+    [
+      ['Removable Disks: Deny write access', 'Enabled'],
+      ['Removable Disks: Deny read access', 'Not Configured'],
+      ['All Removable Storage classes: Deny all access', 'Not Configured'],
+      ['CD and DVD: Deny write access', 'Enabled'],
+      ['Tape Drives: Deny write access', 'Enabled']
+    ],
+    'gpoRemovableTableWrap'
+  );
+
+  // ============================
+  // TABLE: GPO Device Installation
+  // ============================
+  createTable(
+    ['Настройка', 'Стойност'],
+    [
+      ['Prevent installation of devices not described by other policy settings', 'Enabled'],
+      ['Allow installation of devices that match any of these Device Instance IDs', 'Enabled (списък с одобрени ID)'],
+      ['Prevent installation of devices using drivers that match these device setup classes', 'Enabled {36FC9E60-C465-11CF-8056-444553540000} (USB Mass Storage)']
+    ],
+    'gpoInstallTableWrap'
+  );
+
+  // ============================
+  // TABLE: GPO BitLocker
+  // ============================
+  createTable(
+    ['Настройка', 'Стойност'],
+    [
+      ['Deny write access to removable drives not protected by BitLocker', 'Enabled'],
+      ['Control use of BitLocker on removable drives', 'Enabled'],
+      ['→ Allow users to apply BitLocker protection', 'Checked'],
+      ['→ Allow users to suspend and decrypt', 'Unchecked'],
+      ['Choose how BitLocker-protected removable drives can be recovered', 'Enabled'],
+      ['→ Allow data recovery agent', 'Checked'],
+      ['→ Save BitLocker recovery information to AD DS', 'Checked']
+    ],
+    'gpoBitlockerTableWrap'
+  );
+
+  // ============================
+  // TABLE: Audit Settings
+  // ============================
+  createTable(
+    ['Настройка', 'Стойност'],
+    [
+      ['Audit Removable Storage', 'Success, Failure'],
+      ['Audit PNP Activity', 'Success']
+    ],
+    'auditTableWrap'
+  );
+
+  // ============================
+  // TABLE: Device Inventory Register
+  // ============================
+  createTable(
+    ['№', 'VID', 'PID', 'Сериен номер', 'Производител', 'Модел', 'Потребител', 'Отдел', 'Дата на регистрация', 'Статус'],
+    [
+      ['1', '781', '5591', '4C53000121', 'SanDisk', 'Ultra Flair 64GB', 'Иванов, П.', 'ИТ', '15.01.2025', 'Активен'],
+      ['2', '951', '1666', 'E0D55EA573', 'Kingston', 'DT100 G3 32GB', 'Петрова, М.', 'Счетов.', '22.02.2025', 'Активен'],
+      ['3', '8564', '1000', 'AA00000489', 'Transcend', 'JetFlash 128GB', 'Георгиев, Д.', 'Маркет.', '10.03.2025', 'Деактив.']
+    ],
+    'inventoryTableWrap'
+  );
+
+  // ============================
+  // TABLE: Secure Erasure — Clear
+  // ============================
+  createTable(
+    ['№', 'Стъпка', 'Инструменти'],
+    [
+      ['1.1', 'Идентифициране на устройството (VID/PID/сериен номер)', '—'],
+      ['1.2', 'Резервно копие на необходимите данни (ако има такива)', '—'],
+      ['1.3', 'Презаписване с нули/единици/произволни стойности (мин. 1 пас)', 'Windows: cipher /w:D:\\ · Linux: shred -vfz -n 3 /dev/sdb · DBAN: bootable носител'],
+      ['1.4', 'Верификация чрез четене на случайни блокове', '—'],
+      ['1.5', 'Документиране: устройство, метод, дата, отговорник', '—']
+    ],
+    'clearTableWrap'
+  );
+
+  // ============================
+  // TABLE: Secure Erasure — Purge
+  // ============================
+  createTable(
+    ['№', 'Стъпка', 'Инструменти'],
+    [
+      ['2.1', 'Идентифициране на устройството и тип (HDD/SSD/NVMe)', '—'],
+      ['2.2', 'Резервно копие на необходимите данни (ако има такива)', '—'],
+      ['2.3', 'Изпълнение на Secure Erase / Cryptographic Erase', 'NVMe: nvme format /dev/nvme0n1 --ses=1 · SATA SSD: hdparm --security-erase NULL /dev/sda · HDD: 3+ паса (DoD 5220.22-M) · Криптирани: унищожаване на ключа'],
+      ['2.4', 'Верификация: четене на целия носител, потвърждаване на липса на възстановими данни', '—'],
+      ['2.5', 'Документиране: сертификат за изтриване с подпис', '—']
+    ],
+    'purgeTableWrap'
+  );
+
+  // ============================
+  // TABLE: Physical Destruction
+  // ============================
+  createTable(
+    ['№', 'Стъпка', 'Методи'],
+    [
+      ['3.1', 'Идентифициране на устройството (VID/PID/сериен номер)', '—'],
+      ['3.2', 'Избор на метод за физическо унищожаване', 'Шредиране (≤ 2 mm) · Дегаусиране (само HDD) · Изгаряне (лицензиран оператор) · Химическо разтваряне (NAND)'],
+      ['3.3', 'Извършване на унищожаването от оторизиран персонал', '—'],
+      ['3.4', 'Визуална верификация: устройството е физически неразпознаваемо и неработоспособно', '—'],
+      ['3.5', 'Документиране: протокол за унищожаване с подпис на двама свидетели, снимков материал', '—'],
+      ['3.6', 'Актуализиране на инвентарния регистър – статус „Унищожен"', '—']
+    ],
+    'destroyTableWrap'
+  );
+
+  // ============================
+  // TABLE: Clear vs Purge vs Destroy
+  // ============================
+  createTable(
+    ['Критерий', 'Clear', 'Purge', 'Destroy'],
+    [
+      ['Клас на данните', 'Нисък–среден', 'Висок', 'Най-висок'],
+      ['Носителят остава', 'В организацията', 'Напуска контрола', 'Не – унищожен'],
+      ['Време', 'Минути–часове', 'Минути–часове', 'Минути'],
+      ['Цена', 'Ниска', 'Ниска–средна', 'Средна–висока'],
+      ['Гаранция', 'Средна', 'Висока', 'Абсолютна'],
+      ['Стандарт', 'NIST SP 800-88 (Clear)', 'NIST SP 800-88 (Purge)', 'NIST SP 800-88 (Destroy)']
+    ],
+    'sanitizeCompareTableWrap'
+  );
+
 });
