@@ -1,0 +1,163 @@
+4. ЗАКЛЮЧЕНИЕ
+
+Настоящата дипломна работа представя цялостен анализ на управлението на външните запаметяващи устройства, обхващащ технологичните основи на съвременните носители, системната им интеграция в трите водещи операционни системи, рисковете при експлоатация и конкретните технически и организационни мерки за тяхното управление. Изследването следва структуриран подход, отразен в двата основни раздела на работата – теоретична и практическа част.
+
+В теоретичната част (раздел 2.1) са разгледани петте основни категории външни носители – USB флаш памети, твърдотелни дискове (SSD), твърди дискове с магнитен запис (HDD), карти с памет (SD) и оптични носители (CD/DVD). Технологичният анализ обхваща скорости на четене и запис (от 1,2 MB/s при CD до над 2 000 MB/s при NVMe SSD), интерфейси за свързване (USB 2.0/3.x, SATA III, NVMe, Thunderbolt 3/4), капацитет, латентност и надеждност. Сравнителната характеристика (Таблица 2) потвърждава, че не съществува универсално „най-добро" устройство – оптималният избор е функция на конкретните изисквания: HDD дисковете водят по съотношение капацитет–цена (0,02–0,04 €/GB), SSD устройствата са безалтернативни при нужда от висока скорост и устойчивост на механични въздействия, USB флаш паметите са най-практичният вариант за ежедневен обмен на файлове, SD картите доминират в мобилната и IoT екосистема, а оптичните носители запазват нишата си в дългосрочното архивиране.
+
+Изследването на драйверите и системната интеграция (раздел 2.1.3) разкрива, че Windows, Linux и macOS реализират поддръжката на външните носители чрез различни архитектурни подходи – USBSTOR.SYS и WHQL сертификация, udev/kernel modules и I/O Kit съответно. Процесът на USB enumeration осигурява автоматично разпознаване и монтиране, но същевременно разширява повърхността на атака – всяко свързано устройство е потенциален вектор за компрометиране. Изборът на файлова система (FAT32, NTFS, exFAT, ext4, APFS) директно влияе върху нивото на защита: файловите системи без журналинг и контрол на достъпа (FAT32, exFAT) създават допълнителни рискове при внезапно прекъсване или неоторизиран достъп, докато NTFS, ext4 и APFS предоставят журналинг, ACL и вградено криптиране.
+
+Практическата част (раздел 2.2) е изградена върху рамката за управление на риска по NIST SP 800-37 и принципите на ISO/IEC 27001 и обхваща четири взаимосвързани области.
+
+Анализът на рисковете (раздел 2.2.1) систематизира заплахите в пет групи: физически повреди и механични дефекти, заплахи от зловреден софтуер (включително рансъмуер и BadUSB атаки), загуба на данни, неоторизиран достъп и човешки фактор. Матрицата за оценка на риска (Таблица 3), изградена по методологията на NIST SP 800-30 и ISO/IEC 27005, класифицира осемте основни риска и идентифицира заразяването със зловреден софтуер чрез USB и кражбата или загубата на некриптиран носител като рискове с критично ниво. Данните на ENISA (2023) потвърждават, че USB устройствата са сред петте най-използвани начални вектора за атаки в корпоративна среда, а 37 % от целевите атаки срещу индустриални системи се осъществяват именно чрез USB носители.
+
+Мерките за защита (раздел 2.2.2) формират многопластов модел, следващ принципа на защита в дълбочина (Defense in Depth), с четири направления. Криптирането на данни в покой – чрез BitLocker To Go, VeraCrypt или LUKS – неутрализира последиците от физическа загуба или кражба, като всяко от трите решения е сравнено по ОС поддръжка, алгоритми, управление и лиценз (Таблица 4). Антивирусната защита и автоматичното сканиране при включване на устройство – реализирано чрез Microsoft Defender (GPO) в Windows и ClamAV с udev правила в Linux – противодействат на зловредния софтуер. Стратегията за резервни копия 3-2-1, подкрепена от инструменти като rsync, Veeam и Duplicati, осигурява възстановяемост при загуба на данни. Контролът на достъпа – чрез Device Whitelisting (по VID/PID/сериен номер), деактивиране на AutoRun/AutoPlay, ролеви контрол (RBAC) и USBGuard в Linux – ограничава повърхността на атака.
+
+Организационната рамка (раздел 2.2.3) включва примерна десетточкова политика за контрол на преносими устройства, административен контрол чрез GPO, MDM (Microsoft Intune, VMware Workspace ONE) и SIEM системи за корелация на журнални записи, шестстъпков одитен процес и стандартна оперативна процедура (SOP) за сигурно изтриване на данни съгласно трите нива на NIST SP 800-88 (Clear, Purge, Destroy). Съответствието с GDPR (Регламент (ЕС) 2016/679) – по-конкретно членове 17, 30, 32 и 33 – и с контролите на ISO/IEC 27001 Annex A гарантира нормативната адекватност на предложения модел.
+
+Анализът на реални инциденти (раздел 2.2.4) потвърждава практическата значимост на изследваните въпроси чрез три казуса. Случаят Stuxnet (2010) демонстрира, че дори физически изолирани мрежи (air-gapped) са уязвими чрез вектора на преносимите устройства – червеят е експлоатирал четири нулеви уязвимости и е повредил приблизително 1 000 центрофуги. Инцидентът с летище Хийтроу (2017) илюстрира комбинирания ефект на човешкия фактор и липсата на технически контроли – некриптиран USB носител с 76 папки чувствителна информация за сигурността е открит на публично място, водейки до глоба от 120 000 паунда от ICO. Успешният опит на IBM с пълна забрана на преносимите носители за приблизително 350 000 служители доказва, че цялостният подход е реалистичен дори в глобален мащаб и води до 50-процентно намаление на инцидентите в рамките на първата година.
+
+Инструментите за мониторинг, разгледани в края на практическата част – USBGuard (Linux), Windows Device Control (Microsoft Defender for Endpoint), Endpoint DLP решения (Microsoft Purview DLP, Symantec DLP, Digital Guardian) и SIEM платформи (Splunk, Graylog, Elastic SIEM) – осигуряват видимост, контрол и одитна следа на действията с преносими устройства в реално време.
+
+Чеклистът с десет добри практики (Таблица 5), съпоставен с петте функции на NIST Cybersecurity Framework 2.0 (Identify, Protect, Detect, Respond, Recover), предоставя приложима методическа основа за организации от различен мащаб. Инвентаризацията на устройствата и класификацията на данните (Identify), криптирането, Device Whitelisting и деактивирането на AutoRun (Protect), антивирусното сканиране и SIEM мониторингът (Detect), документираната процедура за реакция при инцидент (Respond) и стратегията за резервни копия със сигурно изтриване на данни (Recover) формират цялостна система, покриваща жизнения цикъл на информационната сигурност.
+
+Въз основа на проведеното изследване могат да бъдат формулирани следните основни изводи:
+
+Първо, външните запаметяващи устройства остават критичен компонент от информационната инфраструктура, въпреки нарастващата популярност на облачните технологии. Физическата преносимост, независимостта от интернет връзка и високата скорост на локален достъп ги правят незаменими в множество сценарии – от работа с класифицирана информация в изолирани мрежи до мобилна фотография и видеопродукция.
+
+Второ, рисковете, свързани с тези устройства, са реални, многоаспектни и с потенциално катастрофални последици. Еволюцията на заплахите – от ранните boot-секторни вируси, разпространявани чрез дискети, до усъвършенствани атаки като BadUSB и Stuxnet – показва, че атакуващите непрекъснато адаптират методите си към новите технологии. Данните от матрицата за оценка на риска (Таблица 3) потвърждават, че два от осемте анализирани риска достигат критично ниво, а три – високо.
+
+Трето, ефективното управление на външните носители изисква интегриран подход, комбиниращ технически контроли (криптиране, антивирусна защита, контрол на портовете, DLP), организационни мерки (политики, одит, обучение) и съответствие с нормативните изисквания (GDPR, ISO/IEC 27001). Нито една единична мярка не може да осигури достатъчна защита сама по себе си – необходим е принципът на защита в дълбочина.
+
+Четвърто, човешкият фактор остава най-непредвидимата и трудно контролируема променлива. Проучванията показват, че 45–98 % от хората свързват намерени USB устройства (Tischer et al., 2016), а 50 % от служителите използват некриптирани USB устройства за пренос на служебна информация (Ponemon Institute, 2016). Техническите контроли минимизират повърхността на атака, но устойчивата сигурност зависи от информираността и дисциплината на потребителите, което подчертава значението на регулярното обучение и повишаването на осведомеността.
+
+Перспективите за бъдещо развитие в тази област включват няколко ключови направления. Навлизането на USB4 и Thunderbolt 5 с пропускателна способност до 120 Gbit/s ще увеличи както възможностите за продуктивност, така и потенциалните рискове от бързо ексфилтриране на данни. Масовото въвеждане на хардуерно криптиране в самите устройства (Self-Encrypting Drives – SED) ще опрости управлението на ключовете. Развитието на технологии за изкуствен интелект в областта на поведенческия анализ (UEBA – User and Entity Behavior Analytics) ще подобри детектирането на аномална активност, свързана с преносими устройства.
+
+Особено перспективна е интеграцията с платформи за управление на мобилни устройства (MDM) като Microsoft Intune, която позволява централизирано прилагане на политики за преносими носители не само в рамките на локален домейн, но и в хибридни и изцяло облачни среди. Автоматизираният одит на USB събития чрез SIEM платформи от ново поколение – по-конкретно Microsoft Sentinel – ще осигури корелация на журналните записи от крайните точки в реално време и ще съкрати времето за реакция при инцидент. Прилагането на DLP (Data Loss Prevention) политики чрез решения като Microsoft Purview ще позволи автоматично класифициране и блокиране на чувствително съдържание при опит за копиране върху външни носители, предотвратявайки изтичането на данни още преди то да се случи.
+
+Усъвършенстването на архитектурите с нулево доверие (Zero Trust Architecture) – основани на принципа „никога не вярвай, винаги верифицирай" – ще наложи третирането на всяко устройство, включително преносимите носители, като потенциално компрометирано до доказване на противното. В съчетание с непрекъсната автентикация и адаптивен контрол на достъпа Zero Trust подходът ще промени фундаментално начина, по който организациите управляват взаимодействието с външните запаметяващи устройства.
+
+Реализирането на поставената цел – разработване на комплексен модел за управление на външните запаметяващи устройства, гарантиращ баланс между оперативна съвместимост и информационна сигурност – е постигнато чрез систематичния анализ на технологичната база, рисковете, мерките за защита и организационните практики. Предложеният модел е приложим както в корпоративна среда, така и в публичния сектор и критичната инфраструктура, като неговата ефективност зависи от последователното прилагане на всички компоненти – технически, организационни и нормативни.
+
+Използвана литература (консолидирана)
+
+Appel, J. (n.d.). Manage Device Control with Microsoft Defender for Endpoint and Endpoint Manager Part 1. jeffreyappel.nl. https://jeffreyappel.nl/manage-device-control-with-microsoft-defender-for-endpoint-and-endpoint-manager-part-1/
+
+Apple. (2023a). I/O Kit Fundamentals. Apple Developer Documentation. https://developer.apple.com/documentation/iokit
+
+Apple. (2023b). Apple File System Reference. Apple Developer Documentation. https://developer.apple.com/documentation/foundation/file_system/about_apple_file_system
+
+Backblaze. (2024). Hard Drive Stats for 2023. Backblaze Blog. https://www.backblaze.com/blog/hard-drive-stats-for-2023/
+
+Bez, R., Camerlenghi, E., Modelli, A., & Visconti, A. (2003). Introduction to Flash Memory. Proceedings of the IEEE, 91(4), 489–502.
+
+Brewer, J. E., & Gill, M. (2008). Nonvolatile Memory Technologies with Emphasis on Flash. Wiley-IEEE Press.
+
+Crozier, R. (2018). IBM bans all staff from using removable storage devices. IT News. https://www.itnews.com.au/news/ibm-bans-all-staff-from-using-removable-storage-devices-492061
+
+Duplicati Team. (2023). Duplicati 2 User's Manual. https://docs.duplicati.com/
+
+ENISA. (2023). ENISA Threat Landscape 2023. European Union Agency for Cybersecurity. https://www.enisa.europa.eu/publications/enisa-threat-landscape-2023
+
+European Parliament. (2016). Regulation (EU) 2016/679 of the European Parliament and of the Council (General Data Protection Regulation). Official Journal of the European Union, L 119, 1–88.
+
+ICO. (2018). Heathrow Airport Limited: Monetary Penalty Notice. Information Commissioner's Office. https://ico.org.uk/action-weve-taken/enforcement/heathrow-airport-limited/
+
+IDRIX. (2023). VeraCrypt Documentation. https://veracrypt.fr/en/Documentation.html
+
+Intel Corporation. (2023). Thunderbolt Technology Overview. Intel Corporation.
+
+International Electrotechnical Commission. (2008). Quantities and units — Part 13: Information science and technology (IEC 80000-13). IEC.
+
+International Organization for Standardization. (2022). Information security, cybersecurity and privacy protection — Information security controls (ISO/IEC Standard No. 27002:2022).
+
+ISO/IEC. (2022). ISO/IEC 27001:2022 — Information security, cybersecurity and privacy protection — Information security management systems — Requirements. International Organization for Standardization.
+
+ISO/IEC. (2022b). ISO/IEC 27005:2022 — Information security, cybersecurity and privacy protection — Guidance on managing information security risks. International Organization for Standardization.
+
+ISO/IEC 10149. (1995). Information technology — Data interchange on read-only 120 mm optical data discs (CD-ROM). International Organization for Standardization.
+
+JEDEC. (2016). JEDEC JESD218B.01: Solid-State Drive (SSD) Requirements and Endurance Test Method. JEDEC Solid State Technology Association.
+
+Kroah-Hartman, G. (2007). Linux Kernel in a Nutshell. O'Reilly Media.
+
+Krogh, P. (2009). The DAM Book: Digital Asset Management for Photographers (2nd ed.). O'Reilly Media.
+
+Kroll Ontrack. (2022). Data Loss Index: Annual Report 2022. Kroll Ontrack.
+
+Langner, R. (2011). Stuxnet: Dissecting a Cyberwarfare Weapon. IEEE Security & Privacy, 9(3), 49–51.
+
+ManageEngine. (n.d.). How to audit failed access attempts to a shared folder. ManageEngine Active Directory Audit Plus. https://www.manageengine.com/products/active-directory-audit/how-to/audit-failed-access-attempts-to-shared-folder.html
+
+Micheloni, R., Crippa, L., & Marelli, A. (2010). Inside NAND Flash Memories. Springer.
+
+Microsoft. (2024a). Windows Hardware Quality Labs (WHQL). Microsoft Learn. https://learn.microsoft.com/en-us/windows-hardware/drivers/install/whql-release-signature
+
+Microsoft. (2024b). Disk Management Overview. Microsoft Learn. https://learn.microsoft.com/en-us/windows-server/storage/disk-management/overview-of-disk-management
+
+Microsoft. (2024c). Comparison of FAT32, NTFS, and exFAT. Microsoft Learn. https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems
+
+Microsoft. (2024d). BitLocker Overview. Microsoft Learn. https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/
+
+Microsoft. (2024e). Microsoft Defender for Endpoint Device Control. Microsoft Learn. https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/device-control-overview
+
+Microsoft. (2024f). Before you can save files on this drive, you need to turn on BitLocker [Community Q&A thread]. Microsoft Learn: Q&A. https://learn.microsoft.com/en-us/answers/questions/3866150/before-you-can-save-files-on-this-drive-you-need-t
+
+Mueller, S. (2015). Upgrading and Repairing PCs (22nd ed.). Que Publishing.
+
+NIST. (2010). NIST SP 800-34 Rev. 1: Contingency Planning Guide for Federal Information Systems. National Institute of Standards and Technology.
+
+NIST. (2012). NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments. National Institute of Standards and Technology.
+
+NIST. (2013). NIST SP 800-83 Rev. 1: Guide to Malware Incident Prevention and Handling for Desktops and Laptops. National Institute of Standards and Technology.
+
+NIST. (2014). NIST SP 800-88 Rev. 1: Guidelines for Media Sanitization. National Institute of Standards and Technology.
+
+NIST. (2018). NIST SP 800-37 Rev. 2: Risk Management Framework for Information Systems and Organizations. National Institute of Standards and Technology.
+
+NIST. (2020). NIST SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems and Organizations. National Institute of Standards and Technology.
+
+NIST. (2024). NIST Cybersecurity Framework 2.0. National Institute of Standards and Technology. https://www.nist.gov/cyberframework
+
+NVM Express. (2022). NVM Express Base Specification, Revision 2.0. NVM Express, Inc.
+
+Paragon Software. (2021). NTFS3: New NTFS file system driver merged into Linux kernel 5.15. Paragon Software Group.
+
+Pohlmann, K. C. (2005). The Compact Disc Handbook. A-R Editions.
+
+Ponemon Institute. (2016). The State of USB Drive Security. Ponemon Institute Research Report.
+
+Samsung Electronics. (2023). SSD White Paper: Reliability and Endurance. Samsung Semiconductor.
+
+Schroeder, B., & Gibson, G. A. (2007). Disk Failures in the Real World: What Does an MTTF of 1,000,000 Hours Mean to You? Proceedings of the 5th USENIX Conference on File and Storage Technologies (FAST '07), 1–16.
+
+SD Association. (2023). SD Specifications Part 1: Physical Layer Simplified Specification. SD Association.
+
+Serial ATA International Organization. (2018). Serial ATA Revision 3.5a Specification. SATA-IO.
+
+Statista. (2024). External Storage Devices – Market Data & Forecasts. Statista Digital Market Insights. https://www.statista.com/outlook/tmo/consumer-electronics/storage-media/
+
+Tanenbaum, A. S., & Bos, H. (2015). Modern Operating Systems (4th ed.). Pearson.
+
+Taylor, J., Johnson, M. R., & Crawford, C. G. (2006). DVD Demystified (3rd ed.). McGraw-Hill.
+
+The Linux Kernel Documentation. (2024). USB Mass Storage driver. https://www.kernel.org/doc/html/latest/usb/mass-storage.html
+
+Tischer, M., Durumeric, Z., Foster, S., Duan, S., Mori, A., Bursztein, E., & Bailey, M. (2016). Users Really Do Plug in USB Drives They Find. Proceedings of the 2016 IEEE Symposium on Security and Privacy (SP), 306–319.
+
+Tom's Hardware. (2024). Best External SSDs 2024: Portable Drives for PC and Mac. Tom's Hardware. https://www.tomshardware.com/best-picks/best-external-ssds
+
+Ts'o, T. (2010). ext4 – The Next Generation of the ext2/ext3 Filesystem. Proceedings of the Linux Symposium.
+
+U.S. Department of Defense. (2006). DoD 5220.22-M: National Industrial Security Program Operating Manual. U.S. Department of Defense.
+
+USB Implementers Forum. (2019). Universal Serial Bus 3.2 Specification. USB-IF.
+
+USBGuard Project. (2023). USBGuard Documentation. https://usbguard.github.io/
+
+Verizon. (2023). 2023 Data Breach Investigations Report. Retrieved from https://www.verizon.com/business/resources/reports/dbir/
+
+Whitman, M. E., & Mattord, H. J. (2018). Principles of Information Security (6th ed.). Cengage Learning.
+
+WindowsReport. (n.d.). Fix: Location is not available. WindowsReport. https://windowsreport.com/fix-location-is-not-available/
+
+Zetter, K. (2014). Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon. Crown Publishers.
