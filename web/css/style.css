@@ -682,6 +682,28 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-surface);
 }
 
+#inventoryTableWrap {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-hover) transparent;
+}
+
+#inventoryTableWrap::-webkit-scrollbar {
+  height: 6px;
+}
+
+#inventoryTableWrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#inventoryTableWrap::-webkit-scrollbar-thumb {
+  background: var(--bg-hover);
+  border-radius: 3px;
+}
+
+#inventoryTableWrap::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
 .data-table {
   width: 100%;
   border-collapse: collapse;
