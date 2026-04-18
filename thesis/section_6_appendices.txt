@@ -2,42 +2,37 @@
 
 Приложение А. Примерна конфигурация на Device Control Policy (Microsoft Defender for Endpoint)
 
-Следната XML конфигурация дефинира политика за контрол на преносими устройства, която разрешава достъп само до одобрени USB устройства, идентифицирани по Vendor ID и Product ID. Неодобрените устройства получават достъп само за четене.
+Конфигурацията се дефинира чрез два PolicyRule обекта, описани в таблиците по-долу.
 
-<PolicyRule Id="DenyWriteToUnapprovedUSB">
-  <Name>Забрана за запис върху неодобрени USB устройства</Name>
-  <IncludedIdList>
-    <RemovableMediaDevices />
-  </IncludedIdList>
-  <ExcludedIdList>
-    <VendorId>0781</VendorId>   <!-- SanDisk -->
-    <ProductId>5591</ProductId>  <!-- Ultra Flair USB 3.0 -->
-    <VendorId>0951</VendorId>   <!-- Kingston -->
-    <ProductId>1666</ProductId>  <!-- DataTraveler 100 G3 -->
-  </ExcludedIdList>
-  <Entry>
-    <Type>Deny</Type>
-    <Options>
-      <AccessMask>Write</AccessMask>
-    </Options>
-    <Notification>
-      <Message>Записът върху неодобрени USB устройства е забранен. Обърнете се към ИТ отдела за одобрение.</Message>
-    </Notification>
-  </Entry>
-</PolicyRule>
+Правило 1: DenyWriteToUnapprovedUSB – Забрана за запис върху неодобрени USB устройства
 
-<PolicyRule Id="AuditAllUSBConnections">
-  <Name>Одит на всички USB свързвания</Name>
-  <IncludedIdList>
-    <RemovableMediaDevices />
-  </IncludedIdList>
-  <Entry>
-    <Type>AuditAllow</Type>
-    <Options>
-      <AccessMask>Read,Write,Execute</AccessMask>
-    </Options>
-  </Entry>
-</PolicyRule>
++-------------------------+-------------------------------------------------------+
+| Параметър               | Стойност                                              |
++-------------------------+-------------------------------------------------------+
+| Id                      | DenyWriteToUnapprovedUSB                              |
+| Name                    | Забрана за запис върху неодобрени USB устройства      |
+| IncludedIdList          | RemovableMediaDevices (всички преносими устройства)   |
+| ExcludedIdList          | VendorId: 0781 (SanDisk), ProductId: 5591             |
+| (одобрени устройства)   | (Ultra Flair USB 3.0)                                 |
+|                         | VendorId: 0951 (Kingston), ProductId: 1666            |
+|                         | (DataTraveler 100 G3)                                 |
+| Entry → Type            | Deny                                                  |
+| Entry → AccessMask      | Write                                                 |
+| Entry → Notification    | „Записът върху неодобрени USB устройства е            |
+|                         | забранен. Обърнете се към ИТ отдела за одобрение."    |
++-------------------------+-------------------------------------------------------+
+
+Правило 2: AuditAllUSBConnections – Одит на всички USB свързвания
+
++-------------------------+-------------------------------------------------------+
+| Параметър               | Стойност                                              |
++-------------------------+-------------------------------------------------------+
+| Id                      | AuditAllUSBConnections                                |
+| Name                    | Одит на всички USB свързвания                         |
+| IncludedIdList          | RemovableMediaDevices (всички преносими устройства)   |
+| Entry → Type            | AuditAllow                                            |
+| Entry → AccessMask      | Read, Write, Execute                                  |
++-------------------------+-------------------------------------------------------+
 
 Забележка: Идентификаторите VendorId и ProductId се извличат от Device Manager (Диспечер на устройства) или чрез командата:
   Get-PnpDevice -Class DiskDrive | Select-Object InstanceId, FriendlyName
