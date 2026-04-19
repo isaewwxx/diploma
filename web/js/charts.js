@@ -1,13 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const isMobile = window.innerWidth <= 768;
+  const isSmallMobile = window.innerWidth <= 480;
+
   Chart.defaults.color = '#a1a1aa';
   Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
   Chart.defaults.font.family = "'Space Grotesk', system-ui, sans-serif";
-  Chart.defaults.font.size = 12;
+  Chart.defaults.font.size = isMobile ? 10 : 12;
   Chart.defaults.responsive = true;
-  Chart.defaults.maintainAspectRatio = true;
+  Chart.defaults.maintainAspectRatio = !isMobile;
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
-  Chart.defaults.plugins.legend.labels.padding = 16;
-  Chart.defaults.plugins.legend.labels.boxWidth = 8;
+  Chart.defaults.plugins.legend.labels.padding = isMobile ? 10 : 16;
+  Chart.defaults.plugins.legend.labels.boxWidth = isMobile ? 6 : 8;
+  Chart.defaults.plugins.legend.labels.font = { size: isMobile ? 10 : 12 };
 
   const COLORS = {
     indigo: '#6366f1',
@@ -59,21 +63,27 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       options: {
+        aspectRatio: isMobile ? 1.2 : 2,
         plugins: {
           tooltip: {
             callbacks: {
               label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} MB/s`
             }
+          },
+          legend: {
+            labels: { font: { size: isMobile ? 10 : 12 } }
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            title: { display: true, text: 'MB/s' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            title: { display: true, text: 'MB/s', font: { size: isMobile ? 10 : 12 } },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           },
           x: {
-            grid: { display: false }
+            grid: { display: false },
+            ticks: { font: { size: isMobile ? 9 : 11 }, maxRotation: isMobile ? 45 : 0 }
           }
         }
       }
@@ -105,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         indexAxis: 'y',
+        aspectRatio: isMobile ? 0.8 : 2,
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -116,11 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         scales: {
           x: {
             beginAtZero: true,
-            title: { display: true, text: 'MB/s' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            title: { display: true, text: 'MB/s', font: { size: isMobile ? 10 : 12 } },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: {
+              font: { size: isMobile ? 9 : 11 },
+              callback: function(v) { return v >= 1000 ? (v / 1000) + 'K' : v; }
+            }
           },
           y: {
-            grid: { display: false }
+            grid: { display: false },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           }
         }
       }
@@ -152,20 +168,28 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       options: {
+        aspectRatio: isMobile ? 1.2 : 2,
         plugins: {
           tooltip: {
             callbacks: {
               label: ctx => `${ctx.dataset.label}: €${ctx.parsed.y}`
             }
+          },
+          legend: {
+            labels: { font: { size: isMobile ? 10 : 12 } }
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            title: { display: true, text: '€/GB' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            title: { display: true, text: '€/GB', font: { size: isMobile ? 10 : 12 } },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           },
-          x: { grid: { display: false } }
+          x: {
+            grid: { display: false },
+            ticks: { font: { size: isMobile ? 9 : 11 }, maxRotation: isMobile ? 45 : 0 }
+          }
         }
       }
     });
@@ -186,10 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
             COLORS.red
           ],
           borderRadius: 6,
-          barThickness: 48
+          maxBarThickness: isMobile ? 32 : 48
         }]
       },
       options: {
+        aspectRatio: isMobile ? 1.2 : 2,
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -201,13 +226,17 @@ document.addEventListener('DOMContentLoaded', () => {
         scales: {
           y: {
             type: 'logarithmic',
-            title: { display: true, text: 'P/E цикли (×1000, лог. скала)' },
+            title: { display: true, text: isMobile ? 'P/E цикли (×1000)' : 'P/E цикли (×1000, лог. скала)', font: { size: isMobile ? 10 : 12 } },
             grid: { color: 'rgba(255,255,255,0.04)' },
             ticks: {
-              callback: (v) => v.toLocaleString()
+              callback: (v) => v.toLocaleString(),
+              font: { size: isMobile ? 9 : 11 }
             }
           },
-          x: { grid: { display: false } }
+          x: {
+            grid: { display: false },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
+          }
         }
       }
     });
@@ -215,14 +244,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const riskCtx = document.getElementById('riskChart');
   if (riskCtx) {
     const riskData = [
-      { label: 'Malware', x: 4.2, y: 4.8, r: 20, severity: 'critical' },
-      { label: 'Кражба', x: 3.8, y: 5.0, r: 19, severity: 'critical' },
-      { label: 'Рансъмуер', x: 3.2, y: 4.5, r: 17, severity: 'high' },
-      { label: 'Head Crash', x: 2.8, y: 4.0, r: 15, severity: 'high' },
-      { label: 'ФС Корупция', x: 3.5, y: 3.2, r: 14, severity: 'high' },
-      { label: 'BadUSB', x: 2.2, y: 4.3, r: 13, severity: 'medium' },
-      { label: 'NAND Износване', x: 2.5, y: 2.5, r: 11, severity: 'low' },
-      { label: 'CD Деградация', x: 2.8, y: 1.8, r: 10, severity: 'low' }
+      { label: 'Malware', x: 4.2, y: 4.8, r: isMobile ? 14 : 20, severity: 'critical' },
+      { label: 'Кражба', x: 3.8, y: 5.0, r: isMobile ? 13 : 19, severity: 'critical' },
+      { label: 'Рансъмуер', x: 3.2, y: 4.5, r: isMobile ? 12 : 17, severity: 'high' },
+      { label: 'Head Crash', x: 2.8, y: 4.0, r: isMobile ? 10 : 15, severity: 'high' },
+      { label: 'ФС Корупция', x: 3.5, y: 3.2, r: isMobile ? 10 : 14, severity: 'high' },
+      { label: 'BadUSB', x: 2.2, y: 4.3, r: isMobile ? 9 : 13, severity: 'medium' },
+      { label: 'NAND Износване', x: 2.5, y: 2.5, r: isMobile ? 8 : 11, severity: 'low' },
+      { label: 'CD Деградация', x: 2.8, y: 1.8, r: isMobile ? 7 : 10, severity: 'low' }
     ];
 
     const sevColors = {
@@ -251,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }))
       },
       options: {
+        aspectRatio: isMobile ? 1 : 2,
         plugins: {
           tooltip: {
             callbacks: {
@@ -261,19 +291,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           },
           legend: {
-            labels: { font: { size: 11 } }
+            position: isMobile ? 'bottom' : 'top',
+            labels: { font: { size: isMobile ? 9 : 11 }, padding: isMobile ? 6 : 12 }
           }
         },
         scales: {
           x: {
-            title: { display: true, text: 'Вероятност' },
+            title: { display: true, text: 'Вероятност', font: { size: isMobile ? 10 : 12 } },
             min: 1.5, max: 5,
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           },
           y: {
-            title: { display: true, text: 'Въздействие' },
+            title: { display: true, text: 'Въздействие', font: { size: isMobile ? 10 : 12 } },
             min: 1, max: 5.5,
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           }
         }
       }
@@ -300,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         cutout: '55%',
+        aspectRatio: isMobile ? 1.2 : 2,
         plugins: {
           tooltip: {
             callbacks: {
@@ -307,7 +341,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           },
           legend: {
-            position: 'bottom'
+            position: 'bottom',
+            labels: { font: { size: isMobile ? 10 : 12 }, padding: isMobile ? 8 : 16 }
           }
         }
       }
@@ -339,19 +374,25 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       options: {
         indexAxis: 'y',
+        aspectRatio: isMobile ? 0.7 : 2,
         scales: {
           x: {
             beginAtZero: true,
             max: 10,
-            title: { display: true, text: 'Оценка (1–10)' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            title: { display: true, text: 'Оценка (1–10)', font: { size: isMobile ? 10 : 12 } },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           },
           y: {
-            grid: { display: false }
+            grid: { display: false },
+            ticks: { font: { size: isMobile ? 9 : 11 } }
           }
         },
         plugins: {
-          legend: { position: 'bottom' },
+          legend: {
+            position: 'bottom',
+            labels: { font: { size: isMobile ? 9 : 11 }, padding: isMobile ? 6 : 12 }
+          },
           tooltip: {
             callbacks: {
               label: ctx => `${ctx.dataset.label}: ${ctx.parsed.x}/10`
@@ -381,15 +422,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }]
       },
       options: {
+        aspectRatio: isMobile ? 1 : 2,
         scales: {
           r: {
             beginAtZero: true,
-            ticks: { backdropColor: 'transparent' },
-            grid: { color: 'rgba(255,255,255,0.06)' }
+            ticks: { backdropColor: 'transparent', font: { size: isMobile ? 9 : 11 } },
+            grid: { color: 'rgba(255,255,255,0.06)' },
+            pointLabels: { font: { size: isMobile ? 9 : 11 } }
           }
         },
         plugins: {
-          legend: { position: 'bottom' },
+          legend: {
+            position: 'bottom',
+            labels: { font: { size: isMobile ? 9 : 11 }, padding: isMobile ? 6 : 12 }
+          },
           tooltip: {
             callbacks: {
               label: ctx => `${ctx.label}: ${ctx.parsed.r}`

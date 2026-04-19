@@ -1486,18 +1486,29 @@ body.gallery-open {
 @media (max-width: 768px) {
   .charts-layout {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: calc(var(--nav-height) + 1rem);
+    padding-bottom: 2rem;
   }
 
   .charts-sidebar {
-    position: relative;
-    top: 0;
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 10;
     max-height: none;
     overflow-x: auto;
     overflow-y: hidden;
     padding-right: 0;
-    padding-bottom: 1rem;
+    padding-bottom: 0;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    background: var(--bg-primary);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .charts-sidebar::-webkit-scrollbar {
+    display: none;
   }
 
   .charts-sidebar h3 { display: none; }
@@ -1506,14 +1517,15 @@ body.gallery-open {
     display: flex;
     gap: 0.25rem;
     white-space: nowrap;
+    padding: 0.5rem 0;
   }
 
   .sidebar-nav li a {
     border-left: none;
     border-bottom: 2px solid transparent;
     border-radius: var(--radius-xs) var(--radius-xs) 0 0;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
+    padding: 0.4rem 0.625rem;
+    font-size: 0.6875rem;
   }
 
   .sidebar-nav li a.active {
@@ -1525,6 +1537,59 @@ body.gallery-open {
     width: 1px;
     height: auto;
     margin: 0 0.25rem;
+  }
+
+  .chart-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .chart-card h3 {
+    font-size: 1rem;
+  }
+
+  .chart-card .chart-desc {
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .chart-card canvas {
+    max-height: none;
+  }
+
+  .data-table th {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .data-table td {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .data-table .mono {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-card {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .chart-card h3 {
+    font-size: 0.9375rem;
+  }
+
+  .data-table th {
+    font-size: 0.6875rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .data-table td {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
   }
 }
 .author-profile {
