@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const isMobile = window.innerWidth <= 768;
-  const isSmallMobile = window.innerWidth <= 480;
 
   Chart.defaults.color = '#a1a1aa';
   Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
@@ -131,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
             grid: { color: 'rgba(255,255,255,0.04)' },
             ticks: {
               font: { size: isMobile ? 9 : 11 },
-              callback: function(v) { return v >= 1000 ? (v / 1000) + 'K' : v; }
+              callback: function(v) { return v >= 1000 ? Math.round(v / 1000) + 'K' : v; }
             }
           },
           y: {
