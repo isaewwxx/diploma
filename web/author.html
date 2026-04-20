@@ -131,8 +131,14 @@
             <span class="tag-pill purple">phpMyAdmin</span>
             <span class="tag-pill">Linux</span>
           </div>
-          <a href="https://capybarahost.eu" target="_blank" class="project-link"><i data-lucide="external-link"></i>
-            capybarahost.eu</a>
+          <div class="project-card-actions">
+            <button type="button" class="project-details-btn" data-project="capybarahost">
+              <i data-lucide="info"></i>
+              Детайли
+            </button>
+            <a href="https://capybarahost.eu" target="_blank" class="project-link"><i data-lucide="external-link"></i>
+              capybarahost.eu</a>
+          </div>
         </div>
 
         <div class="project-card">
@@ -156,8 +162,14 @@
             <span class="tag-pill blue">Node.js</span>
             <span class="tag-pill orange">CSS</span>
           </div>
-          <a href="https://infininode.isaewwxx.dev/" target="_blank" class="project-link"><i
-              data-lucide="external-link"></i> infininode.isaewwxx.dev</a>
+          <div class="project-card-actions">
+            <button type="button" class="project-details-btn" data-project="infininode">
+              <i data-lucide="info"></i>
+              Детайли
+            </button>
+            <a href="https://infininode.isaewwxx.dev/" target="_blank" class="project-link"><i
+                data-lucide="external-link"></i> infininode.isaewwxx.dev</a>
+          </div>
         </div>
 
         <div class="project-card">
@@ -181,8 +193,14 @@
             <span class="tag-pill yellow">JavaScript</span>
             <span class="tag-pill">Chart.js</span>
           </div>
-          <a href="https://euro.isaewwxx.dev/" target="_blank" class="project-link"><i data-lucide="external-link"></i>
-            euro.isaewwxx.dev</a>
+          <div class="project-card-actions">
+            <button type="button" class="project-details-btn" data-project="euro">
+              <i data-lucide="info"></i>
+              Детайли
+            </button>
+            <a href="https://euro.isaewwxx.dev/" target="_blank" class="project-link"><i data-lucide="external-link"></i>
+              euro.isaewwxx.dev</a>
+          </div>
         </div>
 
         <div class="project-card">
@@ -206,12 +224,42 @@
             <span class="tag-pill green">Next.js</span>
             <span class="tag-pill">Tailwind</span>
           </div>
-          <a href="https://ms.isaewwxx.dev/" target="_blank" class="project-link"><i data-lucide="external-link"></i>
-            ms.isaewwxx.dev</a>
+          <div class="project-card-actions">
+            <button type="button" class="project-details-btn" data-project="mobile-security-day">
+              <i data-lucide="info"></i>
+              Детайли
+            </button>
+            <a href="https://ms.isaewwxx.dev/" target="_blank" class="project-link"><i data-lucide="external-link"></i>
+              ms.isaewwxx.dev</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="project-modal" id="projectModal" aria-hidden="true">
+    <div class="project-modal-backdrop" data-project-close></div>
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <button type="button" class="project-modal-close" id="projectModalClose" aria-label="Затвори">
+        <i data-lucide="x"></i>
+      </button>
+      <h3 id="projectModalTitle">Детайли за проект</h3>
+      <p class="project-modal-summary" id="projectModalSummary"></p>
+      <div class="project-modal-block">
+        <h4>Ключови акценти</h4>
+        <ul id="projectModalHighlights"></ul>
+      </div>
+      <div class="project-modal-block">
+        <h4>Роля и реализация</h4>
+        <p id="projectModalRole"></p>
+      </div>
+      <a href="#" target="_blank" class="project-link" id="projectModalLink">
+        <i data-lucide="external-link"></i>
+        Отвори проекта
+      </a>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -262,6 +310,7 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="js/site.js"></script>
+  <script src="js/author.js"></script>
 </body>
 
 </html>

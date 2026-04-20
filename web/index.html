@@ -564,17 +564,19 @@
         </div>
       </div>
       <h3 class="mb-3 fade-in" style="text-align:center; color: var(--text-primary);">NIST CSF Чеклист</h3>
-      <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
-        <div class="nist-item"><span class="nist-badge id">ID</span><p>Инвентаризация на всички одобрени USB устройства</p></div>
-        <div class="nist-item"><span class="nist-badge id">ID</span><p>Класификация на данните по ниво на чувствителност</p></div>
-        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Задължително AES-256 криптиране на преносими носители</p></div>
-        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Прилагане на принципа за минимални привилегии</p></div>
-        <div class="nist-item"><span class="nist-badge pr">PR</span><p>Обучение на персонала за USB-базирани заплахи</p></div>
-        <div class="nist-item"><span class="nist-badge de">DE</span><p>Мониторинг на свързваните устройства чрез Event 4663</p></div>
-        <div class="nist-item"><span class="nist-badge de">DE</span><p>Автоматично сканиране за зловреден софтуер при свързване</p></div>
-        <div class="nist-item"><span class="nist-badge rs">RS</span><p>Процедура за инцидентна реакция при изгубено устройство</p></div>
-        <div class="nist-item"><span class="nist-badge rs">RS</span><p>Отдалечено изтриване (remote wipe) на криптирани носители</p></div>
-        <div class="nist-item"><span class="nist-badge rc">RC</span><p>Възстановяване от резервни копия (3-2-1 правило)</p></div>
+      <p class="nist-table-title fade-in">Таблица 5. Чеклист с добри практики и съответствие с NIST CSF</p>
+      <p class="nist-table-note fade-in">Функции в NIST CSF: <span class="nist-badge id">ID</span> Identify, <span class="nist-badge pr">PR</span> Protect, <span class="nist-badge de">DE</span> Detect, <span class="nist-badge rs">RS</span> Respond, <span class="nist-badge rc">RC</span> Recover.</p>
+      <div class="fade-in nist-list">
+        <div class="nist-item"><span class="nist-no">1</span><span class="nist-badge id">ID</span><p>Поддържане на инвентарен регистър на всички преносими устройства с уникални идентификатори</p></div>
+        <div class="nist-item"><span class="nist-no">2</span><span class="nist-badge id">ID</span><p>Класификация на данните по ниво на чувствителност преди съхранение на преносим носител</p></div>
+        <div class="nist-item"><span class="nist-no">3</span><span class="nist-badge pr">PR</span><p>Криптиране на всички преносими устройства чрез AES-256 (BitLocker, VeraCrypt, LUKS)</p></div>
+        <div class="nist-item"><span class="nist-no">4</span><span class="nist-badge pr">PR</span><p>Прилагане на Device Whitelisting - разрешаване само на одобрени устройства (по VID/PID/сериен No)</p></div>
+        <div class="nist-item"><span class="nist-no">5</span><span class="nist-badge pr">PR</span><p>Деактивиране на AutoRun/AutoPlay за всички сменяеми устройства в цялата организация</p></div>
+        <div class="nist-item"><span class="nist-no">6</span><span class="nist-badge de">DE</span><p>Автоматично антивирусно сканиране при включване на преносим носител</p></div>
+        <div class="nist-item"><span class="nist-no">7</span><span class="nist-badge de">DE</span><p>Мониторинг на USB събития чрез SIEM с настроени правила за аномална активност</p></div>
+        <div class="nist-item"><span class="nist-no">8</span><span class="nist-badge rs">RS</span><p>Документирана процедура за реакция при инцидент с преносимо устройство</p></div>
+        <div class="nist-item"><span class="nist-no">9</span><span class="nist-badge rc">RC</span><p>Прилагане на стратегия 3-2-1 за резервни копия с включване на поне един външен носител</p></div>
+        <div class="nist-item"><span class="nist-no">10</span><span class="nist-badge rc">RC</span><p>Сигурно изтриване на данни (Clear/Purge/Destroy) преди излизане от употреба, съгласно NIST SP 800-88</p></div>
       </div>
     </div>
   </section>
