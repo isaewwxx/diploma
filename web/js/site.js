@@ -34,13 +34,58 @@
   }
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const BTN = 44;
+    const RING = 56;
+    const R = (RING / 2) - 3.5;
+    const CIRC = 2 * Math.PI * R;
+
+    const ring = document.createElementNS(svgNS, 'svg');
+    ring.setAttribute('class', 'back-to-top-ring');
+    ring.setAttribute('width', RING);
+    ring.setAttribute('height', RING);
+    ring.setAttribute('viewBox', `0 0 ${RING} ${RING}`);
+    ring.setAttribute('aria-hidden', 'true');
+
+    const track = document.createElementNS(svgNS, 'circle');
+    track.setAttribute('class', 'back-to-top-ring-track');
+    track.setAttribute('cx', RING / 2);
+    track.setAttribute('cy', RING / 2);
+    track.setAttribute('r', R);
+    track.setAttribute('fill', 'none');
+    track.setAttribute('stroke', 'rgba(255,255,255,0.06)');
+    track.setAttribute('stroke-width', '2.5');
+
+    const progress = document.createElementNS(svgNS, 'circle');
+    progress.setAttribute('class', 'back-to-top-ring-progress');
+    progress.setAttribute('cx', RING / 2);
+    progress.setAttribute('cy', RING / 2);
+    progress.setAttribute('r', R);
+    progress.setAttribute('fill', 'none');
+    progress.setAttribute('stroke', '#6366f1');
+    progress.setAttribute('stroke-width', '2.5');
+    progress.setAttribute('stroke-linecap', 'round');
+    progress.setAttribute('stroke-dasharray', CIRC);
+    progress.setAttribute('stroke-dashoffset', CIRC);
+
+    ring.appendChild(track);
+    ring.appendChild(progress);
+    backToTop.appendChild(ring);
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docScrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docScrollable > 0 ? Math.min(1, scrollTop / docScrollable) : 0;
+      progress.setAttribute('stroke-dashoffset', CIRC * (1 - pct));
+      if (scrollTop > 500) {
         backToTop.classList.add('visible');
       } else {
         backToTop.classList.remove('visible');
       }
-    }, { passive: true });
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
