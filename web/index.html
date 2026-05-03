@@ -47,14 +47,42 @@
   </nav>
   <section class="hero" id="hero">
     <div class="hero-content">
-      <h1>Управление на външни запаметяващи устройства</h1>
-      <p class="hero-subtitle">Видове, рискове и защита на данните</p>
-      <div class="hero-stats">
-        <div class="stat-pill"><strong>5</strong> Вида устройства</div>
-        <div class="stat-pill"><strong>8</strong> Идентифицирани рискове</div>
-        <div class="stat-pill"><strong>10</strong> Добри практики</div>
+      <p class="hero-kicker">Дипломна работа 2026 / Information Security</p>
+      <h1>Контролен център за външни носители</h1>
+      <p class="hero-subtitle">Видове, рискове, политики и практически защити за USB, SSD, HDD, SD карти и оптични носители.</p>
+      <div class="hero-stats" aria-label="Ключови показатели">
+        <div class="stat-pill"><strong>5</strong> типа носители</div>
+        <div class="stat-pill"><strong>8</strong> рискови сценария</div>
+        <div class="stat-pill"><strong>10</strong> NIST практики</div>
       </div>
-      <a href="#intro" class="btn btn-primary"><i data-lucide="arrow-down"></i> Разгледай</a>
+      <div class="hero-actions">
+        <a href="#intro" class="btn btn-primary"><i data-lucide="arrow-down"></i> Започни анализа</a>
+        <a href="charts.html" class="btn btn-outline"><i data-lucide="activity"></i> Виж данните</a>
+      </div>
+    </div>
+    <div class="hero-dashboard" aria-label="Визуален преглед на защитните мерки">
+      <div class="hero-panel hero-panel-main">
+        <div>
+          <span class="panel-label">Policy State</span>
+          <h2>USB Write Access</h2>
+        </div>
+        <span class="panel-status">Blocked</span>
+        <img src="assets/img/f1_gpo-zabrana.png" alt="GPO забрана за запис върху USB устройство" loading="eager">
+      </div>
+      <div class="hero-panel hero-metric">
+        <span class="panel-label">Risk posture</span>
+        <strong>4.8</strong>
+        <span>malware impact</span>
+      </div>
+      <div class="hero-panel hero-metric accent">
+        <span class="panel-label">Protection</span>
+        <strong>AES</strong>
+        <span>BitLocker / VeraCrypt / LUKS</span>
+      </div>
+      <div class="hero-panel hero-panel-shot">
+        <span class="panel-label">Audit trail</span>
+        <img src="assets/img/f8_event4663.png" alt="Event Viewer събитие 4663 за одит на достъп" loading="eager">
+      </div>
     </div>
   </section>
   <section class="section" id="intro">

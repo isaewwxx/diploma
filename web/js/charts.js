@@ -14,8 +14,24 @@
  * limitations under the License.
  */
 document.addEventListener('DOMContentLoaded', () => {
-  Chart.defaults.color = '#a1a1aa';
-  Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+  const rootStyles = getComputedStyle(document.documentElement);
+  const cssVar = (name, fallback) => rootStyles.getPropertyValue(name).trim() || fallback;
+  const withAlpha = (hex, alpha) => {
+    const value = hex.replace('#', '');
+    const r = parseInt(value.slice(0, 2), 16);
+    const g = parseInt(value.slice(2, 4), 16);
+    const b = parseInt(value.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},${alpha})`;
+  };
+
+  const chartText = cssVar('--text-secondary', '#c3c0b7');
+  const chartSurface = cssVar('--bg-surface', '#111413');
+  const chartInk = cssVar('--text-primary', '#f4f1e8');
+  const gridColor = withAlpha(chartInk, 0.08);
+  const gridStrong = withAlpha(chartInk, 0.12);
+
+  Chart.defaults.color = chartText;
+  Chart.defaults.borderColor = gridColor;
   Chart.defaults.font.family = "'Space Grotesk', system-ui, sans-serif";
   Chart.defaults.font.size = 12;
   Chart.defaults.responsive = true;
@@ -23,30 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
   Chart.defaults.plugins.legend.labels.padding = 16;
   Chart.defaults.plugins.legend.labels.boxWidth = 8;
+  Chart.defaults.plugins.tooltip.backgroundColor = chartSurface;
+  Chart.defaults.plugins.tooltip.titleColor = chartInk;
+  Chart.defaults.plugins.tooltip.bodyColor = chartText;
+  Chart.defaults.plugins.tooltip.borderColor = gridStrong;
+  Chart.defaults.plugins.tooltip.borderWidth = 1;
 
   const COLORS = {
-    indigo: '#6366f1',
-    indigoSoft: 'rgba(99,102,241,0.7)',
-    blue: '#3b82f6',
-    green: '#22c55e',
-    orange: '#f97316',
-    red: '#ef4444',
-    yellow: '#eab308',
-    purple: '#a855f7',
-    cyan: '#06b6d4',
-    pink: '#ec4899',
-    teal: '#14b8a6',
-    lime: '#84cc16'
+    indigo: cssVar('--accent', '#b8ff4d'),
+    indigoSoft: withAlpha(cssVar('--accent', '#b8ff4d'), 0.7),
+    blue: cssVar('--blue', '#65c7ff'),
+    green: cssVar('--green', '#7bed7b'),
+    orange: cssVar('--orange', '#ff9a3d'),
+    red: cssVar('--red', '#ff5d5d'),
+    yellow: cssVar('--yellow', '#ffd84d'),
+    purple: cssVar('--purple', '#caa6ff'),
+    cyan: cssVar('--cyan', '#55f0d8'),
+    pink: '#ff7ab6',
+    teal: cssVar('--cyan', '#55f0d8'),
+    lime: cssVar('--accent-hover', '#dcff85')
   };
 
   const devices = ['USB Flash', 'SSD', 'HDD', 'SD карта', 'CD/DVD'];
   const deviceColors = [COLORS.indigo, COLORS.blue, COLORS.orange, COLORS.green, COLORS.red];
   const deviceColorsBg = [
-    'rgba(99,102,241,0.7)',
-    'rgba(59,130,246,0.7)',
-    'rgba(249,115,22,0.7)',
-    'rgba(34,197,94,0.7)',
-    'rgba(239,68,68,0.7)'
+    withAlpha(COLORS.indigo, 0.72),
+    withAlpha(COLORS.blue, 0.72),
+    withAlpha(COLORS.orange, 0.72),
+    withAlpha(COLORS.green, 0.72),
+    withAlpha(COLORS.red, 0.72)
   ];
   const speedCtx = document.getElementById('speedChart');
   if (speedCtx) {
@@ -58,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
           {
             label: 'Мин. скорост (MB/s)',
             data: [100, 500, 80, 90, 1.2],
-            backgroundColor: 'rgba(99,102,241,0.5)',
+            backgroundColor: withAlpha(COLORS.indigo, 0.48),
             borderColor: COLORS.indigo,
             borderWidth: 1,
             borderRadius: 4
@@ -66,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
           {
             label: 'Макс. скорост (MB/s)',
             data: [400, 2000, 160, 300, 22],
-            backgroundColor: 'rgba(129,140,248,0.7)',
-            borderColor: '#818cf8',
+            backgroundColor: withAlpha(COLORS.cyan, 0.72),
+            borderColor: COLORS.cyan,
             borderWidth: 1,
             borderRadius: 4
           }
@@ -85,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
           y: {
             beginAtZero: true,
             title: { display: true, text: 'MB/s' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           },
           x: {
             grid: { display: false }
@@ -104,15 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
           label: 'Макс. скорост (MB/s)',
           data: [60, 625, 1250, 2500, 600, 7000, 14000, 5000, 10000],
           backgroundColor: [
-            'rgba(99,102,241,0.6)',
-            'rgba(99,102,241,0.65)',
-            'rgba(99,102,241,0.7)',
-            'rgba(99,102,241,0.8)',
-            'rgba(249,115,22,0.7)',
-            'rgba(34,197,94,0.7)',
-            'rgba(34,197,94,0.85)',
-            'rgba(168,85,247,0.7)',
-            'rgba(168,85,247,0.85)'
+            withAlpha(COLORS.indigo, 0.45),
+            withAlpha(COLORS.indigo, 0.55),
+            withAlpha(COLORS.cyan, 0.62),
+            withAlpha(COLORS.cyan, 0.72),
+            withAlpha(COLORS.orange, 0.68),
+            withAlpha(COLORS.green, 0.68),
+            withAlpha(COLORS.lime, 0.82),
+            withAlpha(COLORS.purple, 0.68),
+            withAlpha(COLORS.purple, 0.82)
           ],
           borderRadius: 4,
           borderSkipped: false
@@ -132,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
           x: {
             beginAtZero: true,
             title: { display: true, text: 'MB/s' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           },
           y: {
             grid: { display: false }
@@ -151,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
           {
             label: 'Мин. цена (€/GB)',
             data: [0.05, 0.07, 0.02, 0.08, 0.01],
-            backgroundColor: 'rgba(34,197,94,0.5)',
+            backgroundColor: withAlpha(COLORS.green, 0.48),
             borderColor: COLORS.green,
             borderWidth: 1,
             borderRadius: 4
@@ -159,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
           {
             label: 'Макс. цена (€/GB)',
             data: [0.15, 0.12, 0.04, 0.20, 0.03],
-            backgroundColor: 'rgba(34,197,94,0.8)',
+            backgroundColor: withAlpha(COLORS.lime, 0.76),
             borderColor: COLORS.green,
             borderWidth: 1,
             borderRadius: 4
@@ -178,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
           y: {
             beginAtZero: true,
             title: { display: true, text: '€/GB' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           },
           x: { grid: { display: false } }
         }
@@ -217,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
           y: {
             type: 'logarithmic',
             title: { display: true, text: 'P/E цикли (×1000, лог. скала)' },
-            grid: { color: 'rgba(255,255,255,0.04)' },
+            grid: { color: gridColor },
             ticks: {
               callback: (v) => v.toLocaleString()
             }
@@ -241,17 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const sevColors = {
-      critical: 'rgba(239,68,68,0.6)',
-      high: 'rgba(249,115,22,0.6)',
-      medium: 'rgba(234,179,8,0.6)',
-      low: 'rgba(34,197,94,0.5)'
+      critical: withAlpha(COLORS.red, 0.62),
+      high: withAlpha(COLORS.orange, 0.62),
+      medium: withAlpha(COLORS.yellow, 0.62),
+      low: withAlpha(COLORS.green, 0.54)
     };
 
     const sevBorder = {
-      critical: '#ef4444',
-      high: '#f97316',
-      medium: '#eab308',
-      low: '#22c55e'
+      critical: COLORS.red,
+      high: COLORS.orange,
+      medium: COLORS.yellow,
+      low: COLORS.green
     };
 
     new Chart(riskCtx, {
@@ -283,12 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
           x: {
             title: { display: true, text: 'Вероятност' },
             min: 1.5, max: 5,
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           },
           y: {
             title: { display: true, text: 'Въздействие' },
             min: 1, max: 5.5,
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           }
         }
       }
@@ -309,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             COLORS.indigo
           ],
           borderWidth: 0,
-          hoverBorderColor: '#fff',
+          hoverBorderColor: chartInk,
           hoverBorderWidth: 2
         }]
       },
@@ -359,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
             beginAtZero: true,
             max: 10,
             title: { display: true, text: 'Оценка (1–10)' },
-            grid: { color: 'rgba(255,255,255,0.04)' }
+            grid: { color: gridColor }
           },
           y: {
             grid: { display: false }
@@ -385,12 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
         datasets: [{
           data: [37, 12, 25, 18, 8, 30],
           backgroundColor: [
-            'rgba(239,68,68,0.6)',
-            'rgba(168,85,247,0.6)',
-            'rgba(249,115,22,0.6)',
-            'rgba(234,179,8,0.6)',
-            'rgba(6,182,212,0.6)',
-            'rgba(99,102,241,0.6)'
+            withAlpha(COLORS.red, 0.62),
+            withAlpha(COLORS.purple, 0.62),
+            withAlpha(COLORS.orange, 0.62),
+            withAlpha(COLORS.yellow, 0.62),
+            withAlpha(COLORS.cyan, 0.62),
+            withAlpha(COLORS.indigo, 0.62)
           ],
           borderWidth: 0
         }]
@@ -400,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
           r: {
             beginAtZero: true,
             ticks: { backdropColor: 'transparent' },
-            grid: { color: 'rgba(255,255,255,0.06)' }
+            grid: { color: gridStrong }
           }
         },
         plugins: {
