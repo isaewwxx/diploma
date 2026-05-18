@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright 2026 Georgi Emilov Isaev
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -497,6 +497,170 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .intro-grid { grid-template-columns: 1fr; }
+}
+
+/* Presentation Feature */
+.presentation-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.presentation-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.presentation-slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.presentation-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.presentation-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.presentation-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition);
+}
+
+.presentation-nav:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.presentation-nav.prev {
+  left: 1rem;
+}
+
+.presentation-nav.next {
+  right: 1rem;
+}
+
+.presentation-fullscreen {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition);
+}
+
+.presentation-fullscreen:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.presentation-wrapper:fullscreen {
+  border-radius: 0;
+  background: #000;
+}
+
+.presentation-wrapper:-webkit-full-screen {
+  border-radius: 0;
+  background: #000;
+}
+
+.presentation-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.presentation-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.presentation-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-hover);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.presentation-indicator:hover {
+  background: var(--text-muted);
+}
+
+.presentation-indicator.active {
+  background: var(--accent);
+  transform: scale(1.2);
+}
+
+.presentation-counter {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .presentation-container {
+    padding: 1rem;
+  }
+  .presentation-nav {
+    width: 36px;
+    height: 36px;
+    left: 0.5rem;
+  }
+  .presentation-nav.next {
+    right: 0.5rem;
+    left: auto;
+  }
 }
 .timeline {
   position: relative;

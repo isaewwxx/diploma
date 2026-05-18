@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright 2026 Georgi Emilov Isaev
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -257,6 +257,112 @@ document.addEventListener('DOMContentLoaded', () => {
       updateActive();
     }
   }
+
+  // Presentation Feature
+  const presentationContainer = document.querySelector('.presentation-container');
+  if (presentationContainer) {
+    const slides = presentationContainer.querySelectorAll('.presentation-slide');
+    const indicators = presentationContainer.querySelectorAll('.presentation-indicator');
+    const prevBtn = document.getElementById('presentationPrev');
+    const nextBtn = document.getElementById('presentationNext');
+    const counter = document.getElementById('presentationCounter');
+    const wrapper = document.getElementById('presentationWrapper');
+    const fullscreenBtn = document.getElementById('presentationFullscreen');
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    const updatePresentation = (index) => {
+      slides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+      indicators.forEach((ind, i) => {
+        if (i === index) {
+          ind.classList.add('active');
+        } else {
+          ind.classList.remove('active');
+        }
+      });
+      if (counter) {
+        counter.textContent = `${index + 1} / ${totalSlides}`;
+      }
+    };
+
+    const nextSlide = () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updatePresentation(currentSlide);
+    };
+
+    const prevSlide = () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updatePresentation(currentSlide);
+    };
+
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    if (fullscreenBtn && wrapper) {
+      fullscreenBtn.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          wrapper.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen: ${err.message}`);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+
+      document.addEventListener('fullscreenchange', () => {
+        if (document.fullscreenElement) {
+          fullscreenBtn.innerHTML = '<i data-lucide="minimize"></i>';
+        } else {
+          fullscreenBtn.innerHTML = '<i data-lucide="maximize"></i>';
+        }
+        if (window.lucide) window.lucide.createIcons();
+      });
+    }
+
+    indicators.forEach((indicator) => {
+      indicator.addEventListener('click', () => {
+        const slideIndex = parseInt(indicator.getAttribute('data-slide'), 10);
+        if (!isNaN(slideIndex)) {
+          currentSlide = slideIndex;
+          updatePresentation(currentSlide);
+        }
+      });
+    });
+
+    // Keyboard navigation
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            presentationContainer.classList.add('in-view');
+          } else {
+            presentationContainer.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(presentationContainer);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (presentationContainer.classList.contains('in-view') && !document.body.classList.contains('gallery-open')) {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevSlide();
+        }
+      }
+    });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
