@@ -76,18 +76,24 @@
                                 <p><a href="mailto:georgi@capybarahost.eu">georgi@capybarahost.eu</a></p>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item protected-contact" data-private-contact="phone">
                             <div class="contact-icon"><i data-lucide="phone"></i></div>
                             <div>
                                 <strong>Телефон</strong>
-                                <p><a href="tel:+359878720963">+359 878 720 963</a></p>
+                                <p class="private-contact-placeholder" id="privatePhonePlaceholder">
+                                    Само за потребители с имейл @nfsg-sofia.org
+                                </p>
+                                <p class="private-contact-value" id="privatePhoneValue" hidden></p>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-item protected-contact" data-private-contact="address">
                             <div class="contact-icon"><i data-lucide="map-pin"></i></div>
                             <div>
                                 <strong>Адрес</strong>
-                                <p>ул. проф. Фритьоф Нансен 3, София</p>
+                                <p class="private-contact-placeholder" id="privateAddressPlaceholder">
+                                    Само за потребители с имейл @nfsg-sofia.org
+                                </p>
+                                <p class="private-contact-value" id="privateAddressValue" hidden></p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -119,6 +125,23 @@
                         </div>
                     </div>
 
+                    <div class="school-contact-gate" id="schoolContactGate">
+                        <h4><i data-lucide="lock-keyhole"></i> Достъп за НФСГ София</h4>
+                        <p id="schoolAuthStatus">
+                            Влезте с Google профил от домейна nfsg-sofia.org, за да видите телефон и адрес.
+                            Ако нямате такъв профил, използвайте контактната форма.
+                        </p>
+                        <div class="google-signin-slot" id="googleSignInButton"></div>
+                        <div class="school-auth-actions">
+                            <button type="button" class="btn-outline btn-auth" id="schoolSignOut" hidden>
+                                <i data-lucide="log-out"></i> Изход
+                            </button>
+                            <a href="#contactFormPanel" class="btn-outline btn-auth">
+                                <i data-lucide="message-square"></i> Контактна форма
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="contact-topic">
                         <h4><i data-lucide="file-text"></i> Тема на работата</h4>
                         <p>Управление на външни запаметяващи устройства - видове, рискове и защита на данните при
@@ -126,7 +149,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form-panel">
+                <div class="contact-form-panel" id="contactFormPanel">
                     <h3><i data-lucide="send"></i> Изпратете съобщение</h3>
                     <form class="contact-form" action="https://formspree.io/f/xnjbjrye" method="POST">
                         <div class="form-group">
@@ -197,6 +220,13 @@
     </button>
 
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        window.CONTACT_AUTH_CONFIG = {
+            googleClientId: '771877852134-eodqkjbnsrp8co4jbej03t6ipp3pac2v.apps.googleusercontent.com',
+            allowedDomain: 'nfsg-sofia.org'
+        };
+    </script>
     <script src="js/site.js"></script>
     <script src="js/contact.js"></script>
 </body>
